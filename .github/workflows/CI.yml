@@ -1,0 +1,34 @@
+name: CI
+on:
+  - pull_request
+  - push
+
+jobs:
+  Test:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    name: ${{ matrix.os }} - Atom ${{ matrix.atom_channel }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        atom_channel: [stable, beta]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: UziTech/action-setup-atom@v1
+        with:
+          channel: ${{ matrix.atom_channel }}
+
+      - name: Install APM dependencies
+        run: apm install
+
+      - name: Run tests 👩🏾‍💻
+        run: npm run test
+
+  Skip:
+    if: contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip CI 🚫
+        run: echo skip ci
