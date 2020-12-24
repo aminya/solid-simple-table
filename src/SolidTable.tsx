@@ -1,4 +1,5 @@
 import { createState } from "solid-js"
+import "./SolidTable.css"
 
 // util types
 type AnyObject = Record<string, any>
