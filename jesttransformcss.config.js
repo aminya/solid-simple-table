@@ -1,0 +1,3 @@
+exports = {
+  modules: true
+}
