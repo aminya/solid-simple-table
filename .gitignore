@@ -11,3 +11,4 @@ package-lock.json
 
 # Build directories
 dist
+.parcel-cache
