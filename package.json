@@ -1,0 +1,59 @@
+{
+  "name": "solid-table",
+  "version": "1.0.2",
+  "description": "React Table Component done right",
+  "main": "dist/SolidTable.js",
+  "module": "dist/SolidTable.module.js",
+  "types": "dist/SolidTable.d.ts",
+  "source": "src/SolidTable.tsx",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "clean": "shx rm -rf dist .parcel-cache",
+    "dev": "cross-env NODE_ENV=development parcel watch src/SolidTable.tsx",
+    "build": "cross-env NODE_ENV=production parcel build src/SolidTable.tsx",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.12.7",
+    "@parcel/validator-typescript": "^2.0.0-alpha.3",
+    "@types/jest": "26.0.19",
+    "@types/node": "14.14.16",
+    "babel-preset-solid": "^0.23.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.16.0",
+    "eslint-config-atomic": "^1.5.1",
+    "parcel": "^2.0.0-nightly.489",
+    "shx": "^0.3.3",
+    "solid-js": "^0.23.4",
+    "typescript": "4.1.3"
+  },
+  "targets": {
+    "main": {
+      "context": "browser",
+      "engines": {
+        "browsers": "> 0.25%"
+      },
+      "includeNodeModules": true,
+      "isLibrary": true
+    },
+    "module": {
+      "context": "browser",
+      "engines": {
+        "browsers": "Chrome 76"
+      },
+      "includeNodeModules": false,
+      "isLibrary": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminya/solid-table.git"
+  },
+  "author": "Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aminya/solid-table/issues"
+  },
+  "homepage": "https://github.com/aminya/solid-table#readme"
+}
