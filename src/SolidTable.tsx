@@ -2,7 +2,7 @@ import { createState } from "solid-js"
 // import "./SolidTable.css"
 
 // util types
-type AnyObject = Record<string, any>
+export type AnyObject = Record<string, any>
 type Renderable = any
 
 export type Column = { key: string; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: AnyObject): void }
