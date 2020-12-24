@@ -98,3 +98,62 @@ export function SolidTable(props: Props) {
     </table>
   )
 }
+
+const ARROW = {
+  UP: "↑",
+  DOWN: "↓",
+  BOTH: "⇅",
+}
+
+function defaultHeaderRenderer(item: any) {
+  if (typeof item !== "string") {
+    throw new Error("Non-string header array fed to solid-table without renderHeaderColumn prop")
+  }
+  return item
+}
+
+function defaultBodyRenderer(row: AnyObject, column: string) {
+  const value = row[column]
+  if (typeof value !== "string") {
+    throw new Error("Non-predictable rows fed to solid-table without renderBodyColumn prop")
+  }
+  return value
+}
+
+function findSortItemByKey(sortInfo: SortInfo, column: string): number {
+  if (Array.isArray(sortInfo)) {
+    for (let i = 0, length = sortInfo.length; i < length; ++i) {
+      if (sortInfo[i].column === column) {
+        return i
+      }
+    }
+  }
+  return -1
+}
+
+function renderHeaderIcon(sortInfo: SortInfo, column: string) {
+  const index = sortInfo ? findSortItemByKey(sortInfo, column) : -1
+  let icon = ARROW.BOTH
+  if (sortInfo && index !== -1) {
+    icon = sortInfo[index].type === "asc" ? ARROW.UP : ARROW.DOWN
+  }
+
+  return <span className="sort-icon">{icon}</span>
+}
+
+function clickHandler(sortInfo: SortInfo, column: string, append: boolean) {
+  const index = findSortItemByKey(sortInfo, column)
+  if (index < 0) {
+    const value: { column: string; type: "asc" | "desc" } = { column, type: "asc" }
+    sortInfo = append ? sortInfo : []
+    sortInfo.push(value)
+  } else {
+    const value: { column: string; type: "asc" | "desc" | null } = sortInfo[index]
+    value.type = value.type === "asc" ? "desc" : null
+    if (!append) {
+      sortInfo = (value.type !== null ? [value] : []) as SortInfo
+    } else if (!value.type) {
+      sortInfo.splice(index, 1)
+    }
+  }
+}
