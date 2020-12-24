@@ -1,16 +1,15 @@
 exports = {
+  testEnvironment: 'jsdom',
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.jsx?$": "babel-jest",
-    "^.+\\.css$": "jest-transform-css"
+    "^.+\\.[tj]sx?$": "babel-jest",
   },
-  preset: "ts-jest/presets/js-with-babel",
-  globals: {
-    "ts-jest": {
-      babelConfig: true,
-      useESM: false,
-    },
-  },
-  roots: ["src"],
+  preset: "babel-jest",
   setupFilesAfterEnv: ["./jest.setup.ts"],
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+    "\\.(scss|sass|css)$": "identity-obj-proxy"
+  },
+  roots: [
+    "<rootDir>/src"
+  ],
 }

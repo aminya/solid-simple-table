@@ -11,8 +11,8 @@ devDependencies:
   cross-env: 7.0.3
   eslint: 7.16.0
   eslint-config-atomic: 1.5.1_eslint@7.16.0
+  identity-obj-proxy: 3.0.0
   jest: 26.6.3_ts-node@8.10.2
-  jest-transform-css: 2.1.0
   parcel: 2.0.0-nightly.489
   shx: 0.3.3
   solid-js: 0.23.4
@@ -4222,10 +4222,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
-  /big.js/3.2.0:
-    dev: true
-    resolution:
-      integrity: sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==
   /bindings/1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
@@ -4735,12 +4731,6 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
-  /common-tags/1.8.0:
-    dev: true
-    engines:
-      node: '>=4.0.0'
-    resolution:
-      integrity: sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
   /component-emitter/1.3.0:
     dev: true
     resolution:
@@ -4836,27 +4826,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
-  /cosmiconfig/4.0.0:
-    dependencies:
-      is-directory: 0.3.1
-      js-yaml: 3.14.1
-      parse-json: 4.0.0
-      require-from-string: 2.0.2
-    dev: true
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-6e5vDdrXZD+t5v0L8CrurPeybg4Fmf+FCSYxXKYVAqLUtyCSbuyqE059d0kDthTNRzKVjL7QMgNpEUlsoYH3iQ==
-  /cosmiconfig/5.0.6:
-    dependencies:
-      is-directory: 0.3.1
-      js-yaml: 3.14.1
-      parse-json: 4.0.0
-    dev: true
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-6DWfizHriCrFWURP1/qyhsiFvYdlJzbCzmtFWh744+KyWsJo5+kPzUZZaMRSSItoYc0pxFX7gEO7ZC1/gN/7AQ==
   /cosmiconfig/5.2.1:
     dependencies:
       import-fresh: 2.0.0
@@ -5505,12 +5474,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-DNc3KFPK18bPdElMJnf/Pkv5TXhxFU3YFDEuGLDRtPmV4rkmCjBkCSEp22u6rBHdSN9Vlp/GK7k98prmE1Jgug==
-  /emojis-list/2.1.0:
-    dev: true
-    engines:
-      node: '>= 0.10'
-    resolution:
-      integrity: sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
   /emphasize/2.1.0:
     dependencies:
       chalk: 2.4.2
@@ -6347,12 +6310,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
-  /generic-names/1.0.3:
-    dependencies:
-      loader-utils: 0.2.17
-    dev: true
-    resolution:
-      integrity: sha1-LXhqEhruUIh2eWk56OO/+DbCCRc=
   /gensync/1.0.0-beta.2:
     dev: true
     engines:
@@ -6500,6 +6457,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-nmT2T0lljbxdQZfspsno9hgrG3Uir6Ks5afism62poxqBM6sDnMEuPmzTq8XN0OEwqKLLdh1jQI3qyE66Nzb3w==
+  /harmony-reflect/1.6.1:
+    dev: true
+    resolution:
+      integrity: sha512-WJTeyp0JzGtHcuMsi7rw2VwtkvLa+JyfEKJCFyfcS0+CDkjQ5lHPu7zEhFZP+PDSRrEgXa5Ah0l1MbgbE41XjA==
   /has-ansi/2.0.0:
     dependencies:
       ansi-regex: 2.1.1
@@ -6740,6 +6701,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=
+  /identity-obj-proxy/3.0.0:
+    dependencies:
+      harmony-reflect: 1.6.1
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
   /ieee754/1.2.1:
     dev: true
     resolution:
@@ -6762,14 +6731,6 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
-  /import-cwd/2.1.0:
-    dependencies:
-      import-from: 2.1.0
-    dev: true
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha1-qmzzbnInYShcs3HsZRn1PiQ1sKk=
   /import-fresh/2.0.0:
     dependencies:
       caller-path: 2.0.0
@@ -6788,14 +6749,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==
-  /import-from/2.1.0:
-    dependencies:
-      resolve-from: 3.0.0
-    dev: true
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha1-M1238qev/VOqpHHUuAId7ja387E=
   /import-local/3.0.2:
     dependencies:
       pkg-dir: 4.2.0
@@ -7643,19 +7596,6 @@ packages:
       node: '>= 10.14.2'
     resolution:
       integrity: sha512-OLhxz05EzUtsAmOMzuupt1lHYXCNib0ECyuZ/PZOx9TrZcC8vL0x+DUG3TL+GLX3yHG45e6YGjIm0XwDc3q3og==
-  /jest-transform-css/2.1.0:
-    dependencies:
-      common-tags: 1.8.0
-      cosmiconfig: 5.0.6
-      cross-spawn: 6.0.5
-      postcss-load-config: 2.0.0
-      postcss-modules: 1.3.2
-      style-inject: 0.3.0
-    dev: true
-    peerDependencies:
-      postcss: ^7.0.2
-    resolution:
-      integrity: sha512-daar3G48riufHGCHAuwzLEhrTStWTYiZ7rskVJsTPDumLQ/LF2VCJa0jREHbJaCmAQiT5lQlXYqu+oIig91EeQ==
   /jest-util/26.6.2:
     dependencies:
       '@jest/types': 26.6.2
@@ -7881,11 +7821,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
-  /json5/0.5.1:
-    dev: true
-    hasBin: true
-    resolution:
-      integrity: sha1-Hq3nrMASA0rYTiOWdn6tn6VJWCE=
   /json5/1.0.1:
     dependencies:
       minimist: 1.2.5
@@ -8057,15 +7992,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-eUfkIUmvgNaWy/eXvKq8/h/inKg=
-  /loader-utils/0.2.17:
-    dependencies:
-      big.js: 3.2.0
-      emojis-list: 2.1.0
-      json5: 0.5.1
-      object-assign: 4.1.1
-    dev: true
-    resolution:
-      integrity: sha1-+G5jdNQyBabmxg6RlvF8Apm/s0g=
   /locate-path/2.0.0:
     dependencies:
       p-locate: 2.0.0
@@ -8083,10 +8009,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==
-  /lodash.camelcase/4.3.0:
-    dev: true
-    resolution:
-      integrity: sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
   /lodash.clone/4.5.0:
     dev: true
     resolution:
@@ -9049,15 +8971,6 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-IYY2bEDD7g1XM1IDEsUT4//iEYCxAmP5oDSFMVU/JVvT7gh+l4fmjciLqGgwjdWpQIdb0Che2VX00QObS5+cTg==
-  /postcss-load-config/2.0.0:
-    dependencies:
-      cosmiconfig: 4.0.0
-      import-cwd: 2.1.0
-    dev: true
-    engines:
-      node: '>= 4'
-    resolution:
-      integrity: sha512-V5JBLzw406BB8UIfsAWSK2KSwIJ5yoEIVFb4gVkXci0QdKgA24jLmHZ/ghe/GgX0lJ0/D1uUK1ejhzEY94MChQ==
   /postcss-merge-longhand/4.0.11:
     dependencies:
       css-color-names: 0.0.4
@@ -9153,16 +9066,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-7P+p1+GSUYOJ9CrQ6D9yrsRW6iA=
-  /postcss-modules/1.3.2:
-    dependencies:
-      css-modules-loader-core: 1.1.0
-      generic-names: 1.0.3
-      lodash.camelcase: 4.3.0
-      postcss: 7.0.35
-      string-hash: 1.1.3
-    dev: true
-    resolution:
-      integrity: sha512-QujH5ZpPtr1fBWTKDa43Hx45gm7p19aEtHaAtkMCBZZiB/D5za2wXSMtAf94tDUZHF3F5KZcTXISUNqgEQRiDw==
   /postcss-normalize-charset/4.0.1:
     dependencies:
       postcss: 7.0.35
@@ -10401,10 +10304,6 @@ packages:
       node: '>=0.6.19'
     resolution:
       integrity: sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==
-  /string-hash/1.1.3:
-    dev: true
-    resolution:
-      integrity: sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
   /string-length/4.0.1:
     dependencies:
       char-regex: 1.0.2
@@ -10537,10 +10436,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
-  /style-inject/0.3.0:
-    dev: true
-    resolution:
-      integrity: sha512-IezA2qp+vcdlhJaVm5SOdPPTUu0FCEqfNSli2vRuSIBbu5Nq5UvygTk/VzeCqfLz2Atj3dVII5QBKGZRZ0edzw==
   /stylehacks/4.0.3:
     dependencies:
       browserslist: 4.16.0
@@ -11389,8 +11284,8 @@ specifiers:
   cross-env: ^7.0.3
   eslint: ^7.16.0
   eslint-config-atomic: ^1.5.1
+  identity-obj-proxy: ^3.0.0
   jest: ^26.0.1
-  jest-transform-css: ^2.1.0
   parcel: ^2.0.0-nightly.489
   shx: ^0.3.3
   solid-js: ^0.23.4
