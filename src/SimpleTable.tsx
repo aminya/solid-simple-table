@@ -7,10 +7,10 @@ type Renderable = any
 
 // row and column types
 export type Row = AnyObject
-export type Column = { key: string; label: string; sortable?: boolean, onClick?(e: MouseEvent, row: Row): void }
+export type Column = { key: string; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: Row): void }
 
 // sort info
-export type SortInfo = Array<{ columnKey: string, type: "asc" | "desc" }>
+export type SortInfo = Array<{ columnKey: string; type: "asc" | "desc" }>
 
 // Props
 export type Props = {

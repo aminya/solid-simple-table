@@ -61,13 +61,10 @@ function MyTable() {
 
   return (
     <SimpleTable
-
       rows={rows}
       columns={columns}
-
       headerRenderer={(column) => <span>{column.label}</span>}
       bodyRenderer={(row, column) => <span>{row[column]}</span>}
-
       initialSort={[{ column: "file", type: "asc" }]}
       sort={sortRows}
       rowKey={(row) => JSON.stringify(row)}
@@ -104,6 +101,7 @@ function MyTable() {
 ```
 
 In which:
+
 ```ts
 // util types
 type AnyObject = Record<string, any>
@@ -111,13 +109,11 @@ type Renderable = any
 
 // row and column types
 type Row = AnyObject
-type Column = { key: string; label: string; sortable?: boolean, onClick?(e: MouseEvent, row: Row): void }
+type Column = { key: string; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: Row): void }
 
 // sort info
-type SortInfo = Array<{ columnKey: string, type: "asc" | "desc" }>;
-
+type SortInfo = Array<{ columnKey: string; type: "asc" | "desc" }>
 ```
-
 
 ## License
 
