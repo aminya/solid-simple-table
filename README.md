@@ -15,15 +15,16 @@ npm install --save solid-simple-table
 ```js
 import { SimpleTable } from "solid-simple-table"
 
+
 const rows = [
   {
-    file: "/path/a",
+    file: "C:/a",
     message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id molestie nisi",
     severity: "error",
   },
-  { file: "/path/b", message: "Vivamus tincidunt ligula ut ligula laoreet faucibus", severity: "warning" },
-  { file: "/path/a", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
-  { file: "/path/a", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
+  { file: "C:/b", message: "Vivamus tincidunt ligula ut ligula laoreet faucibus", severity: "warning" },
+  { file: "C:/a", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
+  { file: "C:/a", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
 const columns = [
@@ -44,7 +45,7 @@ function MyTable() {
     const sortColumns: AnyObject = {}
     for (let i = 0, length = sortInfo.length; i < length; i++) {
       const entry = sortInfo[i]
-      sortColumns[entry.column] = entry.type
+      sortColumns[entry.columnKey] = entry.type
     }
 
     return rows.sort(function (a, b) {
@@ -63,14 +64,16 @@ function MyTable() {
     <SimpleTable
       rows={rows}
       columns={columns}
-      headerRenderer={(column) => <span>{column.label}</span>}
-      bodyRenderer={(row, column) => <span>{row[column]}</span>}
-      initialSort={[{ column: "file", type: "asc" }]}
+      initialSort={[{ columnKey: "file", type: "asc" }]}
       sort={sortRows}
       rowKey={(row) => JSON.stringify(row)}
+      headerRenderer={(column) => <span>{column.label}</span>}
+      bodyRenderer={(row, column) => <span>{row[column]}</span>}
     />
   )
 }
+
+render(() => <MyTable />, document.createElement("div"))
 ```
 
 ## API

@@ -13,7 +13,8 @@
     "dev": "cross-env NODE_ENV=development parcel watch src/SimpleTable.tsx",
     "build": "cross-env NODE_ENV=production parcel build src/SimpleTable.tsx",
     "prepare": "npm run build",
-    "test": "cross-env BABAEL_CJS=true jest"
+    "test": "cross-env BABAEL_CJS=true jest",
+    "demo": "cross-env NODE_ENV=production parcel serve ./demo/index.html --dist-dir ./demo/dist --open"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",

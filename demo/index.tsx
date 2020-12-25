@@ -1,8 +1,6 @@
-// import { getByRole } from '@testing-library/dom';
-
 import { render } from "solid-js/web"
-import { SimpleTable } from "../SimpleTable"
-import type { SortInfo } from "../SimpleTable"
+import { SimpleTable } from "../dist/SimpleTable"
+import type { SortInfo } from "../src/SimpleTable"
 
 
 const rows = [
@@ -75,9 +73,4 @@ function MyTable() {
   )
 }
 
-test("renders without crashing", () => {
-  const rootElm = document.createElement("div")
-  const dispose = render(() => <MyTable />, rootElm)
-  rootElm.textContent = ""
-  dispose()
-})
+render(() => <MyTable />, document.getElementById("app"))
