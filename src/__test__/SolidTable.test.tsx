@@ -55,8 +55,8 @@ function MyTable() {
       initialSort={[{ column: "file", type: "asc" }]}
       sort={sortRows}
       rowKey={(row) => JSON.stringify(row)}
-      renderHeaderColumn={(column) => <span>{column.label}</span>}
-      renderBodyColumn={(row, column) => <span>{row[column]}</span>}
+      headerRenderer={(column) => <span>{column.label}</span>}
+      bodyRenderer={(row, column) => <span>{row[column]}</span>}
     />
   )
 }

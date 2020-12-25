@@ -18,6 +18,10 @@ export type Props = {
   rows: Array<Row>
   columns: Array<Column>
 
+  // renderers
+  headerRenderer(column: Column): string | Renderable
+  bodyRenderer(row: Row, columnKey: string): string | Renderable
+
   // styles
   style?: AnyObject
   className?: string
@@ -25,11 +29,9 @@ export type Props = {
   // sort options
   initialSort?: SortInfo
   sort(sortInfo: SortInfo, rows: Array<Row>): Array<Row>
-  rowKey(row: Row): string
 
-  // rendering hooks
-  renderHeaderColumn(column: Column): string | Renderable
-  renderBodyColumn(row: Row, columnKey: string): string | Renderable
+  /** a function that takes row and returns string unique key for that row */
+  rowKey(row: Row): string
 }
 
 export type State = { sort: SortInfo | null }
@@ -56,8 +58,8 @@ export function SolidTable(props: Props) {
     className = "",
     rowKey,
     sort,
-    renderHeaderColumn = defaultHeaderRenderer,
-    renderBodyColumn = defaultBodyRenderer,
+    headerRenderer = defaultHeaderRenderer,
+    bodyRenderer = defaultBodyRenderer,
   } = props
 
   let rows = givenRows
@@ -77,7 +79,7 @@ export function SolidTable(props: Props) {
               className={column.sortable ? "sortable" : undefined}
               onClick={column.sortable ? generateSortCallback(column.key) : undefined}
             >
-              {renderHeaderColumn(column)} {column.sortable && renderHeaderIcon(getSortInfo(), column.key)}
+              {headerRenderer(column)} {column.sortable && renderHeaderIcon(getSortInfo(), column.key)}
             </th>
           ))}
         </tr>
@@ -97,7 +99,7 @@ export function SolidTable(props: Props) {
 
                 return (
                   <td onClick={onClick} key={`${key}.${column.key}`}>
-                    {renderBodyColumn(row, column.key)}
+                    {bodyRenderer(row, column.key)}
                   </td>
                 )
               })}
@@ -117,7 +119,7 @@ const ARROW = {
 
 function defaultHeaderRenderer(item: any) {
   if (typeof item !== "string") {
-    throw new Error("Non-string header array fed to solid-table without renderHeaderColumn prop")
+    throw new Error("Non-string header array fed to solid-table without headerRenderer prop")
   }
   return item
 }
@@ -125,7 +127,7 @@ function defaultHeaderRenderer(item: any) {
 function defaultBodyRenderer(row: AnyObject, columnKey: string) {
   const value = row[columnKey]
   if (typeof value !== "string") {
-    throw new Error("Non-predictable rows fed to solid-table without renderBodyColumn prop")
+    throw new Error("Non-predictable rows fed to solid-table without bodyRenderer prop")
   }
   return value
 }

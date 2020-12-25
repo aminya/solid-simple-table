@@ -61,13 +61,16 @@ function MyTable() {
 
   return (
     <SolidTable
+
       rows={rows}
       columns={columns}
+
+      headerRenderer={(column) => <span>{column.label}</span>}
+      bodyRenderer={(row, column) => <span>{row[column]}</span>}
+
       initialSort={[{ column: "file", type: "asc" }]}
       sort={sortRows}
       rowKey={(row) => JSON.stringify(row)}
-      renderHeaderColumn={(column) => <span>{column.label}</span>}
-      renderBodyColumn={(row, column) => <span>{row[column]}</span>}
     />
   )
 }
@@ -82,6 +85,10 @@ function MyTable() {
   rows: Array<Row>
   columns: Array<Column>
 
+  // renderers
+  headerRenderer(column: Column): string | Renderable
+  bodyRenderer(row: Row, columnKey: string): string | Renderable
+
   // styles
   style?: AnyObject
   className?: string
@@ -89,11 +96,9 @@ function MyTable() {
   // sort options
   initialSort?: SortInfo
   sort(sortInfo: SortInfo, rows: Array<Row>): Array<Row>
+  
+  /** a function that takes row and returns string unique key for that row */
   rowKey(row: Row): string
-
-  // rendering hooks
-  renderHeaderColumn(column: Column): string | Renderable
-  renderBodyColumn(row: Row, columnKey: string): string | Renderable
 />
 
 ```
