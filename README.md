@@ -10,34 +10,6 @@ Solid Table is an efficient reactive table component that gives you freedom.
 npm install --save solid-table
 ```
 
-## API
-
-```js
-type Row = Object | Array
-type Column = {
-   key: string,
-   label: string,
-   sortable?: boolean,
-   onClick?: ((e: MouseEvent, row: Object) => any),
-}
-type SortInfo = Array<{ column: string, type: 'asc' | 'desc' }>
-
-<SolidTable
-  rows: Array<Row>,
-  columns: Array<Column>,
-
-  style?: Object,
-  className?: string,
-
-  initialSort?: SortInfo,
-  sort?: ((sortInfo: SortInfo, rows: Array<Row>) => Array<Row>),
-  rowKey: ((row: Row) => string),
-  // ^ aka a function that takes row and returns string unique key for that row
-
-  renderHeaderColumn?: ((headerColumn: any) => string),
-  renderBodyColumn?: ((row: Object, column: string) => string),
-/>
-```
 ## Usage
 
 ```js
@@ -97,6 +69,44 @@ function MyTable() {
   )
 }
 ```
+
+## API
+
+```ts
+export type AnyObject = Record<string, any>;
+type Renderable = any;
+
+export type Column = {
+    key: string;
+    label: string;
+    sortable?: boolean;
+    onClick?(e: MouseEvent, row: AnyObject): void;
+};
+
+export type SortInfo = Array<{
+    column: string;
+    type: "asc" | "desc";
+}>;
+
+export function SolidTable(props: Props): import("solid-js").JSX.Element;
+
+<SolidTable
+  rows: Array<AnyObject>;
+  columns: Array<Column>;
+
+  style?: AnyObject;
+  className?: string;
+
+  initialSort?: SortInfo;
+  sort(sortInfo: SortInfo, rows: Array<AnyObject>): Array<AnyObject>;
+  rowKey(row: AnyObject): string;
+  // ^ aka a function that takes row and returns string unique key for that row
+
+  renderHeaderColumn(column: Column): string | Renderable;
+  renderBodyColumn(row: AnyObject, column: string): string | Renderable;
+/>
+```
+
 
 ## License
 
