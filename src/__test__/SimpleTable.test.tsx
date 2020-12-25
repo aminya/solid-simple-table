@@ -1,8 +1,8 @@
 // import { getByRole } from '@testing-library/dom';
 
 import { render } from "solid-js/web"
-import { SolidTable } from "../SolidTable"
-import type { SortInfo, AnyObject } from "../SolidTable"
+import { SimpleTable } from "../SimpleTable"
+import type { SortInfo, AnyObject } from "../SimpleTable"
 
 const rows = [
   {
@@ -49,7 +49,7 @@ function MyTable() {
   }
 
   return (
-    <SolidTable
+    <SimpleTable
       rows={rows}
       columns={columns}
       initialSort={[{ column: "file", type: "asc" }]}

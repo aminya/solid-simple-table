@@ -1,17 +1,17 @@
 {
-  "name": "solid-table",
+  "name": "solid-simple-table",
   "version": "0.0.1",
   "description": "React Table Component done right",
-  "main": "dist/SolidTable.js",
-  "module": "dist/SolidTable.module.js",
-  "types": "dist/SolidTable.d.ts",
-  "source": "src/SolidTable.tsx",
+  "main": "dist/SimpleTable.js",
+  "module": "dist/SimpleTable.module.js",
+  "types": "dist/SimpleTable.d.ts",
+  "source": "src/SimpleTable.tsx",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --fix",
     "clean": "shx rm -rf dist .parcel-cache",
-    "dev": "cross-env NODE_ENV=development parcel watch src/SolidTable.tsx",
-    "build": "cross-env NODE_ENV=production parcel build src/SolidTable.tsx",
+    "dev": "cross-env NODE_ENV=development parcel watch src/SimpleTable.tsx",
+    "build": "cross-env NODE_ENV=production parcel build src/SimpleTable.tsx",
     "prepare": "npm run build",
     "test": "cross-env BABAEL_CJS=true jest"
   },
@@ -55,12 +55,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aminya/solid-table.git"
+    "url": "git+https://github.com/aminya/solid-simple-table.git"
   },
   "author": "Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aminya/solid-table/issues"
+    "url": "https://github.com/aminya/solid-simple-table/issues"
   },
-  "homepage": "https://github.com/aminya/solid-table#readme"
+  "homepage": "https://github.com/aminya/solid-simple-table#readme"
 }

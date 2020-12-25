@@ -1,6 +1,6 @@
 /* Base Styles */
 
-.solid-table {
+.solid-simple-table {
   border: 1px solid #fff;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-align: left;
@@ -8,68 +8,68 @@
   border-collapse: collapse;
 }
 
-.solid-table th,
-.solid-table td {
+.solid-simple-table th,
+.solid-simple-table td {
   padding: 10px;
 }
-.solid-table th {
+.solid-simple-table th {
   border-right: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
 
-.solid-table th:last-child {
+.solid-simple-table th:last-child {
   border-right: none;
 }
 
-.solid-table th.sortable {
+.solid-simple-table th.sortable {
   cursor: pointer;
 }
 
-.solid-table th .sort-icon {
+.solid-simple-table th .sort-icon {
   width: 1em;
   display: inline-block;
   visibility: hidden;
 }
-.solid-table th:hover .sort-icon {
+.solid-simple-table th:hover .sort-icon {
   visibility: visible;
 }
 
 /* Light Theme (default) */
 
-.solid-table {
+.solid-simple-table {
   color: black;
   border-color: #191a1f;
 }
 
-.solid-table thead {
+.solid-simple-table thead {
   background-color: #e6e6e6;
 }
 
-.solid-table th {
+.solid-simple-table th {
   border-right-color: #191a1f;
   border-bottom-color: #191a1f;
 }
 
-.solid-table tbody {
+.solid-simple-table tbody {
   background-color: #fafafa;
 }
 
 /* Dark Theme */
 
-.solid-table.dark {
+.solid-simple-table.dark {
   color: #939caa;
   border-color: #191a1f;
 }
 
-.solid-table.dark thead {
+.solid-simple-table.dark thead {
   background-color: #282c34;
 }
 
-.solid-table.dark th {
+.solid-simple-table.dark th {
   border-right-color: #191a1f;
   border-bottom-color: #191a1f;
 }
 
-.solid-table.dark tbody {
+.solid-simple-table.dark tbody {
   background-color: #31363f;
 }

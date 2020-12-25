@@ -1,19 +1,19 @@
 # Solid Table
 
-![CI](https://github.com/aminya/solid-table/workflows/CI/badge.svg)
+![CI](https://github.com/aminya/solid-simple-table/workflows/CI/badge.svg)
 
 Solid Table is an efficient reactive table component that gives you freedom.
 
 ## Installation
 
 ```
-npm install --save solid-table
+npm install --save solid-simple-table
 ```
 
 ## Usage
 
 ```js
-import { SolidTable } from "solid-table"
+import { SimpleTable } from "solid-simple-table"
 
 const rows = [
   {
@@ -60,7 +60,7 @@ function MyTable() {
   }
 
   return (
-    <SolidTable
+    <SimpleTable
 
       rows={rows}
       columns={columns}
@@ -80,7 +80,7 @@ function MyTable() {
 
 ```ts
 
-<SolidTable
+<SimpleTable
   // row and column
   rows: Array<Row>
   columns: Array<Column>
@@ -96,7 +96,7 @@ function MyTable() {
   // sort options
   initialSort?: SortInfo
   sort(sortInfo: SortInfo, rows: Array<Row>): Array<Row>
-  
+
   /** a function that takes row and returns string unique key for that row */
   rowKey(row: Row): string
 />

@@ -1,5 +1,5 @@
 import { createState } from "solid-js"
-import "./SolidTable.css"
+import "./SimpleTable.css"
 
 // util types
 export type AnyObject = Record<string, any>
@@ -36,7 +36,7 @@ export type Props = {
 
 export type State = { sort: SortInfo | null }
 
-export function SolidTable(props: Props) {
+export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({ sort: null })
 
   function getSortInfo(): SortInfo {
@@ -70,7 +70,7 @@ export function SolidTable(props: Props) {
   }
 
   return (
-    <table className={`solid-table ${className}`} style={props.style}>
+    <table className={`solid-simple-table ${className}`} style={props.style}>
       <thead>
         <tr>
           {columns.map((column) => (
@@ -119,7 +119,7 @@ const ARROW = {
 
 function defaultHeaderRenderer(item: any) {
   if (typeof item !== "string") {
-    throw new Error("Non-string header array fed to solid-table without headerRenderer prop")
+    throw new Error("Non-string header array fed to solid-simple-table without headerRenderer prop")
   }
   return item
 }
@@ -127,7 +127,7 @@ function defaultHeaderRenderer(item: any) {
 function defaultBodyRenderer(row: AnyObject, columnKey: string) {
   const value = row[columnKey]
   if (typeof value !== "string") {
-    throw new Error("Non-predictable rows fed to solid-table without bodyRenderer prop")
+    throw new Error("Non-predictable rows fed to solid-simple-table without bodyRenderer prop")
   }
   return value
 }
