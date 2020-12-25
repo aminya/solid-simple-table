@@ -76,39 +76,43 @@ function MyTable() {
 ## API
 
 ```ts
-export type AnyObject = Record<string, any>;
-type Renderable = any;
-
-export type Column = {
-    key: string;
-    label: string;
-    sortable?: boolean;
-    onClick?(e: MouseEvent, row: AnyObject): void;
-};
-
-export type SortInfo = Array<{
-    column: string;
-    type: "asc" | "desc";
-}>;
-
-export function SolidTable(props: Props): import("solid-js").JSX.Element;
 
 <SolidTable
-  rows: Array<AnyObject>;
-  columns: Array<Column>;
+  // row and column
+  rows: Array<Row>
+  columns: Array<Column>
 
-  style?: AnyObject;
-  className?: string;
+  // styles
+  style?: AnyObject
+  className?: string
 
-  initialSort?: SortInfo;
-  sort(sortInfo: SortInfo, rows: Array<AnyObject>): Array<AnyObject>;
-  rowKey(row: AnyObject): string;
-  // ^ aka a function that takes row and returns string unique key for that row
+  // sort options
+  initialSort?: SortInfo
+  sort(sortInfo: SortInfo, rows: Array<Row>): Array<Row>
+  rowKey(row: Row): string
 
-  renderHeaderColumn(column: Column): string | Renderable;
-  renderBodyColumn(row: AnyObject, column: string): string | Renderable;
+  // rendering hooks
+  renderHeaderColumn(column: Column): string | Renderable
+  renderBodyColumn(row: Row, columnKey: string): string | Renderable
 />
+
 ```
+
+In which:
+```ts
+// util types
+type AnyObject = Record<string, any>
+type Renderable = any
+
+// row and column types
+type Row = AnyObject
+type Column = { key: string; label: string; sortable?: boolean, onClick?(e: MouseEvent, row: Row): void }
+
+// sort info
+type SortInfo = Array<{ columnKey: string, type: "asc" | "desc" }>;
+
+```
+
 
 ## License
 

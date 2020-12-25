@@ -5,22 +5,31 @@ import "./SolidTable.css"
 export type AnyObject = Record<string, any>
 type Renderable = any
 
-export type Column = { key: string; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: AnyObject): void }
-export type SortInfo = Array<{ column: string; type: "asc" | "desc" }>
+// row and column types
+export type Row = AnyObject
+export type Column = { key: string; label: string; sortable?: boolean, onClick?(e: MouseEvent, row: Row): void }
 
+// sort info
+export type SortInfo = Array<{ columnKey: string, type: "asc" | "desc" }>
+
+// Props
 export type Props = {
-  rows: Array<AnyObject>
+  // row and column
+  rows: Array<Row>
   columns: Array<Column>
 
+  // styles
   style?: AnyObject
   className?: string
 
+  // sort options
   initialSort?: SortInfo
-  sort(sortInfo: SortInfo, rows: Array<AnyObject>): Array<AnyObject>
-  rowKey(row: AnyObject): string
+  sort(sortInfo: SortInfo, rows: Array<Row>): Array<Row>
+  rowKey(row: Row): string
 
+  // rendering hooks
   renderHeaderColumn(column: Column): string | Renderable
-  renderBodyColumn(row: AnyObject, column: string): string | Renderable
+  renderBodyColumn(row: Row, columnKey: string): string | Renderable
 }
 
 export type State = { sort: SortInfo | null }
@@ -113,18 +122,18 @@ function defaultHeaderRenderer(item: any) {
   return item
 }
 
-function defaultBodyRenderer(row: AnyObject, column: string) {
-  const value = row[column]
+function defaultBodyRenderer(row: AnyObject, columnKey: string) {
+  const value = row[columnKey]
   if (typeof value !== "string") {
     throw new Error("Non-predictable rows fed to solid-table without renderBodyColumn prop")
   }
   return value
 }
 
-function findSortItemByKey(sortInfo: SortInfo, column: string): number {
+function findSortItemByKey(sortInfo: SortInfo, columnKey: string): number {
   if (Array.isArray(sortInfo)) {
     for (let i = 0, length = sortInfo.length; i < length; ++i) {
-      if (sortInfo[i].column === column) {
+      if (sortInfo[i].columnKey === columnKey) {
         return i
       }
     }
@@ -142,14 +151,14 @@ function renderHeaderIcon(sortInfo: SortInfo, column: string) {
   return <span className="sort-icon">{icon}</span>
 }
 
-function clickHandler(sortInfo: SortInfo, column: string, append: boolean) {
-  const index = findSortItemByKey(sortInfo, column)
+function clickHandler(sortInfo: SortInfo, columnKey: string, append: boolean) {
+  const index = findSortItemByKey(sortInfo, columnKey)
   if (index < 0) {
-    const value: { column: string; type: "asc" | "desc" } = { column, type: "asc" }
+    const value: { columnKey: string; type: "asc" | "desc" } = { columnKey, type: "asc" }
     sortInfo = append ? sortInfo : []
     sortInfo.push(value)
   } else {
-    const value: { column: string; type: "asc" | "desc" | null } = sortInfo[index]
+    const value: { columnKey: string; type: "asc" | "desc" | null } = sortInfo[index]
     value.type = value.type === "asc" ? "desc" : null
     if (!append) {
       sortInfo = (value.type !== null ? [value] : []) as SortInfo
