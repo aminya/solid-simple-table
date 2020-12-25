@@ -1,4 +1,5 @@
 devDependencies:
+  '@babel/plugin-transform-modules-commonjs': 7.12.1
   '@babel/preset-typescript': 7.12.7
   '@parcel/validator-typescript': 2.0.0-alpha.3
   '@testing-library/dom': 7.29.0
@@ -11181,6 +11182,7 @@ packages:
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
 specifiers:
+  '@babel/plugin-transform-modules-commonjs': ^7.12.1
   '@babel/preset-typescript': ^7.12.7
   '@parcel/validator-typescript': ^2.0.0-alpha.3
   '@testing-library/dom': ^7.16.1

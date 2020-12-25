@@ -1,14 +1,9 @@
 {
   "presets": [
     "babel-preset-solid",
-    "@babel/preset-typescript",
-    [
-      "babel-preset-atomic",
-      {
-        "targets": {
-          "chrome": 76
-        }
-      }
-    ]
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-modules-commonjs"
   ]
 }
