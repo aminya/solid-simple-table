@@ -13,7 +13,7 @@
     "dev": "cross-env NODE_ENV=development parcel watch src/SolidTable.tsx",
     "build": "cross-env NODE_ENV=production parcel build src/SolidTable.tsx",
     "prepare": "npm run build",
-    "test": "jest"
+    "test": "cross-env BABAEL_CJS=true jest"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
