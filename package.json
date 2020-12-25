@@ -1,6 +1,6 @@
 {
   "name": "solid-table",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "React Table Component done right",
   "main": "dist/SolidTable.js",
   "module": "dist/SolidTable.module.js",
