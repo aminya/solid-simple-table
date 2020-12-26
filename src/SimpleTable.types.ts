@@ -23,8 +23,8 @@ export type Props<K extends Key = string, V = any> = {
   columns: Array<Column<K, V>>
 
   // renderers
-  headerRenderer(column: Column): string | Renderable
-  bodyRenderer(row: Row, columnKey: K): string | Renderable
+  headerRenderer?(column: Column): string | Renderable
+  bodyRenderer?(row: Row, columnKey: K): string | Renderable
 
   // styles
   style?: AnyObject
