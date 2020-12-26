@@ -97,7 +97,7 @@ function defaultRowKey(row: Row) {
 
 function renderHeaderIcon(sortDirection: SortDirection, columnKey: string) {
   let icon
-  if (sortDirection) {
+  if (sortDirection.has(columnKey)) {
     icon = sortDirection.get(columnKey) === "asc" ? ARROW.UP : ARROW.DOWN
   } else {
     icon = ARROW.BOTH
