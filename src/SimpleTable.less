@@ -1,10 +1,17 @@
+// Parameters
+@border: 1px solid #fff;
+@border-color: #191a1f;
+@text-size: 14px;
+@text-color: black;
+@text-color-dark: #939caa;
+
 /* Base Styles */
 
 .solid-simple-table {
-  border: 1px solid #fff;
+  border: @border;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   text-align: left;
-  font-size: 14px;
+  font-size: @text-size;
   border-collapse: collapse;
 }
 
@@ -13,8 +20,8 @@
   padding: 10px;
 }
 .solid-simple-table th {
-  border-right: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-right: @border;
+  border-bottom: @border;
 }
 
 .solid-simple-table th:last-child {
@@ -37,8 +44,8 @@
 /* Light Theme (default) */
 
 .solid-simple-table {
-  color: black;
-  border-color: #191a1f;
+  color: @text-color;
+  border-color: @border-color;
 }
 
 .solid-simple-table thead {
@@ -46,8 +53,8 @@
 }
 
 .solid-simple-table th {
-  border-right-color: #191a1f;
-  border-bottom-color: #191a1f;
+  border-right-color: @border-color;
+  border-bottom-color: @border-color;
 }
 
 .solid-simple-table tbody {
@@ -57,8 +64,8 @@
 /* Dark Theme */
 
 .solid-simple-table.dark {
-  color: #939caa;
-  border-color: #191a1f;
+  color: @text-color-dark;
+  border-color: @border-color;
 }
 
 .solid-simple-table.dark thead {
@@ -66,8 +73,8 @@
 }
 
 .solid-simple-table.dark th {
-  border-right-color: #191a1f;
-  border-bottom-color: #191a1f;
+  border-right-color: @border-color;
+  border-bottom-color: @border-color;
 }
 
 .solid-simple-table.dark tbody {

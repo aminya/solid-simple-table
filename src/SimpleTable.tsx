@@ -1,5 +1,5 @@
 import { createState } from "solid-js"
-import "./SimpleTable.css"
+import "./SimpleTable.less"
 import { Props, State, SortInfo, Row, Column, Key } from "./SimpleTable.types"
 
 export type { AnyObject, Renderable, Key, Row, Column, SortInfo, Props, State } from "./SimpleTable.types"

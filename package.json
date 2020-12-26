@@ -32,6 +32,7 @@
     "eslint-config-atomic": "^1.5.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
+    "less": "^4.0.0",
     "parcel": "^2.0.0-nightly.489",
     "shx": "^0.3.3",
     "solid-js": "^0.23.4",
