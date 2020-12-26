@@ -1,5 +1,4 @@
 devDependencies:
-  '@babel/plugin-transform-modules-commonjs': 7.12.1
   '@babel/preset-typescript': 7.12.7
   '@parcel/babel-plugin-transform-runtime': 2.0.0-nightly.1823
   '@parcel/babel-preset-env': 2.0.0-alpha.3
@@ -2018,6 +2017,7 @@ packages:
       node: '>= 10.0.0'
     resolution:
       integrity: sha512-jKl+ARPhOWVQfber+s9zmdWli4xOx8lXGOKLRR2FxunGdIA6ZZZ1TmNgGCM0PB9Ui6iSDZ9SzJ4FAVsGjckJrg==
+      tarball: '@parcel/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-2.0.0-nightly.1823.tgz'
   /@parcel/babel-preset-env/2.0.0-alpha.3:
     dependencies:
       '@babel/preset-env': 7.12.11
@@ -10929,7 +10929,6 @@ packages:
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
 specifiers:
-  '@babel/plugin-transform-modules-commonjs': ^7.12.1
   '@babel/preset-typescript': ^7.12.7
   '@parcel/babel-plugin-transform-runtime': ^2.0.0-nightly.1823
   '@parcel/babel-preset-env': ^2.0.0-alpha.3
