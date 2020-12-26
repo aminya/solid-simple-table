@@ -1,7 +1,7 @@
 // import { getByRole } from '@testing-library/dom';
 
 import { render } from "solid-js/web"
-import { SimpleTable } from "../SimpleTable"
+import { SimpleTable } from "../../dist/SimpleTable"
 import type { SortInfo } from "../SimpleTable"
 
 const rows = [
