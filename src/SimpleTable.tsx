@@ -14,8 +14,7 @@ export function SimpleTable(props: Props) {
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       const sortInfo = getSortInfo()
-      const append = e.shiftKey
-      clickHandler(sortInfo, columnKey, append)
+      clickHandler(sortInfo, columnKey, /* append */ e.shiftKey)
       setState({ sort: sortInfo })
     }
   }
