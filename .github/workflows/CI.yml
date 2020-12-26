@@ -6,22 +6,24 @@ on:
 jobs:
   Test:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    name: ${{ matrix.os }} - Atom ${{ matrix.atom_channel }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
-        atom_channel: [stable, beta]
+          - windows-latest
+        node:
+          - 10
+          - 12
+          - 14
     steps:
       - uses: actions/checkout@v2
-      - uses: UziTech/action-setup-atom@v1
+      - uses: actions/setup-node@v2
         with:
-          channel: ${{ matrix.atom_channel }}
+          node-version: ${{ matrix.node }}
 
-      - name: Install APM dependencies
-        run: apm install
+      - name: Install dependencies
+        run: npm install
 
       - name: Run tests 👩🏾‍💻
         run: npm run test
