@@ -1,30 +1,30 @@
 import { createState } from "solid-js"
 import "./SimpleTable.less"
-import { Props, State, SortInfo, Row, Column, Key } from "./SimpleTable.types"
+import { Props, State, SortDirection, Row, Column, Key } from "./SimpleTable.types"
 
-export type { AnyObject, Renderable, Key, Row, Column, SortInfo, Props, State } from "./SimpleTable.types"
+export type { AnyObject, Renderable, Key, Row, Column, SortDirection, Props, State } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
-  const [state, setState] = createState<State>({ sort: null })
+  const [state, setState] = createState<State>({ sortDirection: null })
 
-  function getSortInfo(): SortInfo {
-    return state.sort || props.initialSort || []
+  function getSortDirection(): SortDirection {
+    return state.sortDirection || props.initialSortDirection || []
   }
 
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
-      const sortInfo = getSortInfo()
-      clickHandler(sortInfo, columnKey, /* append */ e.shiftKey)
-      setState({ sort: sortInfo })
+      const sortDirection = getSortDirection()
+      clickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
+      setState({ sortDirection })
     }
   }
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
-  const sortInfo = getSortInfo()
+  const sortDirection = getSortDirection()
 
-  if (sortInfo.length) {
-    props.rows = props.sort(sortInfo, props.rows)
+  if (sortDirection.length) {
+    props.rows = props.sort(sortDirection, props.rows)
   }
 
   return (
@@ -37,7 +37,7 @@ export function SimpleTable(props: Props) {
               className={column.sortable ? "sortable" : undefined}
               onClick={column.sortable ? generateSortCallback(column.key) : undefined}
             >
-              {headerRenderer(column)} {column.sortable && renderHeaderIcon(getSortInfo(), column.key)}
+              {headerRenderer(column)} {column.sortable && renderHeaderIcon(getSortDirection(), column.key)}
             </th>
           ))}
         </tr>
@@ -96,10 +96,10 @@ function defaultRowKey(row: Row) {
   return JSON.stringify(row)
 }
 
-function findSortItemByKey(sortInfo: SortInfo, columnKey: Key): number {
-  if (Array.isArray(sortInfo)) {
-    for (let i = 0, length = sortInfo.length; i < length; ++i) {
-      if (sortInfo[i].columnKey === columnKey) {
+function findSortItemByKey(sortDirection: SortDirection, columnKey: Key): number {
+  if (Array.isArray(sortDirection)) {
+    for (let i = 0, length = sortDirection.length; i < length; ++i) {
+      if (sortDirection[i].columnKey === columnKey) {
         return i
       }
     }
@@ -107,29 +107,29 @@ function findSortItemByKey(sortInfo: SortInfo, columnKey: Key): number {
   return -1
 }
 
-function renderHeaderIcon(sortInfo: SortInfo, columnKey: string) {
-  const index = sortInfo ? findSortItemByKey(sortInfo, columnKey) : -1
+function renderHeaderIcon(sortDirection: SortDirection, columnKey: string) {
+  const index = sortDirection ? findSortItemByKey(sortDirection, columnKey) : -1
   let icon = ARROW.BOTH
-  if (sortInfo && index !== -1) {
-    icon = sortInfo[index].type === "asc" ? ARROW.UP : ARROW.DOWN
+  if (sortDirection && index !== -1) {
+    icon = sortDirection[index].type === "asc" ? ARROW.UP : ARROW.DOWN
   }
 
   return <span className="sort-icon">{icon}</span>
 }
 
-function clickHandler(sortInfo: SortInfo, columnKey: Key, append: boolean) {
-  const index = findSortItemByKey(sortInfo, columnKey)
+function clickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
+  const index = findSortItemByKey(sortDirection, columnKey)
   if (index < 0) {
     const value: { columnKey: Key; type: "asc" | "desc" } = { columnKey, type: "asc" }
-    sortInfo = append ? sortInfo : []
-    sortInfo.push(value)
+    sortDirection = append ? sortDirection : []
+    sortDirection.push(value)
   } else {
-    const value: { columnKey: Key; type: "asc" | "desc" | null } = sortInfo[index]
+    const value: { columnKey: Key; type: "asc" | "desc" | null } = sortDirection[index]
     value.type = value.type === "asc" ? "desc" : null
     if (!append) {
-      sortInfo = (value.type !== null ? [value] : []) as SortInfo
+      sortDirection = (value.type !== null ? [value] : []) as SortDirection
     } else if (!value.type) {
-      sortInfo.splice(index, 1)
+      sortDirection.splice(index, 1)
     }
   }
 }

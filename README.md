@@ -14,7 +14,7 @@ Solid Table is an efficient reactive table component that gives you freedom.
 import { render } from "solid-js/web"
 
 import { SimpleTable } from "solid-simple-table"
-import type { SortInfo } from "solid-simple-table"
+import type { SortDirection } from "solid-simple-table"
 
 const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
@@ -44,11 +44,11 @@ type MyTableRow = typeof rows[0]
 type MyTableColumn = typeof columns[0]
 type MyColumnKeys = keyof MyTableRow
 
-function MyTableSorter(sortInfo: SortInfo<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
+function MyTableSorter(sortDirection: SortDirection<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
   // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
   let sortColumns: { [index in MyColumnKeys]: "asc" | "desc" } | {} = {}
-  for (let i = 0, length = sortInfo.length; i < length; i++) {
-    const entry = sortInfo[i]
+  for (let i = 0, length = sortDirection.length; i < length; i++) {
+    const entry = sortDirection[i]
     // @ts-ignore
     sortColumns[entry.columnKey] = entry.type
   }
@@ -72,7 +72,7 @@ function MyTable() {
       columns={columns}
       headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
       bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
-      initialSort={[{ columnKey: "file", type: "asc" }]}
+      initialSortDirection={[{ columnKey: "file", type: "asc" }]}
       sort={MyTableSorter}
       rowKey={(row) => JSON.stringify(row)}
     />
@@ -100,8 +100,8 @@ render(() => <MyTable />, document.getElementById("app"))
   className?: string
 
   // sort options
-  initialSort?: SortInfo<K>
-  sort(sortInfo: SortInfo<K>, rows: Array<Row>): Array<Row>
+  initialSortDirection?: SortDirection<K>
+  sort(sortDirection: SortDirection<K>, rows: Array<Row>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
@@ -128,7 +128,7 @@ export type Column<K extends Key = string, V = any> = {
 }
 
 // sort info
-export type SortInfo<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
+export type SortDirection<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
 ```
 
 ## License

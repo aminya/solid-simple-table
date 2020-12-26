@@ -14,7 +14,7 @@ export type Column<K extends Key = string, V = any> = {
 }
 
 // sort info
-export type SortInfo<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
+export type SortDirection<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
 
 // Props
 export type Props<K extends Key = string, V = any> = {
@@ -31,11 +31,11 @@ export type Props<K extends Key = string, V = any> = {
   className?: string
 
   // sort options
-  initialSort?: SortInfo<K>
-  sort(sortInfo: SortInfo<K>, rows: Array<Row>): Array<Row>
+  initialSortDirection?: SortDirection<K>
+  sort(sortDirection: SortDirection<K>, rows: Array<Row>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
 }
 
-export type State = { sort: SortInfo | null }
+export type State = { sortDirection: SortDirection | null }
