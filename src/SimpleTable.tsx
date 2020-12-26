@@ -106,18 +106,18 @@ function renderHeaderIcon(sortDirection: SortDirection, columnKey: string) {
 }
 
 function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
+  // reset sorting if shiftKey is hold
+  if (append) {
+    sortDirection.clear()
+    return
+  }
   if (!sortDirection.has(columnKey)) {
     // default to asc if key not found
-    sortDirection = append ? sortDirection : new Map()
     sortDirection.set(columnKey, "asc")
   } else {
     // invert direction on click
     let type = sortDirection.get(columnKey)
     type = type === "asc" ? "desc" : "asc" // invert direction
-    if (!append) {
-      sortDirection.set(columnKey, type)
-    } else {
-      sortDirection.delete(columnKey)
-    }
+    sortDirection.set(columnKey, type)
   }
 }
