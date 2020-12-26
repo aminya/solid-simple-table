@@ -1,6 +1,6 @@
 import { render } from "solid-js/web"
-import { SimpleTable } from "../dist/SimpleTable"
-import type { SortInfo } from "../src/SimpleTable"
+import { SimpleTable } from "../../dist/SimpleTable"
+import type { SortInfo } from "../../src/SimpleTable"
 
 const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
