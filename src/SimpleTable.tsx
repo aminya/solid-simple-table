@@ -2,7 +2,7 @@ import { createState } from "solid-js"
 import "./SimpleTable.css"
 import { Props, State, SortInfo, Row, Key } from "./SimpleTable.types"
 
-export * from "./SimpleTable.types"
+export type { AnyObject, Renderable, Key, Row, Column, SortInfo, Props, State } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({ sort: null })

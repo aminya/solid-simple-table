@@ -1,6 +1,6 @@
 // util types
 export type AnyObject = Record<string, any>
-type Renderable = any
+export type Renderable = any
 
 // row and column types
 export type Key = string
