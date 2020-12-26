@@ -9,7 +9,12 @@ type Renderable = any
 export type Key = string
 export type Row<K extends Key = string, V = any> = Record<K, V>
 
-export type Column<K extends Key = string, V = any> = { key: K; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: Row<K, V>): void }
+export type Column<K extends Key = string, V = any> = {
+  key: K
+  label: string
+  sortable?: boolean
+  onClick?(e: MouseEvent, row: Row<K, V>): void
+}
 
 // sort info
 export type SortInfo<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>

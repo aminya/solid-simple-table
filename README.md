@@ -13,18 +13,16 @@ npm install --save solid-simple-table
 ## Usage
 
 ```js
-import { SimpleTable } from "solid-simple-table"
+import { render } from "solid-js/web"
 
+import { SimpleTable } from "solid-simple-table"
+import type { SortInfo } from "solid-simple-table"
 
 const rows = [
-  {
-    file: "C:/a",
-    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id molestie nisi",
-    severity: "error",
-  },
+  { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
   { file: "C:/b", message: "Vivamus tincidunt ligula ut ligula laoreet faucibus", severity: "warning" },
-  { file: "C:/a", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
-  { file: "C:/a", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
+  { file: "C:/c", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
+  { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
 const columns = [
@@ -37,43 +35,53 @@ const columns = [
     key: "message",
     label: "Message",
   },
+  {
+    key: "severity",
+    label: "Severity",
+    sortable: true,
+  },
 ]
 
-function MyTable() {
-  function sortRows(sortInfo: SortInfo, rows: Array<AnyObject>): Array<AnyObject> {
-    // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
-    const sortColumns: AnyObject = {}
-    for (let i = 0, length = sortInfo.length; i < length; i++) {
-      const entry = sortInfo[i]
-      sortColumns[entry.columnKey] = entry.type
-    }
+type MyTableRow = typeof rows[0]
+type MyTableColumn = typeof columns[0]
+type MyColumnKeys = keyof MyTableRow
 
-    return rows.sort(function (a, b) {
-      if ("file" in sortColumns) {
-        const multiplyWith = sortColumns.file === "asc" ? 1 : -1
-        const sortValue = a.severity.localeCompare(b.severity)
-        if (sortValue !== 0) {
-          return multiplyWith * sortValue
-        }
-      }
-      return 0
-    })
+function MyTableSorter(sortInfo: SortInfo<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
+  // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
+  let sortColumns: { [index in MyColumnKeys]: "asc" | "desc" } | {} = {}
+  for (let i = 0, length = sortInfo.length; i < length; i++) {
+    const entry = sortInfo[i]
+    // @ts-ignore
+    sortColumns[entry.columnKey] = entry.type
   }
 
+  return rows.sort(function (a, b) {
+    if ("file" in sortColumns) {
+      const multiplyWith = sortColumns.file === "asc" ? 1 : -1
+      const sortValue = a.severity.localeCompare(b.severity)
+      if (sortValue !== 0) {
+        return multiplyWith * sortValue
+      }
+    }
+    return 0
+  })
+}
+
+function MyTable() {
   return (
     <SimpleTable
       rows={rows}
       columns={columns}
+      headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
+      bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
       initialSort={[{ columnKey: "file", type: "asc" }]}
-      sort={sortRows}
+      sort={MyTableSorter}
       rowKey={(row) => JSON.stringify(row)}
-      headerRenderer={(column) => <span>{column.label}</span>}
-      bodyRenderer={(row, column) => <span>{row[column]}</span>}
     />
   )
 }
 
-render(() => <MyTable />, document.createElement("div"))
+render(() => <MyTable />, document.getElementById("app"))
 ```
 
 ## API
@@ -113,11 +121,15 @@ type Renderable = any
 export type Key = string
 export type Row<K extends Key = string, V = any> = Record<K, V>
 
-export type Column<K extends Key = string, V = any> = { key: K; label: string; sortable?: boolean; onClick?(e: MouseEvent, row: Row<K, V>): void }
+export type Column<K extends Key = string, V = any> = {
+  key: K
+  label: string
+  sortable?: boolean
+  onClick?(e: MouseEvent, row: Row<K, V>): void
+}
 
 // sort info
-export type SortInfo<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>;
-
+export type SortInfo<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
 ```
 
 ## License

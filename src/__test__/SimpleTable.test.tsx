@@ -4,13 +4,8 @@ import { render } from "solid-js/web"
 import { SimpleTable } from "../SimpleTable"
 import type { SortInfo } from "../SimpleTable"
 
-
 const rows = [
-  {
-    file: "C:/a",
-    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id molestie nisi",
-    severity: "error",
-  },
+  { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
   { file: "C:/b", message: "Vivamus tincidunt ligula ut ligula laoreet faucibus", severity: "warning" },
   { file: "C:/c", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
   { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
@@ -39,7 +34,7 @@ type MyColumnKeys = keyof MyTableRow
 
 function MyTableSorter(sortInfo: SortInfo<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
   // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
-  let sortColumns: { [index in MyColumnKeys]: 'asc' | 'desc' } | {} = {}
+  let sortColumns: { [index in MyColumnKeys]: "asc" | "desc" } | {} = {}
   for (let i = 0, length = sortInfo.length; i < length; i++) {
     const entry = sortInfo[i]
     // @ts-ignore
@@ -63,13 +58,10 @@ function MyTable() {
     <SimpleTable
       rows={rows}
       columns={columns}
-
       headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
       bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
-
       initialSort={[{ columnKey: "file", type: "asc" }]}
       sort={MyTableSorter}
-
       rowKey={(row) => JSON.stringify(row)}
     />
   )
