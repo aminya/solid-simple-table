@@ -124,19 +124,21 @@ const ARROW = {
   BOTH: "⇅",
 }
 
-function defaultHeaderRenderer(item: any) {
-  if (typeof item !== "string") {
-    throw new Error("Non-string header array fed to solid-simple-table without headerRenderer prop")
+// Returns a string from any value
+function stringer(value: any) {
+  if (typeof value === "string") {
+    return value
+  } else {
+    return JSON.stringify(value)
   }
-  return item
+}
+
+function defaultHeaderRenderer(item: any) {
+  return stringer(item)
 }
 
 function defaultBodyRenderer(row: Row, columnKey: Key) {
-  const value = row[columnKey]
-  if (typeof value !== "string") {
-    throw new Error("Non-predictable rows fed to solid-simple-table without bodyRenderer prop")
-  }
-  return value
+  return stringer(row[columnKey])
 }
 
 function findSortItemByKey(sortInfo: SortInfo, columnKey: Key): number {
