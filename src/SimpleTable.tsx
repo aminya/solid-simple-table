@@ -20,10 +20,7 @@ export function SimpleTable(props: Props) {
     }
   }
 
-  const {
-    headerRenderer = defaultHeaderRenderer,
-    bodyRenderer = defaultBodyRenderer,
-  } = props
+  const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
   const sortInfo = getSortInfo()
 
@@ -48,7 +45,7 @@ export function SimpleTable(props: Props) {
       </thead>
       <tbody>
         {props.rows.map(function (row) {
-          const key = props.rowKey(row)
+          const key = rowKey(row)
           return (
             <tr key={key}>
               {props.columns.map(function (column) {
@@ -94,6 +91,10 @@ function defaultHeaderRenderer(item: any) {
 
 function defaultBodyRenderer(row: Row, columnKey: Key) {
   return stringer(row[columnKey])
+}
+
+function defaultRowKey(row: Row) {
+  return JSON.stringify(row)
 }
 
 function findSortItemByKey(sortInfo: SortInfo, columnKey: Key): number {

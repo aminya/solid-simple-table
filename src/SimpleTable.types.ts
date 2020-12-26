@@ -35,7 +35,7 @@ export type Props<K extends Key = string, V = any> = {
   sort(sortInfo: SortInfo<K>, rows: Array<Row>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
-  rowKey(row: Row): string
+  rowKey?(row: Row): string
 }
 
 export type State = { sort: SortInfo | null }

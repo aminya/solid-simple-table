@@ -6,9 +6,7 @@ Solid Table is an efficient reactive table component that gives you freedom.
 
 ## Installation
 
-```
-npm install --save solid-simple-table
-```
+      npm install --save solid-simple-table
 
 ## Usage
 
@@ -87,6 +85,7 @@ render(() => <MyTable />, document.getElementById("app"))
 ## API
 
 ```ts
+
 <SimpleTable
   // row and column
   rows: Array<Row<K, V>>
@@ -105,7 +104,7 @@ render(() => <MyTable />, document.getElementById("app"))
   sort(sortInfo: SortInfo<K>, rows: Array<Row>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
-  rowKey(row: Row): string
+  rowKey?(row: Row): string
 />
 
 ```
