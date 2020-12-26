@@ -8,13 +8,13 @@ export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({ sortDirection: null })
 
   function getSortDirection(): SortDirection {
-    return state.sortDirection || props.initialSortDirection || []
+    return state.sortDirection || props.initialSortDirection || new Map()
   }
 
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       const sortDirection = getSortDirection()
-      clickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
+      sortClickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
       setState({ sortDirection })
     }
   }
@@ -22,8 +22,7 @@ export function SimpleTable(props: Props) {
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
   const sortDirection = getSortDirection()
-
-  if (sortDirection.length) {
+  if (sortDirection.size) {
     props.rows = props.sort(sortDirection, props.rows)
   }
 
@@ -96,40 +95,29 @@ function defaultRowKey(row: Row) {
   return JSON.stringify(row)
 }
 
-function findSortItemByKey(sortDirection: SortDirection, columnKey: Key): number {
-  if (Array.isArray(sortDirection)) {
-    for (let i = 0, length = sortDirection.length; i < length; ++i) {
-      if (sortDirection[i].columnKey === columnKey) {
-        return i
-      }
-    }
-  }
-  return -1
-}
-
 function renderHeaderIcon(sortDirection: SortDirection, columnKey: string) {
-  const index = sortDirection ? findSortItemByKey(sortDirection, columnKey) : -1
-  let icon = ARROW.BOTH
-  if (sortDirection && index !== -1) {
-    icon = sortDirection[index].type === "asc" ? ARROW.UP : ARROW.DOWN
+  let icon
+  if (sortDirection) {
+    icon = sortDirection.get(columnKey) === "asc" ? ARROW.UP : ARROW.DOWN
+  } else {
+    icon = ARROW.BOTH
   }
-
   return <span className="sort-icon">{icon}</span>
 }
 
-function clickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
-  const index = findSortItemByKey(sortDirection, columnKey)
-  if (index < 0) {
-    const value: { columnKey: Key; type: "asc" | "desc" } = { columnKey, type: "asc" }
-    sortDirection = append ? sortDirection : []
-    sortDirection.push(value)
+function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
+  if (!sortDirection.has(columnKey)) {
+    // default to asc if key not found
+    sortDirection = append ? sortDirection : new Map()
+    sortDirection.set(columnKey, "asc")
   } else {
-    const value: { columnKey: Key; type: "asc" | "desc" | null } = sortDirection[index]
-    value.type = value.type === "asc" ? "desc" : null
+    // invert direction on click
+    let type = sortDirection.get(columnKey)
+    type = type === "asc" ? "desc" : "asc" // invert direction
     if (!append) {
-      sortDirection = (value.type !== null ? [value] : []) as SortDirection
-    } else if (!value.type) {
-      sortDirection.splice(index, 1)
+      sortDirection.set(columnKey, type)
+    } else {
+      sortDirection.delete(columnKey)
     }
   }
 }

@@ -14,7 +14,7 @@ export type Column<K extends Key = string, V = any> = {
 }
 
 // sort info
-export type SortDirection<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
+export type SortDirection<K = Key> = Map<K, "asc" | "desc">
 
 // Props
 export type Props<K extends Key = string, V = any> = {
