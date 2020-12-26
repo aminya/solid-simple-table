@@ -11,11 +11,11 @@ export function SimpleTable(props: Props) {
     return state.sort || props.initialSort || []
   }
 
-  function generateSortCallback(column: string) {
+  function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       const sortInfo = getSortInfo()
       const append = e.shiftKey
-      clickHandler(sortInfo, column, append)
+      clickHandler(sortInfo, columnKey, append)
       setState({ sort: sortInfo })
     }
   }
@@ -108,8 +108,8 @@ function findSortItemByKey(sortInfo: SortInfo, columnKey: Key): number {
   return -1
 }
 
-function renderHeaderIcon(sortInfo: SortInfo, column: string) {
-  const index = sortInfo ? findSortItemByKey(sortInfo, column) : -1
+function renderHeaderIcon(sortInfo: SortInfo, columnKey: string) {
+  const index = sortInfo ? findSortItemByKey(sortInfo, columnKey) : -1
   let icon = ARROW.BOTH
   if (sortInfo && index !== -1) {
     icon = sortInfo[index].type === "asc" ? ARROW.UP : ARROW.DOWN
