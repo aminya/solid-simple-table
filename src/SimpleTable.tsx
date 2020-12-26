@@ -1,6 +1,6 @@
 import { createState } from "solid-js"
 import "./SimpleTable.css"
-import { Props, State, SortInfo, Row, Key } from "./SimpleTable.types"
+import { Props, State, SortInfo, Row, Column, Key } from "./SimpleTable.types"
 
 export type { AnyObject, Renderable, Key, Row, Column, SortInfo, Props, State } from "./SimpleTable.types"
 
@@ -85,8 +85,8 @@ function stringer(value: any) {
   }
 }
 
-function defaultHeaderRenderer(item: any) {
-  return stringer(item)
+function defaultHeaderRenderer(column: Column) {
+  return stringer(column)
 }
 
 function defaultBodyRenderer(row: Row, columnKey: Key) {
