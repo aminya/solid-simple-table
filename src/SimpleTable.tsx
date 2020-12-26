@@ -21,27 +21,21 @@ export function SimpleTable(props: Props) {
   }
 
   const {
-    rows: givenRows,
-    columns,
-    className = "",
-    rowKey,
-    sort,
     headerRenderer = defaultHeaderRenderer,
     bodyRenderer = defaultBodyRenderer,
   } = props
 
-  let rows = givenRows
   const sortInfo = getSortInfo()
 
   if (sortInfo.length) {
-    rows = sort(sortInfo, rows)
+    props.rows = props.sort(sortInfo, props.rows)
   }
 
   return (
-    <table className={`solid-simple-table ${className}`} style={props.style}>
+    <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
       <thead>
         <tr>
-          {columns.map((column) => (
+          {props.columns.map((column) => (
             <th
               key={column.key}
               className={column.sortable ? "sortable" : undefined}
@@ -53,11 +47,11 @@ export function SimpleTable(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {rows.map(function (row) {
-          const key = rowKey(row)
+        {props.rows.map(function (row) {
+          const key = props.rowKey(row)
           return (
             <tr key={key}>
-              {columns.map(function (column) {
+              {props.columns.map(function (column) {
                 const givenOnClick = column.onClick
                 const onClick =
                   givenOnClick &&
