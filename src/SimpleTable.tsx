@@ -106,7 +106,7 @@ function stringer(value: any) {
 }
 
 function defaultHeaderRenderer(column: Column) {
-  return stringer(column)
+  return column.label ?? column.key
 }
 
 function defaultBodyRenderer(row: Row, columnKey: Key) {
