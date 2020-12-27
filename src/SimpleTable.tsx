@@ -161,7 +161,7 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
   }
   // if clicking on a new column
   else {
-    sortDirection[1] = "asc" // sort asc
+    sortDirection = [columnKey, "asc"]
   }
   return sortDirection
 }
