@@ -23,12 +23,18 @@ export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null,
 
 // Props
 export type Props<K extends Key = string, V = any> = {
-  // row
+  // rows
   rows: Array<Row<K, V>>
 
   // Optional props:
 
   // columns
+
+  // construct columns based on this row
+  // (Defaults to 0 first row)
+  representitiveRowNumber?: number
+
+  // manually provided columns
   columns?: Array<Column<K, V>>
 
   // renderers

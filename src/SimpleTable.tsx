@@ -69,7 +69,7 @@ export function SimpleTable(props: Props) {
   setRows(sortRows(getRows(), getSortDirection(), props.defaultSortDirection))
 
   if (props.columns === undefined) {
-    props.columns = defaultColumnMaker(props.rows)
+    props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
   }
 
   return (

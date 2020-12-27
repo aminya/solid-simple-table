@@ -39,13 +39,20 @@ For other examples see the demo folder.
 ```ts
 
 <SimpleTable
-  // row
+  // rows
   rows: Array<Row<K, V>>
 
   // Optional props:
 
   // columns
+
+  // construct columns based on this row
+  // (Defaults to 0 first row)
+  representitiveRowNumber?: number
+
+  // manually provided columns
   columns?: Array<Column<K, V>>
+
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
