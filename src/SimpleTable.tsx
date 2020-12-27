@@ -8,11 +8,11 @@ export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({})
 
   function getSortDirection(): SortDirection {
-    return state.sortDirection || props.initialSortDirection || new Map()
+    return state.sortDirection ?? props.initialSortDirection ?? new Map()
   }
 
   function getSorter(): NonNullable<Props["rowSorter"]> {
-    return props.rowSorter || defaultSorter
+    return props.rowSorter ?? defaultSorter
   }
 
   function generateSortCallback(columnKey: string) {
