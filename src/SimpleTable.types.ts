@@ -43,10 +43,5 @@ export type Props<K extends Key = string, V = any> = {
   rowKey?(row: Row): string
 }
 
-export type State<K extends Key = string> = {
-  /** last clicked column.
-   * If this is undefined it means no click has happened yet, and so the default order/sorting is used
-   */
-  sortedColumnKey?: K
-  sortDirection?: SortDirection<K>
-}
+// Component signal (state)
+export type Signal<K extends Key =string> = SortDirection<K> | undefined

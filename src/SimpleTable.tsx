@@ -1,21 +1,22 @@
-import { createState } from "solid-js"
+import { createSignal } from "solid-js"
 import "./SimpleTable.less"
-import { Props, State, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
+import { Props, Signal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
 
-export type { AnyObject, Renderable, Key, Row, Column, SortDirection, NonNullSortDirection, Props, State } from "./SimpleTable.types"
+export type { AnyObject, Renderable, Key, Row, Column, SortDirection, NonNullSortDirection, Props, Signal } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
-  const [state, setState] = createState<State>({})
+  const [getSortDirectionSignal, setSortDirection] = createSignal<Signal>()
 
   function getSortDirection(): SortDirection {
-    if (state.sortDirection !== undefined) {
-      return state.sortDirection
+    const sortDirection = getSortDirectionSignal()
+    if (sortDirection !== undefined) {
+      return sortDirection
     }
     // use default sort direction:
     else if (props.defaultSortDirection !== undefined) {
-      setState({ sortDirection: props.defaultSortDirection })
       return props.defaultSortDirection
-    } else {
+    }
+    else {
       return [null, null]
     }
   }
@@ -26,7 +27,7 @@ export function SimpleTable(props: Props) {
 
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
-      setState({ sortDirection: sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey) })
+      setSortDirection(sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey))
     }
   }
 
