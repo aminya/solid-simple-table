@@ -2,9 +2,19 @@
 
 ![CI](https://github.com/aminya/solid-simple-table/workflows/CI/badge.svg)
 
-Solid Table is an efficient reactive table component that gives you freedom.
+Solid Table is a blazing fast reactive table component that gives you freedom.
 
-![Simple table demo](demo/simple/simple-table-demo.png)
+### Features
+- Very fast as it is compiled down to VanilaJS using Solid-js
+- Zero dependency and very small (~15KB for IE11)!
+- Automatic sorting
+- Support for custom header and row renderers (so the cells can be components themselves)
+- Support for custom sort functions
+- Support for onClick on all rows
+- Support for DOM accessors
+- The library is fully tested with 90% of code coverage.
+
+![Simple table demo](demo/simple/simple-table-demo.gif)
 
 ## Installation
 
@@ -112,4 +122,4 @@ export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirectio
 
 ## License
 
-This package is licensed under the terms of MIT License. It was converted from [sb-react-table](https://github.com/steelbrain/react-table/tree/2f8472960a77ca6cf2444c392697772716195bf4).
+This package is licensed under the terms of MIT License. Originally, it was inspired by [sb-react-table](https://github.com/steelbrain/react-table/tree/2f8472960a77ca6cf2444c392697772716195bf4).
