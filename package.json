@@ -14,7 +14,8 @@
     "build": "cross-env NODE_ENV=production parcel build src/SimpleTable.tsx",
     "prepare": "npm run build",
     "test": "cross-env BABAEL_CJS=true jest",
-    "demo.custom-sort": "cross-env NODE_ENV=production parcel serve ./demo/custom-sort/index.html --dist-dir ./demo/custom-sort/dist --open"
+    "demo.simple": "npm run build && cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
+    "demo.custom-sort": "npm run build && cross-env NODE_ENV=production parcel serve ./demo/custom-sort/index.html --dist-dir ./demo/custom-sort/dist --open"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",

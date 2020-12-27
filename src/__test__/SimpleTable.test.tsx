@@ -2,7 +2,7 @@
 
 import { render } from "solid-js/web"
 import { SimpleTable } from "../../dist/SimpleTable"
-import type { SortInfo } from "../SimpleTable"
+import type { NonNullSortDirection } from "../../src/SimpleTable"
 
 const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
@@ -15,16 +15,15 @@ const columns = [
   {
     key: "file",
     label: "File",
-    sortable: true,
   },
   {
     key: "message",
     label: "Message",
+    sortable: false,
   },
   {
     key: "severity",
     label: "Severity",
-    sortable: true,
   },
 ]
 
@@ -32,18 +31,12 @@ type MyTableRow = typeof rows[0]
 type MyTableColumn = typeof columns[0]
 type MyColumnKeys = keyof MyTableRow
 
-function MyTableSorter(sortInfo: SortInfo<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
-  // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
-  let sortColumns: { [index in MyColumnKeys]: "asc" | "desc" } | {} = {}
-  for (let i = 0, length = sortInfo.length; i < length; i++) {
-    const entry = sortInfo[i]
-    // @ts-ignore
-    sortColumns[entry.columnKey] = entry.type
-  }
-
+function MyTableSorter(rows: Array<MyTableRow>, sortDirection: NonNullSortDirection<MyColumnKeys>): Array<MyTableRow> {
+  const columnKey = sortDirection[0]
+  const currentSortDirection = sortDirection[1]
   return rows.sort(function (a, b) {
-    if ("file" in sortColumns) {
-      const multiplyWith = sortColumns.file === "asc" ? 1 : -1
+    if (columnKey in a && columnKey in b) {
+      const multiplyWith = currentSortDirection === "asc" ? 1 : -1
       const sortValue = a.severity.localeCompare(b.severity)
       if (sortValue !== 0) {
         return multiplyWith * sortValue
@@ -60,12 +53,13 @@ function MyTable() {
       columns={columns}
       headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
       bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
-      initialSort={[{ columnKey: "file", type: "asc" }]}
-      sort={MyTableSorter}
+      defaultSortDirection={["file", "asc"]}
+      rowSorter={MyTableSorter}
       rowKey={(row) => JSON.stringify(row)}
     />
   )
 }
+
 
 test("renders without crashing", () => {
   const rootElm = document.createElement("div")
