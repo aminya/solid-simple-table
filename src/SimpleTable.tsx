@@ -37,10 +37,10 @@ export function SimpleTable(props: Props) {
           {props.columns.map((column) => (
             <th
               key={column.key}
-              className={column.sortable ? "sortable" : undefined}
-              onClick={column.sortable ? generateSortCallback(column.key) : undefined}
+              className={column.sortable !== false ? "sortable" : undefined}
+              onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
             >
-              {headerRenderer(column)} {column.sortable && renderHeaderIcon(getSortDirection(), column.key)}
+              {headerRenderer(column)} {column.sortable !== false && renderHeaderIcon(getSortDirection(), column.key)}
             </th>
           ))}
         </tr>
