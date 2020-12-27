@@ -21,6 +21,7 @@ Solid Table is a blazing fast reactive table component that gives you freedom.
       npm install --save solid-simple-table
 
 ## Usage
+[**Run dmeo here!**](https://aminya.github.io/solid-simple-table/)
 
 ```js
 import { render } from "solid-js/web"
@@ -42,7 +43,7 @@ function MyTable() {
 render(() => <MyTable />, document.getElementById("app"))
 ```
 
-For other examples see the demo folder.
+For other examples, see [the demo folder](https://github.com/aminya/solid-simple-table/tree/master/demo).
 
 ## API
 
