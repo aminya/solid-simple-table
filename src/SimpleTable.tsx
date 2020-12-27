@@ -48,38 +48,34 @@ export function SimpleTable(props: Props) {
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       setSortDirection(sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey))
+      sortRows()
     }
   }
 
   // Row sorting logic:
-  function sortRows(
-    rows: Array<Row>,
-    currentSortDirection: SortDirection,
-    defaultSortDirection: NonNullSortDirection | undefined
-  ) {
+  function sortRows() {
+    const currentSortDirection = getSortDirection()
     // if should reset sort
     if (
       currentSortDirection[0] === null &&
-      /* if defaultSortDirection is provided */ defaultSortDirection !== undefined
+      /* if defaultSortDirection is provided */ props.defaultSortDirection !== undefined
     ) {
       // reset sort
-      rows = getSorter()(rows, defaultSortDirection)
+      setRows(getSorter()(getRows(), props.defaultSortDirection))
     }
     // if should sort normally
     else if (currentSortDirection[0] !== null) {
-      rows = getSorter()(rows, currentSortDirection)
+      setRows(getSorter()(getRows(), currentSortDirection))
     } // else ignore sort
-    return rows
   }
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
-  // sort rows
-  setRows(sortRows(getRows(), getSortDirection(), props.defaultSortDirection))
-
   if (props.columns === undefined) {
     props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
   }
+
+  sortRows()
 
   return (
     <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
