@@ -31,11 +31,17 @@ export type Props<K extends Key = string, V = any> = {
   className?: string
 
   // sort options
-  initialSortDirection?: SortDirection<K>
+  initialSortDirection?: [columnKey: K, direction: "asc" | "desc"]
   rowSorter?(rows: Array<Row>, columnKey: K, sortDirection: SortDirection<K>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
 }
 
-export type State<K extends Key = string> = { lastClickedColumnKey?: K, sortDirection?: SortDirection<K> }
+export type State<K extends Key = string> = {
+  /** last clicked column.
+   * If this is undefined it means no click has happened yet, and so the default order/sorting is used
+   */
+  sortedColumnKey?: K
+  sortDirection?: SortDirection<K>
+}

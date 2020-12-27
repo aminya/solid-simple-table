@@ -8,7 +8,15 @@ export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({})
 
   function getSortDirection(): SortDirection {
-    return state.sortDirection ?? props.initialSortDirection ?? new Map()
+    if (state.sortDirection !== undefined) {
+      return state.sortDirection
+    } else if (props.initialSortDirection !== undefined) {
+      const sortDirection = new Map([props.initialSortDirection])
+      setState({ sortDirection, sortedColumnKey: props.initialSortDirection[0] })
+      return sortDirection
+    } else {
+      return new Map()
+    }
   }
 
   function getSorter(): NonNullable<Props["rowSorter"]> {
@@ -19,15 +27,16 @@ export function SimpleTable(props: Props) {
     return (e: MouseEvent) => {
       const sortDirection = getSortDirection()
       sortClickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
-      setState({ sortDirection, lastClickedColumnKey: columnKey })
+      setState({ sortDirection, sortedColumnKey: columnKey })
     }
   }
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
   const sortDirection = getSortDirection()
-  if (sortDirection.size && state.lastClickedColumnKey) {
-    props.rows = getSorter()(props.rows, state.lastClickedColumnKey, sortDirection)
+  // sort rows
+  if (sortDirection.size !== 0 && state.sortedColumnKey !== undefined) {
+    props.rows = getSorter()(props.rows, state.sortedColumnKey, sortDirection)
   }
 
   if (props.columns === undefined) {
