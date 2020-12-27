@@ -38,4 +38,4 @@ export type Props<K extends Key = string, V = any> = {
   rowKey?(row: Row): string
 }
 
-export type State = { sortDirection: SortDirection | null }
+export type State<K extends Key = string> = { lastClickedColumnKey?: K, sortDirection: SortDirection<K> | null }

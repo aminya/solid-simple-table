@@ -15,15 +15,15 @@ export function SimpleTable(props: Props) {
     return (e: MouseEvent) => {
       const sortDirection = getSortDirection()
       sortClickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
-      setState({ sortDirection })
+      setState({ sortDirection, lastClickedColumnKey: columnKey })
     }
   }
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
   const sortDirection = getSortDirection()
-  if (sortDirection.size) {
-    props.rows = props.rowSorter(props.rows, lastClickedColumnKey, sortDirection)
+  if (sortDirection.size && state.lastClickedColumnKey) {
+    props.rows = props.rowSorter(props.rows, state.lastClickedColumnKey, sortDirection)
   }
 
   return (
