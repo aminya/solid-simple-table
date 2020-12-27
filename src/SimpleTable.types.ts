@@ -16,10 +16,10 @@ export type Column<K extends Key = string, V = any> = {
 /** Sort direction.
   It is a tuple:
   @columnKey is the key used for sorting
-  @direction is the direction of the sort
+  @type is the direction of the sort
 */
-export type NonNullSortDirection<K = Key> = [columnKey: K, direction: "asc" | "desc"]
-export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, direction: null]
+export type NonNullSortDirection<K = Key> = [columnKey: K, type: "asc" | "desc"]
+export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, type: null]
 
 // Props
 export type Props<K extends Key = string, V = any> = {
