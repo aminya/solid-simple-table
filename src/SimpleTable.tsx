@@ -101,15 +101,11 @@ export function SimpleTable(props: Props) {
               <tr key={key}>
                 <For each={props.columns!}>
                   {(column) => {
-                    const givenOnClick = column.onClick
-                    const onClick =
-                      givenOnClick &&
-                      function (e: MouseEvent) {
-                        givenOnClick(e, row)
-                      }
-
                     return (
-                      <td onClick={onClick} key={`${key}.${column.key}`}>
+                      <td
+                        onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
+                        key={`${key}.${column.key}`}
+                      >
                         {bodyRenderer(row, column.key)}
                       </td>
                     )
