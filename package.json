@@ -6,6 +6,7 @@
   "module": "dist/SimpleTable.module.js",
   "types": "dist/SimpleTable.d.ts",
   "source": "src/SimpleTable.tsx",
+  "demo": "./demo/simple/dist/index.html",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --fix",
@@ -15,7 +16,8 @@
     "prepare": "npm run build",
     "test": "cross-env BABAEL_CJS=true jest --coverage",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
-    "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open"
+    "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
+    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
@@ -55,6 +57,13 @@
       },
       "includeNodeModules": false,
       "isLibrary": true
+    },
+    "demo": {
+      "context": "browser",
+      "engines": {
+        "browsers": "Chrome 76"
+      },
+      "includeNodeModules": true
     }
   },
   "repository": {
