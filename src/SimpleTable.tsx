@@ -23,7 +23,7 @@ export function SimpleTable(props: Props) {
 
   const sortDirection = getSortDirection()
   if (sortDirection.size) {
-    props.rows = props.sort(sortDirection, props.rows)
+    props.rows = props.rowSorter(props.rows, lastClickedColumnKey, sortDirection)
   }
 
   return (
@@ -120,4 +120,30 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
     type = type === "asc" ? "desc" : "asc" // invert direction
     sortDirection.set(columnKey, type)
   }
+}
+
+/**
+ Default alphabetical sort function
+ @param rows: the rows of the table
+ @param columnKey: the last clicked columnKey
+*/
+function defaultSorter(rows: Array<Row>, columnKey: Key, sortInfo: SortDirection): Array<Row> {
+  let isDesc: boolean = false // by default sort asc
+  if (sortInfo.has(columnKey)) {
+    const sortDirection = sortInfo.get(columnKey)
+    isDesc = sortDirection == "desc"
+  }
+  rows = rows.sort(function (r1, r2) {
+    const r1_val = r1[columnKey]
+    const r2_val = r2[columnKey]
+    if (r1_val == r2_val) {
+      // equal values
+      return 0
+    } else if (r1_val < r2_val) {
+      return -1; //r1_val comes first
+    } else {
+      return 1; // r2_val comes first
+    }
+  })
+  return isDesc ? rows.reverse() : rows
 }
