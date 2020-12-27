@@ -56,7 +56,7 @@ For other examples see the demo folder.
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
-  bodyRenderer?(row: Row, columnKey: K): string | Renderable
+  bodyRenderer?(row: Row, columnID: K): string | Renderable
 
   // styles
   style?: AnyObject
@@ -103,11 +103,11 @@ export type Column<K extends Key = string, V = any> = {
 
 /** Sort direction.
   It is a tuple:
-  @columnKey is the key used for sorting
+  @columnID is the key used for sorting
   @type is the direction of the sort
 */
-export type NonNullSortDirection<K = Key> = [columnKey: K, type: "asc" | "desc"]
-export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, type: null]
+export type NonNullSortDirection<K = Key> = [columnID: K, type: "asc" | "desc"]
+export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnID: null, type: null]
 ```
 
 ## License

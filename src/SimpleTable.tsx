@@ -41,9 +41,9 @@ export function SimpleTable(props: Props) {
     }
   }
 
-  function generateSortCallback(columnKey: string) {
+  function generateSortCallback(columnID: string) {
     return (e: MouseEvent) => {
-      setSortDirection(sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey))
+      setSortDirection(sortClickHandler(getSortDirection(), columnID, /* append */ e.shiftKey))
       sortRows()
     }
   }
@@ -98,12 +98,12 @@ export function SimpleTable(props: Props) {
               const isSortable = column.sortable !== false
               return (
                 <th
-                  id={props.accessors ? column.key : undefined}
+                  id={props.accessors ? column.id : undefined}
                   className={isSortable ? "sortable" : undefined}
-                  onClick={isSortable ? generateSortCallback(column.key) : undefined}
+                  onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
-                  {isSortable ? renderHeaderIcon(getSortDirection(), column.key) : undefined}
+                  {isSortable ? renderHeaderIcon(getSortDirection(), column.id) : undefined}
                 </th>
               )
             }}
@@ -121,9 +121,9 @@ export function SimpleTable(props: Props) {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        id={rowID ? `${rowID}.${column.key}` : undefined}
+                        id={rowID ? `${rowID}.${column.id}` : undefined}
                       >
-                        {bodyRenderer(row, column.key)}
+                        {bodyRenderer(row, column.id)}
                       </td>
                     )
                   }}
@@ -146,13 +146,13 @@ const ARROW = {
 function defaultColumnMaker(rows: Array<Row>, representitiveRowNumber: number = 0) {
   // construct the column information based on the representitive row
   const representitiveRow = rows[representitiveRowNumber]
-  const columnKeys = Object.keys(representitiveRow)
+  const columnIDs = Object.keys(representitiveRow)
 
-  // make Array<{key: columnKey}>
-  const columnNumber = columnKeys.length
+  // make Array<{key: columnID}>
+  const columnNumber = columnIDs.length
   let columns: Array<Column> = new Array(columnNumber)
   for (let iCol = 0; iCol < columnNumber; iCol++) {
-    columns[iCol] = { key: columnKeys[iCol] }
+    columns[iCol] = { id: columnIDs[iCol] }
   }
   return columns
 }
@@ -167,20 +167,20 @@ function stringer(value: any) {
 }
 
 function defaultHeaderRenderer(column: Column) {
-  return column.label ?? column.key
+  return column.label ?? column.id
 }
 
-function defaultBodyRenderer(row: Row, columnKey: Key) {
-  return stringer(row[columnKey])
+function defaultBodyRenderer(row: Row, columnID: Key) {
+  return stringer(row[columnID])
 }
 
 function defaultGetRowID(row: Row) {
   return JSON.stringify(row)
 }
 
-function renderHeaderIcon(sortDirection: SortDirection, columnKey: Key) {
+function renderHeaderIcon(sortDirection: SortDirection, columnID: Key) {
   let icon
-  if (sortDirection[0] === null || sortDirection[0] !== columnKey) {
+  if (sortDirection[0] === null || sortDirection[0] !== columnID) {
     icon = ARROW.BOTH
   } else {
     icon = sortDirection[1] === "asc" ? ARROW.DOWN : ARROW.UP
@@ -188,7 +188,7 @@ function renderHeaderIcon(sortDirection: SortDirection, columnKey: Key) {
   return <span className="sort-icon">{icon}</span>
 }
 
-function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
+function sortClickHandler(sortDirection: SortDirection, columnID: Key, append: boolean) {
   const previousSortedColumn = sortDirection[0]
   const previousSortedDirection = sortDirection[1]
 
@@ -197,12 +197,12 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
     sortDirection = [null, null]
   }
   // if clicking on an already sorted column: invert direction on click
-  else if (previousSortedColumn === columnKey) {
+  else if (previousSortedColumn === columnID) {
     sortDirection[1] = previousSortedDirection === "asc" ? "desc" : "asc" // invert direction
   }
   // if clicking on a new column
   else {
-    sortDirection = [columnKey, "asc"]
+    sortDirection = [columnID, "asc"]
   }
   return sortDirection
 }
@@ -210,13 +210,13 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
 /**
  Default alphabetical sort function
  @param rows: the rows of the table
- @param columnKey: the last clicked columnKey
+ @param columnID: the last clicked columnID
 */
 function defaultSorter(rows: Array<Row>, sortDirection: NonNullSortDirection): Array<Row> {
-  const columnKey = sortDirection[0]
+  const columnID = sortDirection[0]
   rows = rows.sort(function (r1, r2) {
-    const r1_val = r1[columnKey]
-    const r2_val = r2[columnKey]
+    const r1_val = r1[columnID]
+    const r2_val = r2[columnID]
     if (r1_val == r2_val) {
       // equal values
       return 0

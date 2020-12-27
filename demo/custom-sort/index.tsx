@@ -11,16 +11,16 @@ const rows = [
 
 const columns = [
   {
-    key: "file",
+    id: "file",
     label: "File",
   },
   {
-    key: "message",
+    id: "message",
     label: "Message",
     sortable: false,
   },
   {
-    key: "severity",
+    id: "severity",
     label: "Severity",
   },
 ]
@@ -30,10 +30,10 @@ type MyTableColumn = typeof columns[0]
 type MyColumnKeys = keyof MyTableRow
 
 function MyTableSorter(rows: Array<MyTableRow>, sortDirection: NonNullSortDirection<MyColumnKeys>): Array<MyTableRow> {
-  const columnKey = sortDirection[0]
+  const columnID = sortDirection[0]
   const currentSortDirection = sortDirection[1]
   return rows.sort(function (a, b) {
-    if (columnKey in a && columnKey in b) {
+    if (columnID in a && columnID in b) {
       const multiplyWith = currentSortDirection === "asc" ? 1 : -1
       const sortValue = a.severity.localeCompare(b.severity)
       if (sortValue !== 0) {
@@ -50,7 +50,7 @@ function MyTable() {
       rows={rows}
       columns={columns}
       headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
-      bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
+      bodyRenderer={(row: MyTableRow, columnID: MyColumnKeys) => <span>{row[columnID]}</span>}
       defaultSortDirection={["file", "asc"]}
       rowSorter={MyTableSorter}
       getRowID={(row) => JSON.stringify(row)}

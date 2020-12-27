@@ -7,7 +7,7 @@ export type Key = string
 export type Row<K extends Key = string, V = any> = Record<K, V>
 
 export type Column<K extends Key = string, V = any> = {
-  key: K
+  id: K
   label?: string
   sortable?: boolean
   onClick?(e: MouseEvent, row: Row<K, V>): void
@@ -15,11 +15,11 @@ export type Column<K extends Key = string, V = any> = {
 
 /** Sort direction.
   It is a tuple:
-  @columnKey is the key used for sorting
+  @columnID is the key used for sorting
   @type is the direction of the sort
 */
-export type NonNullSortDirection<K = Key> = [columnKey: K, type: "asc" | "desc"]
-export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, type: null]
+export type NonNullSortDirection<K = Key> = [columnID: K, type: "asc" | "desc"]
+export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnID: null, type: null]
 
 // Props
 export type Props<K extends Key = string, V = any> = {
@@ -39,7 +39,7 @@ export type Props<K extends Key = string, V = any> = {
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
-  bodyRenderer?(row: Row, columnKey: K): string | Renderable
+  bodyRenderer?(row: Row, columnID: K): string | Renderable
 
   // styles
   style?: AnyObject
