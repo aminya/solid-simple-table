@@ -8,7 +8,7 @@ export type Row<K extends Key = string, V = any> = Record<K, V>
 
 export type Column<K extends Key = string, V = any> = {
   key: K
-  label: string
+  label?: string
   sortable?: boolean
   onClick?(e: MouseEvent, row: Row<K, V>): void
 }
@@ -20,7 +20,7 @@ export type SortDirection<K = Key> = Map<K, "asc" | "desc">
 export type Props<K extends Key = string, V = any> = {
   // row and column
   rows: Array<Row<K, V>>
-  columns: Array<Column<K, V>>
+  columns?: Array<Column<K, V>>
 
   // renderers
   headerRenderer?(column: Column): string | Renderable

@@ -30,6 +30,10 @@ export function SimpleTable(props: Props) {
     props.rows = getSorter()(props.rows, state.lastClickedColumnKey, sortDirection)
   }
 
+  if (props.columns === undefined) {
+    props.columns = defaultColumnMaker(props.rows)
+  }
+
   return (
     <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
       <thead>
@@ -50,7 +54,7 @@ export function SimpleTable(props: Props) {
           const key = rowKey(row)
           return (
             <tr key={key}>
-              {props.columns.map(function (column) {
+              {props.columns!.map(function (column) {
                 const givenOnClick = column.onClick
                 const onClick =
                   givenOnClick &&
@@ -76,6 +80,20 @@ const ARROW = {
   UP: "↑",
   DOWN: "↓",
   BOTH: "⇅",
+}
+
+function defaultColumnMaker(rows: Array<Row>, representitiveRowNumber: number = 0) {
+  // construct the column information based on the representitive row
+  const representitiveRow = rows[representitiveRowNumber]
+  const columnKeys = Object.keys(representitiveRow)
+
+  // make Array<{key: columnKey}>
+  const columnNumber = columnKeys.length
+  let columns: Array<Column> = new Array(columnNumber)
+  for (let iCol = 0; iCol < columnNumber; iCol++) {
+    columns[iCol] = { key: columnKeys[iCol] }
+  }
+  return columns
 }
 
 // Returns a string from any value
