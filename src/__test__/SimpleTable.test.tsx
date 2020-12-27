@@ -1,11 +1,7 @@
-// import { getByRole } from '@testing-library/dom';
-
 import { render } from "solid-js/web"
-import { SimpleTable } from "../../dist/SimpleTable"
-import type { NonNullSortDirection } from "../../src/SimpleTable"
 
-import { MySimpleTable } from "../../demo/simple/index"
-import { MyComplexTable } from "../../demo/complex/index"
+import { MySimpleTable, rows as mySimpleTableRows } from "../../demo/simple/index"
+import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../../demo/complex/index"
 
 let rootElm: HTMLDivElement
 let dispose: () => void
