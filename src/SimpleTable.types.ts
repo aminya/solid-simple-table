@@ -57,7 +57,9 @@ export type Props<K extends Key = string, V = any> = {
   */
   accessors?: boolean
 
-  /** a function that takes row and returns string unique key for that row */
+  /** a function that takes row and returns string unique key for that row
+    @default {defaultGetRowID}
+  */
   getRowID?(row: Row): string
 }
 

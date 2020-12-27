@@ -67,7 +67,11 @@ export function SimpleTable(props: Props) {
     } // else ignore sort
   }
 
-  const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, getRowID = defaultGetRowID } = props
+  const {
+    headerRenderer = defaultHeaderRenderer,
+    bodyRenderer = defaultBodyRenderer,
+    getRowID = defaultGetRowID,
+  } = props
 
   function maybeRowID(row: Row) {
     // if accessors are needed

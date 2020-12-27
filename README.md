@@ -75,10 +75,12 @@ For other examples see the demo folder.
   */
   accessors?: boolean
 
-  /** a function that takes row and returns string unique key for that row */
+  /** a function that takes row and returns string unique key for that row
+    @default {defaultGetRowID}
+  */
   getRowID?(row: Row): string
-/>;
 
+/>;
 ```
 
 In which:
