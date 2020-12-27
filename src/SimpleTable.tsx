@@ -1,6 +1,15 @@
 import { createSignal, For } from "solid-js"
 import "./SimpleTable.less"
-import { Props, SortDirectionSignal, RowsSignal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
+import {
+  Props,
+  SortDirectionSignal,
+  RowsSignal,
+  SortDirection,
+  NonNullSortDirection,
+  Row,
+  Column,
+  Key,
+} from "./SimpleTable.types"
 
 export type {
   AnyObject,

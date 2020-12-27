@@ -60,7 +60,6 @@ function MyTable() {
   )
 }
 
-
 test("renders without crashing", () => {
   const rootElm = document.createElement("div")
   const dispose = render(() => <MyTable />, rootElm)
