@@ -41,16 +41,14 @@ export function SimpleTable(props: Props) {
     }
   }
 
-  function getSorter(): NonNullable<Props["rowSorter"]> {
-    return props.rowSorter ?? defaultSorter
-  }
-
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       setSortDirection(sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey))
       sortRows()
     }
   }
+
+  const rowSorter: NonNullable<Props["rowSorter"]> = props.rowSorter ?? defaultSorter
 
   // Row sorting logic:
   function sortRows() {
@@ -61,11 +59,11 @@ export function SimpleTable(props: Props) {
       /* if defaultSortDirection is provided */ props.defaultSortDirection !== undefined
     ) {
       // reset sort
-      setRows(getSorter()(getRows(), props.defaultSortDirection))
+      setRows(rowSorter(getRows(), props.defaultSortDirection))
     }
     // if should sort normally
     else if (currentSortDirection[0] !== null) {
-      setRows(getSorter()(getRows(), currentSortDirection))
+      setRows(rowSorter(getRows(), currentSortDirection))
     } // else ignore sort
   }
 
@@ -75,6 +73,7 @@ export function SimpleTable(props: Props) {
     props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
   }
 
+  // initial sort
   sortRows()
 
   return (
