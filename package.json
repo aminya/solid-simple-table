@@ -17,7 +17,7 @@
     "test": "cross-env BABAEL_CJS=true jest --coverage",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
-    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html"
+    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./demo/simple/inline.js && shx cp ./demo/simple/dist/index.html ."
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
@@ -39,7 +39,8 @@
     "parcel": "^2.0.0-nightly.489",
     "shx": "^0.3.3",
     "solid-js": "^0.23.4",
-    "typescript": "4.1.3"
+    "typescript": "4.1.3",
+    "web-resource-inliner": "^5.0.0"
   },
   "targets": {
     "main": {
