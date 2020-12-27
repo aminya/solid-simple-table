@@ -47,5 +47,6 @@ export type Props<K extends Key = string, V = any> = {
   rowKey?(row: Row): string
 }
 
-// Component signal (state)
-export type Signal<K extends Key = string> = SortDirection<K> | undefined
+// Component signals (states)
+export type SortDirectionSignal<K extends Key = string> = SortDirection<K> | undefined
+export type RowsSignal<K extends Key = string, V = any> = Array<Row<K, V>>

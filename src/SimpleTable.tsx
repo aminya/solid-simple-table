@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
 import "./SimpleTable.less"
-import { Props, Signal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
+import { Props, SortDirectionSignal, RowsSignal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
 
 export type {
   AnyObject,
@@ -11,11 +11,13 @@ export type {
   SortDirection,
   NonNullSortDirection,
   Props,
-  Signal,
+  SortDirectionSignal,
+  RowsSignal,
 } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
-  const [getSortDirectionSignal, setSortDirection] = createSignal<Signal>()
+  const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
+  const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
 
   function getSortDirection(): SortDirection {
     const sortDirection = getSortDirectionSignal()
@@ -63,7 +65,8 @@ export function SimpleTable(props: Props) {
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
-  props.rows = sortRows(props.rows, getSortDirection(), props.defaultSortDirection)
+  // sort rows
+  setRows(sortRows(getRows(), getSortDirection(), props.defaultSortDirection))
 
   if (props.columns === undefined) {
     props.columns = defaultColumnMaker(props.rows)
@@ -85,7 +88,7 @@ export function SimpleTable(props: Props) {
         </tr>
       </thead>
       <tbody>
-        {props.rows.map(function (row) {
+        {getRows().map(function (row) {
           const key = rowKey(row)
           return (
             <tr key={key}>
