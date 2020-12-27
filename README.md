@@ -23,64 +23,14 @@ const rows = [
   { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
-const columns = [
-  {
-    key: "file",
-    label: "File",
-    sortable: true,
-  },
-  {
-    key: "message",
-    label: "Message",
-  },
-  {
-    key: "severity",
-    label: "Severity",
-    sortable: true,
-  },
-]
-
-type MyTableRow = typeof rows[0]
-type MyTableColumn = typeof columns[0]
-type MyColumnKeys = keyof MyTableRow
-
-function MyTableSorter(sortDirection: SortDirection<MyColumnKeys>, rows: Array<MyTableRow>): Array<MyTableRow> {
-  // Convert [{key: 'file', type: 'asc'}] -> { file: 'asc' }
-  let sortColumns: { [index in MyColumnKeys]: "asc" | "desc" } | {} = {}
-  for (let i = 0, length = sortDirection.length; i < length; i++) {
-    const entry = sortDirection[i]
-    // @ts-ignore
-    sortColumns[entry.columnKey] = entry.type
-  }
-
-  return rows.sort(function (a, b) {
-    if ("file" in sortColumns) {
-      const multiplyWith = sortColumns.file === "asc" ? 1 : -1
-      const sortValue = a.severity.localeCompare(b.severity)
-      if (sortValue !== 0) {
-        return multiplyWith * sortValue
-      }
-    }
-    return 0
-  })
-}
-
 function MyTable() {
-  return (
-    <SimpleTable
-      rows={rows}
-      columns={columns}
-      headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
-      bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
-      defaultSortDirection={[{ columnKey: "file", type: "asc" }]}
-      sort={MyTableSorter}
-      rowKey={(row) => JSON.stringify(row)}
-    />
-  )
+  return <SimpleTable rows={rows} />
 }
 
 render(() => <MyTable />, document.getElementById("app"))
 ```
+
+For other examples see the demo folder.
 
 ## API
 
@@ -89,23 +39,23 @@ render(() => <MyTable />, document.getElementById("app"))
 <SimpleTable
   // row and column
   rows: Array<Row<K, V>>
-  columns: Array<Column<K, V>>
+  columns?: Array<Column<K, V>>
 
   // renderers
-  headerRenderer(column: Column): string | Renderable
-  bodyRenderer(row: Row, columnKey: K): string | Renderable
+  headerRenderer?(column: Column): string | Renderable
+  bodyRenderer?(row: Row, columnKey: K): string | Renderable
 
   // styles
   style?: AnyObject
   className?: string
 
   // sort options
-  defaultSortDirection?: SortDirection<K>
-  sort(sortDirection: SortDirection<K>, rows: Array<Row>): Array<Row>
+  defaultSortDirection?: NonNullSortDirection<K>
+  rowSorter?(rows: Array<Row>, sortDirection: NonNullSortDirection<K>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
-/>
+/>;
 
 ```
 
@@ -114,7 +64,7 @@ In which:
 ```ts
 // util types
 export type AnyObject = Record<string, any>
-type Renderable = any
+export type Renderable = any
 
 // row and column types
 export type Key = string
@@ -122,13 +72,18 @@ export type Row<K extends Key = string, V = any> = Record<K, V>
 
 export type Column<K extends Key = string, V = any> = {
   key: K
-  label: string
+  label?: string
   sortable?: boolean
   onClick?(e: MouseEvent, row: Row<K, V>): void
 }
 
-// sort info
-export type SortDirection<K = Key> = Array<{ columnKey: K; type: "asc" | "desc" }>
+/** Sort direction.
+  It is a tuple:
+  @columnKey is the key used for sorting
+  @direction is the direction of the sort
+*/
+export type NonNullSortDirection<K = Key> = [columnKey: K, direction: "asc" | "desc"]
+export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, direction: null]
 ```
 
 ## License
