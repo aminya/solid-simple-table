@@ -94,15 +94,19 @@ export function SimpleTable(props: Props) {
       <thead>
         <tr>
           <For each={props.columns}>
-            {(column) => (
-              <th
-                id={props.accessors ? column.key : undefined}
-                className={column.sortable !== false ? "sortable" : undefined}
-                onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
-              >
-                {headerRenderer(column)} {column.sortable !== false && renderHeaderIcon(getSortDirection(), column.key)}
-              </th>
-            )}
+            {(column) => {
+              const isSortable = column.sortable !== false
+              return (
+                <th
+                  id={props.accessors ? column.key : undefined}
+                  className={isSortable ? "sortable" : undefined}
+                  onClick={isSortable ? generateSortCallback(column.key) : undefined}
+                >
+                  {headerRenderer(column)}
+                  {isSortable ? renderHeaderIcon(getSortDirection(), column.key) : undefined}
+                </th>
+              )
+            }}
           </For>
         </tr>
       </thead>
