@@ -83,7 +83,7 @@ export function SimpleTable(props: Props) {
           <For each={props.columns}>
             {(column) => (
               <th
-                key={column.key}
+                id={column.key}
                 className={column.sortable !== false ? "sortable" : undefined}
                 onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
               >
@@ -98,13 +98,13 @@ export function SimpleTable(props: Props) {
           {(row) => {
             const key = rowKey(row)
             return (
-              <tr key={key}>
+              <tr id={key}>
                 <For each={props.columns!}>
                   {(column) => {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        key={`${key}.${column.key}`}
+                        id={`${key}.${column.key}`}
                       >
                         {bodyRenderer(row, column.key)}
                       </td>
