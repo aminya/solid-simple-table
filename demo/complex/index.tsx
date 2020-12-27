@@ -25,11 +25,14 @@ const columns = [
   },
 ]
 
-type MyTableRow = typeof rows[0]
-type MyTableColumn = typeof columns[0]
-type MyColumnKeys = keyof MyTableRow
+type MyComplexTableRow = typeof rows[0]
+type MyComplexTableColumn = typeof columns[0]
+type MyColumnKeys = keyof MyComplexTableRow
 
-function MyTableSorter(rows: Array<MyTableRow>, sortDirection: NonNullSortDirection<MyColumnKeys>): Array<MyTableRow> {
+function MyComplexTableSorter(
+  rows: Array<MyComplexTableRow>,
+  sortDirection: NonNullSortDirection<MyColumnKeys>
+): Array<MyComplexTableRow> {
   const columnID = sortDirection[0]
   const currentSortDirection = sortDirection[1]
   return rows.sort(function (a, b) {
@@ -44,18 +47,22 @@ function MyTableSorter(rows: Array<MyTableRow>, sortDirection: NonNullSortDirect
   })
 }
 
-function MyTable() {
+export function MyComplexTable() {
   return (
     <SimpleTable
       rows={rows}
       columns={columns}
-      headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
-      bodyRenderer={(row: MyTableRow, columnID: MyColumnKeys) => <span>{row[columnID]}</span>}
+      headerRenderer={(column: MyComplexTableColumn) => <span>{column.label}</span>}
+      bodyRenderer={(row: MyComplexTableRow, columnID: MyColumnKeys) => <span>{row[columnID]}</span>}
       defaultSortDirection={["file", "asc"]}
-      rowSorter={MyTableSorter}
+      rowSorter={MyComplexTableSorter}
       getRowID={(row) => JSON.stringify(row)}
     />
   )
 }
 
-render(() => <MyTable />, document.getElementById("app"))
+// skip rendering if in test mode
+if (process.env.NODE_ENV !== "test") {
+  // render demo
+  render(() => <MyComplexTable />, document.getElementById("app")!)
+}

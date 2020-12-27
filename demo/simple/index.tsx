@@ -8,8 +8,12 @@ const rows = [
   { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
-function MyTable() {
+export function MySimpleTable() {
   return <SimpleTable rows={rows} />
 }
 
-render(() => <MyTable />, document.getElementById("app"))
+// skip rendering if in test mode
+if (process.env.NODE_ENV !== "test") {
+  // render demo
+  render(() => <MySimpleTable />, document.getElementById("app")!)
+}
