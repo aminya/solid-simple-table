@@ -8,5 +8,4 @@ module.exports = {
       "<rootDir>/src/__mocks__/fileMock.js",
     "\\.(scss|sass|css)$": "identity-obj-proxy",
   },
-  roots: ["<rootDir>/src"],
 }

@@ -1,7 +1,7 @@
 import { render } from "solid-js/web"
 
-import { MySimpleTable, rows as mySimpleTableRows } from "../../demo/simple/index"
-import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../../demo/complex/index"
+import { MySimpleTable, rows as mySimpleTableRows } from "../demo/simple/index"
+import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../demo/complex/index"
 
 let rootElm: HTMLDivElement
 let dispose: () => void
