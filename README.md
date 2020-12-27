@@ -37,8 +37,12 @@ For other examples see the demo folder.
 ```ts
 
 <SimpleTable
-  // row and column
+  // row
   rows: Array<Row<K, V>>
+
+  // Optional props:
+
+  // columns
   columns?: Array<Column<K, V>>
 
   // renderers
