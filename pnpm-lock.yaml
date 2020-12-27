@@ -14,6 +14,7 @@ devDependencies:
   eslint-config-atomic: 1.5.1_eslint@7.16.0
   identity-obj-proxy: 3.0.0
   jest: 26.6.3
+  less: 4.0.0
   parcel: 2.0.0-nightly.489
   shx: 0.3.3
   solid-js: 0.23.4
@@ -4541,6 +4542,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-4FJkXzKXEDB1snCFZlLP4gpC3JILicCpGbzG9f9G7tGqGCzETQ2hWPrcinA9oU4wtf2biUaEH5065UnMeR33oA==
+  /copy-anything/2.0.1:
+    dependencies:
+      is-what: 3.12.0
+    dev: true
+    resolution:
+      integrity: sha512-lA57e7viQHOdPQcrytv5jFeudZZOXuyk47lZym279FiDQ8jeZomXiGuVf6ffMKkJ+3TIai3J1J3yi6M+/4U35g==
   /copy-descriptor/0.1.1:
     dev: true
     engines:
@@ -5244,6 +5251,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
+  /errno/0.1.8:
+    dependencies:
+      prr: 1.0.1
+    dev: true
+    hasBin: true
+    optional: true
+    resolution:
+      integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==
   /error-ex/1.3.2:
     dependencies:
       is-arrayish: 0.2.1
@@ -6461,6 +6476,14 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
+  /image-size/0.5.5:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    hasBin: true
+    optional: true
+    resolution:
+      integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=
   /import-fresh/2.0.0:
     dependencies:
       caller-path: 2.0.0
@@ -6866,6 +6889,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
+  /is-what/3.12.0:
+    dev: true
+    resolution:
+      integrity: sha512-2ilQz5/f/o9V7WRWJQmpFYNmQFZ9iM+OXRonZKcYgTkCzjb949Vi4h282PD1UfmgHk666rcWonbRJ++KI41VGw==
   /is-windows/1.0.2:
     dev: true
     engines:
@@ -7633,6 +7660,25 @@ packages:
     dev: true
     resolution:
       integrity: sha1-0yHbxNowuovzAk4ED6XBRmH5GTo=
+  /less/4.0.0:
+    dependencies:
+      copy-anything: 2.0.1
+      parse-node-version: 1.0.1
+      tslib: 1.14.1
+    dev: true
+    engines:
+      node: '>=6'
+    hasBin: true
+    optionalDependencies:
+      errno: 0.1.8
+      graceful-fs: 4.2.4
+      image-size: 0.5.5
+      make-dir: 2.1.0
+      mime: 1.6.0
+      native-request: 1.0.8
+      source-map: 0.6.1
+    resolution:
+      integrity: sha512-av1eEa2D0xZfF7fjLJS/Dld7zAYSLU7EOEJvuOELeaNI3i6L/81AdjbK5/pytaRkBwi7ZEa0433IDvMLskKCOw==
   /leven/3.1.0:
     dev: true
     engines:
@@ -7809,6 +7855,16 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=
+  /make-dir/2.1.0:
+    dependencies:
+      pify: 4.0.1
+      semver: 5.7.1
+    dev: true
+    engines:
+      node: '>=6'
+    optional: true
+    resolution:
+      integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==
   /make-dir/3.1.0:
     dependencies:
       semver: 6.3.0
@@ -7928,6 +7984,14 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
+  /mime/1.6.0:
+    dev: true
+    engines:
+      node: '>=4'
+    hasBin: true
+    optional: true
+    resolution:
+      integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
   /mime/2.4.7:
     dev: true
     engines:
@@ -8025,6 +8089,11 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==
+  /native-request/1.0.8:
+    dev: true
+    optional: true
+    resolution:
+      integrity: sha512-vU2JojJVelUGp6jRcLwToPoWGxSx23z/0iX+I77J3Ht17rf2INGjrhOoQnjVo60nQd8wVsgzKkPfRXBiVdD2ag==
   /natural-compare/1.4.0:
     dev: true
     resolution:
@@ -8477,6 +8546,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-+mi/lmVVNKFNVyLXV31ERiy2CY5E1/F6QtJFEzoChPRwwngMNXRDQ9GJ5WdE2Z2P4AujsOi0/+2qHID68KwfIQ==
+  /parse-node-version/1.0.1:
+    dev: true
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-3YHlOa/JgH6Mnpr05jP9eDG254US9ek25LyIxZlDItp2iJtwyaXQb57lBYLdT3MowkUFYEV2XXNAYIPlESvJlA==
   /parse5/5.1.0:
     dev: true
     resolution:
@@ -8585,6 +8660,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
+  /pify/4.0.1:
+    dev: true
+    engines:
+      node: '>=6'
+    optional: true
+    resolution:
+      integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
   /pirates/4.0.1:
     dependencies:
       node-modules-regexp: 1.0.0
@@ -9108,6 +9190,11 @@ packages:
     dev: true
     resolution:
       integrity: sha1-IS1b/hMYMGpCD2QCuOJv85ZHqEk=
+  /prr/1.0.1:
+    dev: true
+    optional: true
+    resolution:
+      integrity: sha1-0/wRS6BplaRexok/SEzrHXj19HY=
   /pseudomap/1.0.2:
     dev: true
     resolution:
@@ -10944,6 +11031,7 @@ specifiers:
   eslint-config-atomic: ^1.5.1
   identity-obj-proxy: ^3.0.0
   jest: ^26.0.1
+  less: ^4.0.0
   parcel: ^2.0.0-nightly.489
   shx: ^0.3.3
   solid-js: ^0.23.4
