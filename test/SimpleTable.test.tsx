@@ -107,7 +107,7 @@ test("renders complex table", () => {
       expect(header.className).toBe("sortable")
       expect(header.textContent).toBe(`${label}↓`)
     } else if (label == "Message") {
-      expect(header.className).toBe("undefined")
+      expect(header.className).toBe("")
       expect(header.textContent).toBe(`${label}`)
     } else {
       expect(header.className).toBe("sortable")

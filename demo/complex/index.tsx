@@ -1,5 +1,5 @@
 import { render } from "solid-js/web"
-import { SimpleTable } from "../../dist/SimpleTable"
+import { SimpleTable } from "../../src/SimpleTable"
 import type { NonNullSortDirection } from "../../src/SimpleTable"
 
 export const rows = [

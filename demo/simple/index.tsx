@@ -1,5 +1,5 @@
 import { render } from "solid-js/web"
-import { SimpleTable } from "../../dist/SimpleTable"
+import { SimpleTable } from "../../src/SimpleTable"
 
 export const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
