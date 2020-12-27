@@ -69,6 +69,15 @@ export function SimpleTable(props: Props) {
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, getRowID = defaultGetRowID } = props
 
+  function maybeRowID(row: Row) {
+    // if accessors are needed
+    if (props.accessors) {
+      return getRowID(row)
+    } else {
+      return undefined
+    }
+  }
+
   if (props.columns === undefined) {
     props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
   }
@@ -96,21 +105,15 @@ export function SimpleTable(props: Props) {
       <tbody>
         <For each={getRows()}>
           {(row) => {
-
-            // if accessors are needed
-            let key: string | undefined = undefined
-            if (props.accessors) {
-              key = getRowID(row)
-            }
-
+            const rowID = maybeRowID(row)
             return (
-              <tr id={key}>
+              <tr id={rowID}>
                 <For each={props.columns!}>
                   {(column) => {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        id={key ? `${key}.${column.key}` : undefined}
+                        id={rowID ? `${rowID}.${column.key}` : undefined}
                       >
                         {bodyRenderer(row, column.key)}
                       </td>
