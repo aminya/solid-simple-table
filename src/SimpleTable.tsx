@@ -11,6 +11,10 @@ export function SimpleTable(props: Props) {
     return state.sortDirection || props.initialSortDirection || new Map()
   }
 
+  function getSorter(): NonNullable<Props["rowSorter"]> {
+    return props.rowSorter || defaultSorter
+  }
+
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
       const sortDirection = getSortDirection()
@@ -23,7 +27,7 @@ export function SimpleTable(props: Props) {
 
   const sortDirection = getSortDirection()
   if (sortDirection.size && state.lastClickedColumnKey) {
-    props.rows = props.rowSorter(props.rows, state.lastClickedColumnKey, sortDirection)
+    props.rows = getSorter()(props.rows, state.lastClickedColumnKey, sortDirection)
   }
 
   return (

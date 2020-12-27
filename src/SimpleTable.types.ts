@@ -32,7 +32,7 @@ export type Props<K extends Key = string, V = any> = {
 
   // sort options
   initialSortDirection?: SortDirection<K>
-  rowSorter(rows: Array<Row>, columnKey: K, sortDirection: SortDirection<K>): Array<Row>
+  rowSorter?(rows: Array<Row>, columnKey: K, sortDirection: SortDirection<K>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
