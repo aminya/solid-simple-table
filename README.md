@@ -4,7 +4,7 @@
 
 Solid Table is an efficient reactive table component that gives you freedom.
 
-![Simple table demo](images/2020/12/simple-table-demo.png)
+![Simple table demo](demo/simple/simple-table-demo.png)
 
 ## Installation
 
