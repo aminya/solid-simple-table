@@ -5,7 +5,7 @@ import { Props, State, SortDirection, Row, Column, Key } from "./SimpleTable.typ
 export type { AnyObject, Renderable, Key, Row, Column, SortDirection, Props, State } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
-  const [state, setState] = createState<State>({ sortDirection: null })
+  const [state, setState] = createState<State>({})
 
   function getSortDirection(): SortDirection {
     return state.sortDirection || props.initialSortDirection || new Map()
