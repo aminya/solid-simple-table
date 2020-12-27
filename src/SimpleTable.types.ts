@@ -58,7 +58,7 @@ export type Props<K extends Key = string, V = any> = {
   accessors?: boolean
 
   /** a function that takes row and returns string unique key for that row */
-  rowKey?(row: Row): string
+  getRowID?(row: Row): string
 }
 
 // Component signals (states)

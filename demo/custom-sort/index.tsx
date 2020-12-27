@@ -53,7 +53,7 @@ function MyTable() {
       bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
       defaultSortDirection={["file", "asc"]}
       rowSorter={MyTableSorter}
-      rowKey={(row) => JSON.stringify(row)}
+      getRowID={(row) => JSON.stringify(row)}
     />
   )
 }

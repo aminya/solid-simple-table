@@ -67,7 +67,7 @@ export function SimpleTable(props: Props) {
     } // else ignore sort
   }
 
-  const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
+  const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, getRowID = defaultGetRowID } = props
 
   if (props.columns === undefined) {
     props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
@@ -100,7 +100,7 @@ export function SimpleTable(props: Props) {
             // if accessors are needed
             let key: string | undefined = undefined
             if (props.accessors) {
-              key = rowKey(row)
+              key = getRowID(row)
             }
 
             return (
@@ -163,7 +163,7 @@ function defaultBodyRenderer(row: Row, columnKey: Key) {
   return stringer(row[columnKey])
 }
 
-function defaultRowKey(row: Row) {
+function defaultGetRowID(row: Row) {
   return JSON.stringify(row)
 }
 
