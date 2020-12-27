@@ -2,7 +2,17 @@ import { createSignal } from "solid-js"
 import "./SimpleTable.less"
 import { Props, Signal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
 
-export type { AnyObject, Renderable, Key, Row, Column, SortDirection, NonNullSortDirection, Props, Signal } from "./SimpleTable.types"
+export type {
+  AnyObject,
+  Renderable,
+  Key,
+  Row,
+  Column,
+  SortDirection,
+  NonNullSortDirection,
+  Props,
+  Signal,
+} from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<Signal>()
@@ -15,8 +25,7 @@ export function SimpleTable(props: Props) {
     // use default sort direction:
     else if (props.defaultSortDirection !== undefined) {
       return props.defaultSortDirection
-    }
-    else {
+    } else {
       return [null, null]
     }
   }
@@ -32,9 +41,16 @@ export function SimpleTable(props: Props) {
   }
 
   // Row sorting logic:
-  function sortRows(rows: Array<Row>, currentSortDirection: SortDirection, defaultSortDirection: NonNullSortDirection | undefined) {
+  function sortRows(
+    rows: Array<Row>,
+    currentSortDirection: SortDirection,
+    defaultSortDirection: NonNullSortDirection | undefined
+  ) {
     // if should reset sort
-    if (currentSortDirection[0] === null && /* if defaultSortDirection is provided */ defaultSortDirection !== undefined) {
+    if (
+      currentSortDirection[0] === null &&
+      /* if defaultSortDirection is provided */ defaultSortDirection !== undefined
+    ) {
       // reset sort
       rows = getSorter()(rows, defaultSortDirection)
     }
@@ -44,7 +60,6 @@ export function SimpleTable(props: Props) {
     } // else ignore sort
     return rows
   }
-
 
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
@@ -180,9 +195,9 @@ function defaultSorter(rows: Array<Row>, sortDirection: NonNullSortDirection): A
       // equal values
       return 0
     } else if (r1_val < r2_val) {
-      return -1; //r1_val comes first
+      return -1 //r1_val comes first
     } else {
-      return 1; // r2_val comes first
+      return 1 // r2_val comes first
     }
   })
   return sortDirection[1] === "desc" ? rows.reverse() : rows

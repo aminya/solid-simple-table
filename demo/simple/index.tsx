@@ -9,11 +9,7 @@ const rows = [
 ]
 
 function MyTable() {
-  return (
-    <SimpleTable
-      rows={rows}
-    />
-  )
+  return <SimpleTable rows={rows} />
 }
 
 render(() => <MyTable />, document.getElementById("app"))

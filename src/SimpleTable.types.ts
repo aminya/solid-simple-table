@@ -44,4 +44,4 @@ export type Props<K extends Key = string, V = any> = {
 }
 
 // Component signal (state)
-export type Signal<K extends Key =string> = SortDirection<K> | undefined
+export type Signal<K extends Key = string> = SortDirection<K> | undefined
