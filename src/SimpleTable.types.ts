@@ -1,16 +1,18 @@
+import type { JSX } from "solid-js"
+
 // util types
-export type AnyObject = Record<string, any>
 export type Renderable = any
 
-// row and column types
-export type Key = string
-export type Row<K extends Key = string, V = any> = Record<K, V>
+export type IndexType = string | number
 
-export type Column<K extends Key = string, V = any> = {
+// row and column types
+export type Row = number | string | Record<IndexType, any>
+
+export type Column<K extends IndexType = IndexType> = {
   id: K
   label?: string
   sortable?: boolean
-  onClick?(e: MouseEvent, row: Row<K, V>): void
+  onClick?(e: MouseEvent, row: Row): void
 }
 
 /** Sort direction.
@@ -18,31 +20,34 @@ export type Column<K extends Key = string, V = any> = {
   @columnID is the key used for sorting
   @type is the direction of the sort
 */
-export type NonNullSortDirection<K = Key> = [columnID: K, type: "asc" | "desc"]
-export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnID: null, type: null]
+export type NonNullSortDirection<K extends IndexType = IndexType> = [columnID: K, type: "asc" | "desc"]
+export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirection<K> | [columnID: null, type: null]
 
 // Props
-export type Props<K extends Key = string, V = any> = {
+export type Props<K extends IndexType> = {
   // rows
-  rows: Array<Row<K, V>>
+  rows: Array<Row>
 
   // Optional props:
 
   // columns
 
-  // construct columns based on this row
-  // (Defaults to 0 first row)
-  representitiveRowNumber?: number
-
   // manually provided columns
-  columns?: Array<Column<K, V>>
+  columns?: Array<Column<K>>
+
+  /**
+    if columns is not provided and Row is an object, construct columns based on this row
+    Takes this Row's keys as Column IDs
+    @default 0 (first row)
+  */
+  representitiveRowNumber?: number
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
   bodyRenderer?(row: Row, columnID: K): string | Renderable
 
   // styles
-  style?: AnyObject
+  style?: JSX.CSSProperties | string
   className?: string
 
   // sort options
@@ -64,5 +69,5 @@ export type Props<K extends Key = string, V = any> = {
 }
 
 // Component signals (states)
-export type SortDirectionSignal<K extends Key = string> = SortDirection<K> | undefined
-export type RowsSignal<K extends Key = string, V = any> = Array<Row<K, V>>
+export type SortDirectionSignal<K extends IndexType = IndexType> = SortDirection<K> | undefined
+export type RowsSignal = Array<Row>

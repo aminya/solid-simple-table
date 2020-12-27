@@ -2,19 +2,17 @@ import { createSignal, For } from "solid-js"
 import "./SimpleTable.less"
 import {
   Props,
+  IndexType,
   SortDirectionSignal,
   RowsSignal,
   SortDirection,
   NonNullSortDirection,
   Row,
   Column,
-  Key,
 } from "./SimpleTable.types"
 
 export type {
-  AnyObject,
   Renderable,
-  Key,
   Row,
   Column,
   SortDirection,
@@ -24,7 +22,7 @@ export type {
   RowsSignal,
 } from "./SimpleTable.types"
 
-export function SimpleTable(props: Props) {
+export function SimpleTable(props: Props<IndexType>) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
   const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
 
@@ -41,14 +39,14 @@ export function SimpleTable(props: Props) {
     }
   }
 
-  function generateSortCallback(columnID: string) {
+  function generateSortCallback(columnID: IndexType) {
     return (e: MouseEvent) => {
       setSortDirection(sortClickHandler(getSortDirection(), columnID, /* append */ e.shiftKey))
       sortRows()
     }
   }
 
-  const rowSorter: NonNullable<Props["rowSorter"]> = props.rowSorter ?? defaultSorter
+  const rowSorter: NonNullable<Props<IndexType>["rowSorter"]> = props.rowSorter ?? defaultSorter
 
   // Row sorting logic:
   function sortRows() {
@@ -98,7 +96,7 @@ export function SimpleTable(props: Props) {
               const isSortable = column.sortable !== false
               return (
                 <th
-                  id={props.accessors ? column.id : undefined}
+                  id={props.accessors ? String(column.id) : undefined}
                   className={isSortable ? "sortable" : undefined}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
@@ -170,15 +168,19 @@ function defaultHeaderRenderer(column: Column) {
   return column.label ?? column.id
 }
 
-function defaultBodyRenderer(row: Row, columnID: Key) {
-  return stringer(row[columnID])
+function defaultBodyRenderer(row: Row, columnID: IndexType) {
+  if (typeof row === "object") {
+    return stringer(row[columnID])
+  } else {
+    return stringer(row)
+  }
 }
 
 function defaultGetRowID(row: Row) {
-  return JSON.stringify(row)
+  return stringer(row)
 }
 
-function renderHeaderIcon(sortDirection: SortDirection, columnID: Key) {
+function renderHeaderIcon(sortDirection: SortDirection, columnID: IndexType) {
   let icon
   if (sortDirection[0] === null || sortDirection[0] !== columnID) {
     icon = ARROW.BOTH
@@ -188,7 +190,7 @@ function renderHeaderIcon(sortDirection: SortDirection, columnID: Key) {
   return <span className="sort-icon">{icon}</span>
 }
 
-function sortClickHandler(sortDirection: SortDirection, columnID: Key, append: boolean) {
+function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, append: boolean) {
   const previousSortedColumn = sortDirection[0]
   const previousSortedDirection = sortDirection[1]
 
@@ -212,19 +214,30 @@ function sortClickHandler(sortDirection: SortDirection, columnID: Key, append: b
  @param rows: the rows of the table
  @param columnID: the last clicked columnID
 */
-function defaultSorter(rows: Array<Row>, sortDirection: NonNullSortDirection): Array<Row> {
+function defaultSorter(
+  rows: Array<number | string | Record<IndexType, any>>,
+  sortDirection: NonNullSortDirection
+): Array<Row> {
+  if (!rows.length) {
+    return rows
+  }
   const columnID = sortDirection[0]
-  rows = rows.sort(function (r1, r2) {
-    const r1_val = r1[columnID]
-    const r2_val = r2[columnID]
-    if (r1_val == r2_val) {
-      // equal values
-      return 0
-    } else if (r1_val < r2_val) {
-      return -1 //r1_val comes first
-    } else {
-      return 1 // r2_val comes first
-    }
-  })
+  if (typeof rows[0] === "object") {
+    rows = rows.sort((r1, r2) => {
+      const r1_val = (r1 as Record<IndexType, any>)[columnID]
+      const r2_val = (r2 as Record<IndexType, any>)[columnID]
+      if (r1_val == r2_val) {
+        // equal values
+        return 0
+      } else if (r1_val < r2_val) {
+        return -1 //r1_val comes first
+      } else {
+        return 1 // r2_val comes first
+      }
+    })
+  } else {
+    rows = rows.sort()
+  }
+
   return sortDirection[1] === "desc" ? rows.reverse() : rows
 }
