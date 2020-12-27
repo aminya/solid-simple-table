@@ -152,7 +152,7 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
   const previousSortedDirection = sortDirection[1]
 
   // if holding shiftKey while clicking: reset sorting
-  if (append || previousSortedColumn === null) {
+  if (append) {
     sortDirection = [null, null]
   }
   // if clicking on an already sorted column: invert direction on click
