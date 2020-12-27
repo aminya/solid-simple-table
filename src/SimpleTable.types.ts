@@ -13,8 +13,13 @@ export type Column<K extends Key = string, V = any> = {
   onClick?(e: MouseEvent, row: Row<K, V>): void
 }
 
-// sort info
-export type SortDirection<K = Key> = Map<K, "asc" | "desc">
+/** Sort direction.
+  It is a tuple:
+  @columnKey is the key used for sorting
+  @direction is the direction of the sort
+*/
+export type NonNullSortDirection<K = Key> = [columnKey: K, direction: "asc" | "desc"]
+export type SortDirection<K = Key> = NonNullSortDirection<K> | [columnKey: null, direction: null]
 
 // Props
 export type Props<K extends Key = string, V = any> = {
@@ -31,8 +36,8 @@ export type Props<K extends Key = string, V = any> = {
   className?: string
 
   // sort options
-  initialSortDirection?: [columnKey: K, direction: "asc" | "desc"]
-  rowSorter?(rows: Array<Row>, columnKey: K, sortDirection: SortDirection<K>): Array<Row>
+  defaultSortDirection?: NonNullSortDirection<K>
+  rowSorter?(rows: Array<Row>, sortDirection: NonNullSortDirection<K>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string

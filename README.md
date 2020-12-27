@@ -72,7 +72,7 @@ function MyTable() {
       columns={columns}
       headerRenderer={(column: MyTableColumn) => <span>{column.label}</span>}
       bodyRenderer={(row: MyTableRow, columnKey: MyColumnKeys) => <span>{row[columnKey]}</span>}
-      initialSortDirection={[{ columnKey: "file", type: "asc" }]}
+      defaultSortDirection={[{ columnKey: "file", type: "asc" }]}
       sort={MyTableSorter}
       rowKey={(row) => JSON.stringify(row)}
     />
@@ -100,7 +100,7 @@ render(() => <MyTable />, document.getElementById("app"))
   className?: string
 
   // sort options
-  initialSortDirection?: SortDirection<K>
+  defaultSortDirection?: SortDirection<K>
   sort(sortDirection: SortDirection<K>, rows: Array<Row>): Array<Row>
 
   /** a function that takes row and returns string unique key for that row */

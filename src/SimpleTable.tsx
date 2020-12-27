@@ -1,8 +1,8 @@
 import { createState } from "solid-js"
 import "./SimpleTable.less"
-import { Props, State, SortDirection, Row, Column, Key } from "./SimpleTable.types"
+import { Props, State, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
 
-export type { AnyObject, Renderable, Key, Row, Column, SortDirection, Props, State } from "./SimpleTable.types"
+export type { AnyObject, Renderable, Key, Row, Column, SortDirection, NonNullSortDirection, Props, State } from "./SimpleTable.types"
 
 export function SimpleTable(props: Props) {
   const [state, setState] = createState<State>({})
@@ -10,12 +10,13 @@ export function SimpleTable(props: Props) {
   function getSortDirection(): SortDirection {
     if (state.sortDirection !== undefined) {
       return state.sortDirection
-    } else if (props.initialSortDirection !== undefined) {
-      const sortDirection = new Map([props.initialSortDirection])
-      setState({ sortDirection, sortedColumnKey: props.initialSortDirection[0] })
-      return sortDirection
+    }
+    // use default sort direction:
+    else if (props.defaultSortDirection !== undefined) {
+      setState({ sortDirection: props.defaultSortDirection })
+      return props.defaultSortDirection
     } else {
-      return new Map()
+      return [null, null]
     }
   }
 
@@ -25,19 +26,28 @@ export function SimpleTable(props: Props) {
 
   function generateSortCallback(columnKey: string) {
     return (e: MouseEvent) => {
-      const sortDirection = getSortDirection()
-      sortClickHandler(sortDirection, columnKey, /* append */ e.shiftKey)
-      setState({ sortDirection, sortedColumnKey: columnKey })
+      setState({ sortDirection: sortClickHandler(getSortDirection(), columnKey, /* append */ e.shiftKey) })
     }
   }
 
+  // Row sorting logic:
+  function sortRows(rows: Array<Row>, currentSortDirection: SortDirection, defaultSortDirection: NonNullSortDirection | undefined) {
+    // if should reset sort
+    if (currentSortDirection[0] === null && /* if defaultSortDirection is provided */ defaultSortDirection !== undefined) {
+      // reset sort
+      rows = getSorter()(rows, defaultSortDirection)
+    }
+    // if should sort normally
+    else if (currentSortDirection[0] !== null) {
+      rows = getSorter()(rows, currentSortDirection)
+    } // else ignore sort
+    return rows
+  }
+
+
   const { headerRenderer = defaultHeaderRenderer, bodyRenderer = defaultBodyRenderer, rowKey = defaultRowKey } = props
 
-  const sortDirection = getSortDirection()
-  // sort rows
-  if (sortDirection.size !== 0 && state.sortedColumnKey !== undefined) {
-    props.rows = getSorter()(props.rows, state.sortedColumnKey, sortDirection)
-  }
+  props.rows = sortRows(props.rows, getSortDirection(), props.defaultSortDirection)
 
   if (props.columns === undefined) {
     props.columns = defaultColumnMaker(props.rows)
@@ -126,31 +136,33 @@ function defaultRowKey(row: Row) {
   return JSON.stringify(row)
 }
 
-function renderHeaderIcon(sortDirection: SortDirection, columnKey: string) {
+function renderHeaderIcon(sortDirection: SortDirection, columnKey: Key) {
   let icon
-  if (sortDirection.has(columnKey)) {
-    icon = sortDirection.get(columnKey) === "asc" ? ARROW.UP : ARROW.DOWN
-  } else {
+  if (sortDirection[0] === null || sortDirection[0] !== columnKey) {
     icon = ARROW.BOTH
+  } else {
+    icon = sortDirection[1] === "asc" ? ARROW.DOWN : ARROW.UP
   }
   return <span className="sort-icon">{icon}</span>
 }
 
 function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: boolean) {
-  // reset sorting if shiftKey is hold
-  if (append) {
-    sortDirection.clear()
-    return
+  const previousSortedColumn = sortDirection[0]
+  const previousSortedDirection = sortDirection[1]
+
+  // if holding shiftKey while clicking: reset sorting
+  if (append || previousSortedColumn === null) {
+    sortDirection = [null, null]
   }
-  if (!sortDirection.has(columnKey)) {
-    // default to asc if key not found
-    sortDirection.set(columnKey, "asc")
-  } else {
-    // invert direction on click
-    let type = sortDirection.get(columnKey)
-    type = type === "asc" ? "desc" : "asc" // invert direction
-    sortDirection.set(columnKey, type)
+  // if clicking on an already sorted column: invert direction on click
+  else if (previousSortedColumn === columnKey) {
+    sortDirection[1] = previousSortedDirection === "asc" ? "desc" : "asc" // invert direction
   }
+  // if clicking on a new column
+  else {
+    sortDirection[1] = "asc" // sort asc
+  }
+  return sortDirection
 }
 
 /**
@@ -158,12 +170,8 @@ function sortClickHandler(sortDirection: SortDirection, columnKey: Key, append: 
  @param rows: the rows of the table
  @param columnKey: the last clicked columnKey
 */
-function defaultSorter(rows: Array<Row>, columnKey: Key, sortInfo: SortDirection): Array<Row> {
-  let isDesc: boolean = false // by default sort asc
-  if (sortInfo.has(columnKey)) {
-    const sortDirection = sortInfo.get(columnKey)
-    isDesc = sortDirection == "desc"
-  }
+function defaultSorter(rows: Array<Row>, sortDirection: NonNullSortDirection): Array<Row> {
+  const columnKey = sortDirection[0]
   rows = rows.sort(function (r1, r2) {
     const r1_val = r1[columnKey]
     const r2_val = r2[columnKey]
@@ -176,5 +184,5 @@ function defaultSorter(rows: Array<Row>, columnKey: Key, sortInfo: SortDirection
       return 1; // r2_val comes first
     }
   })
-  return isDesc ? rows.reverse() : rows
+  return sortDirection[1] === "desc" ? rows.reverse() : rows
 }
