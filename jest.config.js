@@ -8,4 +8,11 @@ module.exports = {
       "<rootDir>/src/__mocks__/fileMock.js",
     "\\.(scss|sass|css|less|styl)$": "identity-obj-proxy",
   },
+  "collectCoverageFrom": [
+  "src/**/*.{ts,tsx}"
+  ],
+  "coveragePathIgnorePatterns": [
+    "assets",
+    ".css.d.ts"
+  ],
 }
