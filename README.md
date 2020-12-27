@@ -4,6 +4,8 @@
 
 Solid Table is an efficient reactive table component that gives you freedom.
 
+![Simple table demo](images/2020/12/simple-table-demo.png)
+
 ## Installation
 
       npm install --save solid-simple-table
