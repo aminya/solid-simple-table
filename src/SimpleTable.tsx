@@ -83,7 +83,7 @@ export function SimpleTable(props: Props) {
           <For each={props.columns}>
             {(column) => (
               <th
-                id={column.key}
+                id={props.accessors ? column.key : undefined}
                 className={column.sortable !== false ? "sortable" : undefined}
                 onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
               >
@@ -96,7 +96,13 @@ export function SimpleTable(props: Props) {
       <tbody>
         <For each={getRows()}>
           {(row) => {
-            const key = rowKey(row)
+
+            // if accessors are needed
+            let key: string | undefined = undefined
+            if (props.accessors) {
+              key = rowKey(row)
+            }
+
             return (
               <tr id={key}>
                 <For each={props.columns!}>
@@ -104,7 +110,7 @@ export function SimpleTable(props: Props) {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        id={`${key}.${column.key}`}
+                        id={key ? `${key}.${column.key}` : undefined}
                       >
                         {bodyRenderer(row, column.key)}
                       </td>

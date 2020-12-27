@@ -49,6 +49,14 @@ export type Props<K extends Key = string, V = any> = {
   defaultSortDirection?: NonNullSortDirection<K>
   rowSorter?(rows: Array<Row>, sortDirection: NonNullSortDirection<K>): Array<Row>
 
+  // accessors
+
+  /**
+    set to true if you want column, row, and cell accessors
+    @default false
+  */
+  accessors?: boolean
+
   /** a function that takes row and returns string unique key for that row */
   rowKey?(row: Row): string
 }
