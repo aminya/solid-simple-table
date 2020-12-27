@@ -67,6 +67,63 @@ test("renders simple table", () => {
       expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
     }
   }
+
+  // test sorting
+  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
+    const header = headers[iColumn] as HTMLTableHeaderCellElement
+
+    const rows =  tbody.children
+    const mySimpleTableRowsRelatedRows = mySimpleTableRows.map(row => row[mySimpleTableRowsHeaders[iColumn]])
+
+    let relatedRows: HTMLTableCellElement[] = new Array(columnNum)
+    for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
+      const row = rows[iRow]
+      relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
+
+      // initial sort
+      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRows[iRow])
+    }
+
+    //@ts-ignore
+    header.__click(new MouseEvent("click"))
+    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
+
+
+    const rowsAsc =  tbody.children
+    const mySimpleTableRowsRelatedRowsAsc = mySimpleTableRowsRelatedRows.sort()
+
+    for (let iRow = 0, rowNum = rowsAsc.length; iRow < rowNum; iRow++) {
+      const row = rowsAsc[iRow]
+      relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
+
+      // initial sort
+      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRowsAsc[iRow])
+    }
+
+
+    //@ts-ignore
+    header.__click(new MouseEvent("click"))
+    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
+
+    const rowsDesc =  tbody.children
+    const mySimpleTableRowsRelatedRowsDesc = mySimpleTableRowsRelatedRows.sort().reverse()
+
+    for (let iRow = 0, rowNum = rowsDesc.length; iRow < rowNum; iRow++) {
+      const row = rowsDesc[iRow]
+      relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
+
+      // initial sort
+      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRowsDesc[iRow])
+    }
+
+    //@ts-ignore
+    header.__click(new MouseEvent("click"))
+    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
+
+    //@ts-ignore
+    header.__click(new MouseEvent("click"))
+    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
+  }
 })
 
 test("renders complex table", () => {
