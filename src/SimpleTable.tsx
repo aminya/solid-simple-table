@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js"
+import { createSignal, For } from "solid-js"
 import "./SimpleTable.less"
 import { Props, SortDirectionSignal, RowsSignal, SortDirection, NonNullSortDirection, Row, Column, Key } from "./SimpleTable.types"
 
@@ -76,39 +76,45 @@ export function SimpleTable(props: Props) {
     <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
       <thead>
         <tr>
-          {props.columns.map((column) => (
-            <th
-              key={column.key}
-              className={column.sortable !== false ? "sortable" : undefined}
-              onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
-            >
-              {headerRenderer(column)} {column.sortable !== false && renderHeaderIcon(getSortDirection(), column.key)}
-            </th>
-          ))}
+          <For each={props.columns}>
+            {(column) => (
+              <th
+                key={column.key}
+                className={column.sortable !== false ? "sortable" : undefined}
+                onClick={column.sortable !== false ? generateSortCallback(column.key) : undefined}
+              >
+                {headerRenderer(column)} {column.sortable !== false && renderHeaderIcon(getSortDirection(), column.key)}
+              </th>
+            )}
+          </For>
         </tr>
       </thead>
       <tbody>
-        {getRows().map(function (row) {
-          const key = rowKey(row)
-          return (
-            <tr key={key}>
-              {props.columns!.map(function (column) {
-                const givenOnClick = column.onClick
-                const onClick =
-                  givenOnClick &&
-                  function (e: MouseEvent) {
-                    givenOnClick(e, row)
-                  }
+        <For each={getRows()}>
+          {(row) => {
+            const key = rowKey(row)
+            return (
+              <tr key={key}>
+                <For each={props.columns!}>
+                  {(column) => {
+                    const givenOnClick = column.onClick
+                    const onClick =
+                      givenOnClick &&
+                      function (e: MouseEvent) {
+                        givenOnClick(e, row)
+                      }
 
-                return (
-                  <td onClick={onClick} key={`${key}.${column.key}`}>
-                    {bodyRenderer(row, column.key)}
-                  </td>
-                )
-              })}
-            </tr>
-          )
-        })}
+                    return (
+                      <td onClick={onClick} key={`${key}.${column.key}`}>
+                        {bodyRenderer(row, column.key)}
+                      </td>
+                    )
+                  }}
+                </For>
+              </tr>
+            )
+          }}
+        </For>
       </tbody>
     </table>
   )
