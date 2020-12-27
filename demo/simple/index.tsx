@@ -8,26 +8,10 @@ const rows = [
   { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
-const columns = [
-  {
-    key: "file",
-    label: "File",
-  },
-  {
-    key: "message",
-    label: "Message",
-  },
-  {
-    key: "severity",
-    label: "Severity",
-  },
-]
-
 function MyTable() {
   return (
     <SimpleTable
       rows={rows}
-      columns={columns}
     />
   )
 }
