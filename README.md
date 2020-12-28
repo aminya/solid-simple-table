@@ -5,6 +5,7 @@
 Solid Table is a blazing fast reactive table component that gives you freedom.
 
 ### Features
+
 - Very fast as it is compiled down to VanilaJS using Solid
 - Zero dependency and very small (~13KB)
 - Automatic sorting
@@ -21,6 +22,7 @@ Solid Table is a blazing fast reactive table component that gives you freedom.
       npm install --save solid-simple-table
 
 ## Usage
+
 [**Run demo here!**](https://aminya.github.io/solid-simple-table/)
 
 ```js

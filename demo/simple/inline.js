@@ -7,11 +7,12 @@ inline.html(
     relativeTo: "./demo/simple/dist",
   },
   (err, result) => {
-    if (err) { throw err }
+    if (err) {
+      throw err
+    }
     fs.writeFileSync("./demo/simple/dist/index.html", result)
   }
 )
-
 
 function readFileSync(file) {
   const contents = fs.readFileSync(file, "utf8")
