@@ -5,10 +5,12 @@ devDependencies:
   '@parcel/validator-typescript': 2.0.0-alpha.3
   '@testing-library/dom': 7.29.0
   '@testing-library/jest-dom': 5.11.6
+  '@types/chance': 1.1.1
   '@types/jest': 26.0.19
   '@types/node': 14.14.16
   babel-jest: 26.6.3
   babel-preset-solid: 0.23.4
+  chance: 1.1.7
   cross-env: 7.0.3
   eslint: 7.16.0
   eslint-config-atomic: 1.5.1_eslint@7.16.0
@@ -3203,6 +3205,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-kSjgDMZONiIfSH1Nxcr5JIRMwUetDki63FSQfpTCz8ogF3Ulqm8+mr5f78dUYs6vMiB6gBusQqfQmBvHZj/lwg==
+  /@types/chance/1.1.1:
+    dev: true
+    resolution:
+      integrity: sha512-Ze94JMnM33+dj/tQCWxXWaQ80uYmV9HwydTyrbHAiBa91ETQuI+3iF5OFPicDpQx+md+/6rDpTp9I2VKOGOtpw==
   /@types/graceful-fs/4.1.4:
     dependencies:
       '@types/node': 14.14.16
@@ -4265,6 +4271,10 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
+  /chance/1.1.7:
+    dev: true
+    resolution:
+      integrity: sha512-bua/2cZEfzS6qPm0vi3JEvGNbriDLcMj9lKxCQOjUcCJRcyjA7umP0zZm6bKWWlBN04vA0L99QGH/CZQawr0eg==
   /char-regex/1.0.2:
     dev: true
     engines:
@@ -11095,10 +11105,12 @@ specifiers:
   '@parcel/validator-typescript': ^2.0.0-alpha.3
   '@testing-library/dom': ^7.16.1
   '@testing-library/jest-dom': ^5.10.1
+  '@types/chance': ^1.1.1
   '@types/jest': 26.0.19
   '@types/node': 14.14.16
   babel-jest: ^26.6.3
   babel-preset-solid: ^0.23.4
+  chance: ^1.1.7
   cross-env: ^7.0.3
   eslint: ^7.16.0
   eslint-config-atomic: ^1.5.1

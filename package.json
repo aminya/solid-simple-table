@@ -7,6 +7,7 @@
   "types": "dist/SimpleTable.d.ts",
   "source": "src/SimpleTable.tsx",
   "demo": "./demo/simple/dist/index.html",
+  "benchmark": "./benchmark/dist/index.html",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --fix",
@@ -17,7 +18,8 @@
     "test": "cross-env BABAEL_CJS=true jest --coverage",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
-    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./demo/simple/inline.js && shx cp ./demo/simple/dist/index.html ."
+    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./demo/simple/inline.js && shx cp ./demo/simple/dist/index.html .",
+    "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
@@ -26,10 +28,12 @@
     "@parcel/validator-typescript": "^2.0.0-alpha.3",
     "@testing-library/dom": "^7.16.1",
     "@testing-library/jest-dom": "^5.10.1",
+    "@types/chance": "^1.1.1",
     "@types/jest": "26.0.19",
     "@types/node": "14.14.16",
     "babel-jest": "^26.6.3",
     "babel-preset-solid": "^0.23.4",
+    "chance": "^1.1.7",
     "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
     "eslint-config-atomic": "^1.5.1",
@@ -60,6 +64,13 @@
       "isLibrary": true
     },
     "demo": {
+      "context": "browser",
+      "engines": {
+        "browsers": "Chrome 76"
+      },
+      "includeNodeModules": true
+    },
+    "benchmark": {
       "context": "browser",
       "engines": {
         "browsers": "Chrome 76"
