@@ -7,7 +7,7 @@ Solid Table is a blazing fast reactive table component that gives you freedom.
 ### Features
 
 - Very fast as it is compiled down to VanilaJS using Solid
-- Zero dependency and very small (~13KB)
+- Zero dependency and very small (~6KB gzipped including solid-js!)
 - Automatic sorting
 - Support for custom header and row renderers (so the cells can be components themselves)
 - Support for custom sort functions
