@@ -78,6 +78,10 @@
       "includeNodeModules": true
     }
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aminya/solid-simple-table.git"
