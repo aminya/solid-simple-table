@@ -1,7 +1,7 @@
 {
   "name": "solid-simple-table",
-  "version": "0.0.1",
-  "description": "React Table Component done right",
+  "version": "0.1.0",
+  "description": "blazing fast reactive table component that gives you freedom",
   "main": "dist/SimpleTable.js",
   "module": "dist/SimpleTable.module.js",
   "types": "dist/SimpleTable.d.ts",
