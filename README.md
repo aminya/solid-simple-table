@@ -1,8 +1,8 @@
-# Solid Table
+# Solid SimpleTable
 
 ![CI](https://github.com/aminya/solid-simple-table/workflows/CI/badge.svg)
 
-Solid Table is a blazing fast reactive table component that gives you freedom.
+Solid SimpleTable is a blazing fast reactive table component that gives you freedom.
 
 ### Features
 
