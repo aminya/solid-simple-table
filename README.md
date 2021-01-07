@@ -15,7 +15,7 @@ Solid SimpleTable is a blazing fast reactive table component that gives you free
 - Support for DOM accessors
 - The library is fully tested with 90% of code coverage.
 
-![Simple table demo](demo/simple/simple-table-demo.gif)
+![Simple table demo](other/simple-table-demo.gif)
 
 ## Installation
 

@@ -18,7 +18,7 @@
     "test": "cross-env BABAEL_CJS=true jest --coverage",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
-    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./demo/simple/inline.js && shx cp ./demo/simple/dist/index.html .",
+    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./other/inline.js && shx cp ./demo/simple/dist/index.html .",
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr"
   },
   "devDependencies": {
