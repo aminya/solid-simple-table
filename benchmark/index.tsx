@@ -1,16 +1,16 @@
 import { render } from "solid-js/web"
 import { SimpleTable } from "../src/SimpleTable"
 
-import { Chance } from 'chance'
+import { Chance } from "chance"
 const chance = new Chance()
 
 let rows = new Array(1000)
 
 for (let iRow = 0; iRow < rows.length; iRow++) {
   rows[iRow] = {
-    "file": chance.sentence({ words: 1 }),
-    "message": chance.sentence({ words: 20 }),
-    "severity": chance.sentence({ words: 1 }),
+    file: chance.sentence({ words: 1 }),
+    message: chance.sentence({ words: 20 }),
+    severity: chance.sentence({ words: 1 }),
   }
 }
 
@@ -25,4 +25,4 @@ const ti = window.performance.now()
 render(() => <MySimpleTable />, document.getElementById("app")!)
 
 const tf = window.performance.now()
-console.log(`Render time: ${(tf-ti).toFixed()}`)
+console.log(`Render time: ${(tf - ti).toFixed()}`)

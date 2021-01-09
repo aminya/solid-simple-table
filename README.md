@@ -46,14 +46,16 @@ render(() => <MyTable />, document.getElementById("app"))
 ```
 
 The css is available under `dist/SimpleTable.css` which you can import into HTML:
+
 ```html
-<link rel="stylesheet" href="simple-solid-table/dist/SimpleTable.css">
+<link rel="stylesheet" href="simple-solid-table/dist/SimpleTable.css" />
 ```
+
 or in JavaScript:
+
 ```js
 impost 'simple-solid-table/dist/SimpleTable.css'
 ```
-
 
 For other examples, see [the demo folder](https://github.com/aminya/solid-simple-table/tree/master/demo).
 
