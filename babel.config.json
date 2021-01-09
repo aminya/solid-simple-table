@@ -1,12 +1,4 @@
 {
   "presets": ["babel-preset-solid", "@babel/preset-typescript", "@parcel/babel-preset-env"],
-  "plugins": [
-    "@parcel/babel-plugin-transform-runtime",
-    [
-      "@iwatakeshi/babel-plugin-remove-import-styles",
-      {
-        "extensions": [".less", ".sass", ".css"]
-      }
-    ]
-  ]
+  "plugins": [ "@parcel/babel-plugin-transform-runtime"]
 }

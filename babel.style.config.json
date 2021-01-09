@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    [
+      "@iwatakeshi/babel-plugin-remove-import-styles",
+      {
+        "extensions": [".less", ".sass", ".css"]
+      }
+    ]
+  ]
+}
