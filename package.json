@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
+    "@iwatakeshi/babel-plugin-remove-import-styles": "^1.0.4",
     "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.2130",
     "@parcel/babel-preset-env": "^2.0.0-nightly.508",
     "@parcel/validator-typescript": "^2.0.0-nightly.508",
