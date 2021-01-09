@@ -1,20 +1,25 @@
 // Parameters
+
 // text
 @text-size: 14px;
+@text-font: sans-serif;
 @text-color: black;
 @text-color-dark: #939caa;
+
 // background
 @backgroud-color: #fff - @text-color;
 @backgroud-color-dark: #31363f;
+
 // border
 @border: (@text-size/14) solid #fff;
 @border-color: #191a1f;
+
 
 /* Base Styles */
 
 .solid-simple-table {
   border: @border;
-  font-family: sans-serif;
+  font-family: @text-font;
   text-align: left;
   font-size: @text-size;
   border-collapse: collapse;
