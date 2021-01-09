@@ -14,7 +14,7 @@
     "clean": "shx rm -rf dist .parcel-cache",
     "dev": "cross-env NODE_ENV=development parcel watch --target main src/SimpleTable.tsx",
     "build": "cross-env NODE_ENV=production parcel build --target main --target types --target module src/SimpleTable.tsx && npm run style",
-    "style": "babel dist --out-dir dist --config-file babel.style.config.json",
+    "style": "babel dist --out-dir dist --config-file ./babel.style.config.json",
     "prepare": "npm run build",
     "test": "cross-env BABAEL_CJS=true jest --coverage",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
