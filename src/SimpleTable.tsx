@@ -148,7 +148,7 @@ function defaultColumnMaker(rows: Array<Row>, representitiveRowNumber: number = 
 
   // make Array<{key: columnID}>
   const columnNumber = columnIDs.length
-  let columns: Array<Column> = new Array(columnNumber)
+  const columns: Array<Column> = new Array(columnNumber)
   for (let iCol = 0; iCol < columnNumber; iCol++) {
     columns[iCol] = { id: columnIDs[iCol] }
   }
