@@ -27,7 +27,7 @@ export function SimpleTable(props: Props<IndexType>) {
   const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
 
   // update the local copy whenever the parent updates
-  createComputed(() =>{
+  createComputed(() => {
     setRows(props.rows)
   })
 
@@ -76,7 +76,7 @@ export function SimpleTable(props: Props<IndexType>) {
     headerRenderer = defaultHeaderRenderer,
     bodyRenderer = defaultBodyRenderer,
     getRowID = defaultGetRowID,
-    accessors
+    accessors,
   } = props
 
   function maybeRowID(row: Row) {
