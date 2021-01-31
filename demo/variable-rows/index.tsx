@@ -19,7 +19,7 @@ export function MyVariableRowsTable(props: Props) {
   onMount(() => {
     setInterval(() => {
       const rows = getRows()
-      rows.push({file: "New file", message: "New message", severity: "info"})
+      rows.push({ file: "New file", message: "New message", severity: "info" })
       setRows(rows)
     }, 1000)
   })
