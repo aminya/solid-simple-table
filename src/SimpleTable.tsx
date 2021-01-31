@@ -65,15 +65,18 @@ export function SimpleTable(props: Props<IndexType>) {
     } // else ignore sort
   }
 
+  // static props:
+  // destructure the props that are not tracked and are used inside the loop (cache the property access)
   const {
     headerRenderer = defaultHeaderRenderer,
     bodyRenderer = defaultBodyRenderer,
     getRowID = defaultGetRowID,
+    accessors
   } = props
 
   function maybeRowID(row: Row) {
     // if accessors are needed
-    if (props.accessors) {
+    if (accessors) {
       return getRowID(row)
     } else {
       return undefined
@@ -96,7 +99,7 @@ export function SimpleTable(props: Props<IndexType>) {
               const isSortable = column.sortable !== false
               return (
                 <th
-                  id={props.accessors ? String(column.id) : undefined}
+                  id={accessors ? String(column.id) : undefined}
                   className={isSortable ? "sortable" : undefined}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
