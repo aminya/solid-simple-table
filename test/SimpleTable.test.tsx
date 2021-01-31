@@ -183,6 +183,31 @@ test("renders variable rows table", async () => {
     }
   }
 
+  // test added rows
+  for (let i = 0; i < 4; i++) {
+
+    const addedRowIndex = 4 + i
+    expect(rows.length).toBe(addedRowIndex)
+    await new Promise(res => setTimeout(res, 1000))
+
+    const row = rows[addedRowIndex]
+    expect(row.tagName).toBe("tr".toUpperCase())
+
+    // test cells
+    const cells = row.children
+    expect(cells.length).toBe(Object.keys({ file: 'New file', message: 'New message', severity: 'info' }).length)
+
+    const mySimpleTableRowsValues = Object.values({ file: 'New file', message: 'New message', severity: 'info' })
+    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
+      const cell = cells[iCell]
+      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
+    }
+  }
+
+})
+
+
 test("renders complex table", () => {
   dispose = render(() => <MyComplexTable />, rootElm)
 
