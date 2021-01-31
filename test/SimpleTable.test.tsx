@@ -1,6 +1,7 @@
 import { render } from "solid-js/web"
 
 import { MySimpleTable, rows as mySimpleTableRows } from "../demo/simple/index"
+import { MyVariableRowsTable, initialRows as myVariableRowsTableInitialRows } from "../demo/variable-rows/index"
 import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../demo/complex/index"
 
 let rootElm: HTMLDivElement
@@ -125,6 +126,62 @@ test("renders simple table", () => {
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
   }
 })
+
+test("renders variable rows table", async () => {
+  dispose = render(() => <MyVariableRowsTable initialRows={myVariableRowsTableInitialRows} />, rootElm)
+  const children = rootElm.children
+  expect(children.length).toBe(1)
+
+  const table = children[0]
+  expect(table.tagName).toBe("table".toUpperCase())
+  expect(table.classList[0]).toBe("solid-simple-table")
+
+  const tableChildren = table.children
+  expect(tableChildren.length).toBe(2)
+
+  const thead = tableChildren[0]
+  const tbody = tableChildren[1]
+
+  expect(thead.tagName).toBe("thead".toUpperCase())
+  expect(tbody.tagName).toBe("tbody".toUpperCase())
+
+  expect(thead.children.length).toBe(1)
+
+  const tr = thead.firstElementChild
+  expect(tr?.tagName).toBe("tr".toUpperCase())
+
+  // test headers
+  const headers = tr!.children
+
+  expect(headers.length).toBe(Object.keys(myVariableRowsTableInitialRows[0]).length)
+
+  const myVariableRowsTableRowsHeaders = Object.keys(myVariableRowsTableInitialRows[0])
+  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
+    const header = headers[iColumn]
+    expect(header.tagName).toBe("th".toUpperCase())
+    expect(header.className).toBe("sortable")
+    expect(header.textContent).toBe(`${myVariableRowsTableRowsHeaders[iColumn]}⇅`)
+  }
+
+  const rows = tbody.children
+
+  // test rows
+  for (let iRow = 0, rowNum = myVariableRowsTableInitialRows.length; iRow < rowNum; iRow++) {
+    const row = rows[iRow]
+
+    expect(row.tagName).toBe("tr".toUpperCase())
+
+    // test cells
+    const cells = row.children
+    expect(cells.length).toBe(Object.keys(myVariableRowsTableInitialRows[iRow]).length)
+
+    const mySimpleTableRowsValues = Object.values(myVariableRowsTableInitialRows[iRow])
+    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
+      const cell = cells[iCell]
+      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
+    }
+  }
 
 test("renders complex table", () => {
   dispose = render(() => <MyComplexTable />, rootElm)
