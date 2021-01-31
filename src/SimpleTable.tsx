@@ -11,16 +11,7 @@ import {
   Column,
 } from "./SimpleTable.types"
 
-export type {
-  Renderable,
-  Row,
-  Column,
-  SortDirection,
-  NonNullSortDirection,
-  Props,
-  SortDirectionSignal,
-  RowsSignal,
-} from "./SimpleTable.types"
+export * from "./SimpleTable.types"
 
 export function SimpleTable(props: Props<IndexType>) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
