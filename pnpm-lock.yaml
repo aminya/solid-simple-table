@@ -14,11 +14,11 @@ devDependencies:
   babel-preset-solid: 0.23.8
   chance: 1.1.7
   cross-env: 7.0.3
-  eslint: 7.18.0
-  eslint-config-atomic: 1.6.1_eslint@7.18.0
+  eslint: 7.19.0
+  eslint-config-atomic: 1.6.1_eslint@7.19.0
   identity-obj-proxy: 3.0.0
   jest: 26.6.3
-  less: 4.1.0
+  less: 4.1.1
   parcel: 2.0.0-nightly.558
   shx: 0.3.3
   solid-js: 0.23.11
@@ -2106,7 +2106,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-uAeRadHW0LJegl9sk6tGFIgrSuhkgvOP5BZ4GBbToDjYs16B3QNsY0Q5pScGdgIdfkyFin9pXz+dtTf7XXw7RQ==
-  /@parcel/cache/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/cache/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/logger': 2.0.0-nightly.560
@@ -2129,7 +2129,7 @@ packages:
       node: '>= 12.0.0'
     resolution:
       integrity: sha512-AZ57ks24+OYAXqDBGnM2tWNcuOLs53zvYSo0gfprsaRSodsq7KDTb99hORz3R6LxQed1bxtoDH7dQSvVmIdwzg==
-  /@parcel/config-default/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/config-default/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/bundler-default': 2.0.0-nightly.560
       '@parcel/core': 2.0.0-nightly.558
@@ -2137,10 +2137,10 @@ packages:
       '@parcel/optimizer-cssnano': 2.0.0-nightly.560
       '@parcel/optimizer-data-url': 2.0.0-nightly.560
       '@parcel/optimizer-htmlnano': 2.0.0-nightly.560
-      '@parcel/optimizer-terser': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/optimizer-terser': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/packager-css': 2.0.0-nightly.560
       '@parcel/packager-html': 2.0.0-nightly.560
-      '@parcel/packager-js': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/packager-js': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/packager-raw': 2.0.0-nightly.560
       '@parcel/packager-raw-url': 2.0.0-nightly.2182
       '@parcel/packager-ts': 2.0.0-nightly.560
@@ -2152,8 +2152,8 @@ packages:
       '@parcel/runtime-browser-hmr': 2.0.0-nightly.560
       '@parcel/runtime-js': 2.0.0-nightly.560
       '@parcel/runtime-react-refresh': 2.0.0-nightly.560
-      '@parcel/transformer-babel': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
-      '@parcel/transformer-coffeescript': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/transformer-babel': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
+      '@parcel/transformer-coffeescript': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/transformer-css': 2.0.0-nightly.560
       '@parcel/transformer-elm': 2.0.0-nightly.2182
       '@parcel/transformer-glsl': 2.0.0-nightly.2182
@@ -2161,7 +2161,7 @@ packages:
       '@parcel/transformer-html': 2.0.0-nightly.560
       '@parcel/transformer-image': 2.0.0-nightly.2182
       '@parcel/transformer-inline-string': 2.0.0-nightly.560
-      '@parcel/transformer-js': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/transformer-js': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/transformer-json': 2.0.0-nightly.560
       '@parcel/transformer-jsonld': 2.0.0-nightly.2182
       '@parcel/transformer-less': 2.0.0-nightly.560
@@ -2171,12 +2171,12 @@ packages:
       '@parcel/transformer-pug': 2.0.0-nightly.560
       '@parcel/transformer-raw': 2.0.0-nightly.560
       '@parcel/transformer-react-refresh-babel': 2.0.0-nightly.560
-      '@parcel/transformer-react-refresh-wrap': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
-      '@parcel/transformer-sass': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/transformer-react-refresh-wrap': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
+      '@parcel/transformer-sass': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/transformer-stylus': 2.0.0-nightly.560
       '@parcel/transformer-sugarss': 2.0.0-nightly.560
       '@parcel/transformer-toml': 2.0.0-nightly.560
-      '@parcel/transformer-typescript-types': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/transformer-typescript-types': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/transformer-vue': 2.0.0-nightly.2182
       '@parcel/transformer-yaml': 2.0.0-nightly.560
     dev: true
@@ -2186,17 +2186,17 @@ packages:
       integrity: sha512-f3fms0eISlWjJpo81vx2jswPD7lky70hdGnNWS1OVf6Bv9b/OvTKKKjq9VFoydnupB5/PdDq8SzyW1jz/F9BLQ==
   /@parcel/core/2.0.0-nightly.558:
     dependencies:
-      '@parcel/cache': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/cache': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/diagnostic': 2.0.0-nightly.560
       '@parcel/events': 2.0.0-nightly.560
-      '@parcel/fs': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/fs': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/logger': 2.0.0-nightly.560
-      '@parcel/package-manager': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/package-manager': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/plugin': 2.0.0-nightly.560
       '@parcel/source-map': 2.0.0-alpha.4.19
       '@parcel/types': 2.0.0-nightly.560
       '@parcel/utils': 2.0.0-nightly.560
-      '@parcel/workers': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/workers': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       abortcontroller-polyfill: 1.5.0
       base-x: 3.0.8
       browserslist: 4.16.0
@@ -2244,14 +2244,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-a2eqokSeifMRbgFRGxUVYFS2sLnhuJahRjxNEk4dayFjfNxM5UXu+lFvzj/UGcmjBt1DDyYiPyp1zm9ZE6f1QA==
-  /@parcel/fs/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/fs/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/fs-search': 2.0.0-nightly.2182
       '@parcel/fs-write-stream-atomic': 2.0.0-nightly.2182
       '@parcel/utils': 2.0.0-nightly.560
       '@parcel/watcher': 2.0.0-alpha.8
-      '@parcel/workers': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/workers': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       graceful-fs: 4.2.4
       mkdirp: 0.5.5
       ncp: 2.0.0
@@ -2371,7 +2371,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-FpwFZaFvWZUQ9jkIeOWlaWL9H45kC3lzhtQlIpXgpb3OtGmh/EvGQLVKQQ1R5pQQePfRf92ys1ywh8/7yWSVzw==
-  /@parcel/optimizer-terser/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/optimizer-terser/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/diagnostic': 2.0.0-nightly.560
@@ -2388,14 +2388,14 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-8daObZg+udFSS30gVcB99/8mixhqcmCIZOEV0qTWZfyv6U2eMaKiwbJJ2Lzr4E5LpXMc4/jYzKTbiTkkHBk3ag==
-  /@parcel/package-manager/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/package-manager/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/diagnostic': 2.0.0-nightly.560
-      '@parcel/fs': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/fs': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/logger': 2.0.0-nightly.560
       '@parcel/utils': 2.0.0-nightly.560
-      '@parcel/workers': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/workers': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       command-exists: 1.2.9
       cross-spawn: 6.0.5
       nullthrows: 1.1.1
@@ -2435,7 +2435,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-ccHXFSOt3uRuv0RJ4CPpdjO9+DOvsjsBbdi9I9ON3Q8xdiPaZZyhYhpsriYiwptMptUNRLaxBDSaC11zsD5A7A==
-  /@parcel/packager-js/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/packager-js/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@babel/traverse': 7.12.12
       '@parcel/core': 2.0.0-nightly.558
@@ -2611,7 +2611,7 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-pb8ciLbctRE/Z2KTJnVPvlrHm/ArG3IdX5nPDz3qcEA0RHDFikfv3/WZHO77b5/jtDHhvHuaBqmqPpVr0OuVRg==
-  /@parcel/transformer-babel/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-babel/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@babel/core': 7.12.10
       '@babel/helper-compilation-targets': 7.12.5_@babel+core@7.12.10
@@ -2637,7 +2637,7 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-O4Nko5N6jcYuav66EYULvXtbpdKEq70zyO5FUSHyAoflOZ79d8jXd21PS0Tjz01CVVatAkzjSjgkQ8Pj4D8MYg==
-  /@parcel/transformer-coffeescript/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-coffeescript/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/plugin': 2.0.0-nightly.560
@@ -2735,7 +2735,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-l0RY3BaAcgcU8OWiJY2hwktjIxxYxvC9efrYjPAE6LhQAwQgt75b2u7hL9Gfj9TfHS2W5kXFCfN6+RloKGqiFA==
-  /@parcel/transformer-js/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-js/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@babel/core': 7.12.10
       '@babel/parser': 7.12.11
@@ -2857,7 +2857,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-sCKlOYINgldbODasL5I0t+epWIWlQKNjMQkDp1wbKaCyoHqGdpNtvjn/KR5r5Dajtqoa1Pv8IQmH9jV7JKTtIQ==
-  /@parcel/transformer-react-refresh-wrap/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-react-refresh-wrap/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@babel/parser': 7.12.11
       '@babel/template': 7.12.7
@@ -2876,10 +2876,10 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-gN7tjDwL1me9iJrtCL8esQTjpOQjxSa1wPiiFR0UQ20lcHmhZCZZ8CjK4ZALQYqR8BPlVOzv4rlqhcBp044d8g==
-  /@parcel/transformer-sass/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-sass/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
-      '@parcel/fs': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/fs': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/plugin': 2.0.0-nightly.560
       '@parcel/source-map': 2.0.0-alpha.4.19
       '@parcel/utils': 2.0.0-nightly.560
@@ -2920,7 +2920,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-SGPUQrqbwXH0UaueoyI4qvC9mM4B+SZrcJQLSAsc8HEM6Q64l6gyFazHsFhohdQdmAnYvQgb25mq5unkcO3cOQ==
-  /@parcel/transformer-typescript-types/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/transformer-typescript-types/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/plugin': 2.0.0-nightly.560
@@ -3021,7 +3021,7 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-9aQu1SFkR6t1UYo3Mj1Vg39/Scaa9i4xGZnZ5Ug/qLyVzHmdjyKDyAbsbUDAd1O2e+MUhr5GI1w1FzBI6J31Jw==
-  /@parcel/workers/2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558:
+  /@parcel/workers/2.0.0-nightly.560_47b3b21282e94c03939debad92922698:
     dependencies:
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/diagnostic': 2.0.0-nightly.560
@@ -3208,13 +3208,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-f+fD/fQAo3BCbCDlrUpznF1A5Zp9rB0noS5vnoormHSIPFKL0Z2DcUJ3Gxp5ytH4uLRNxy7AwYUC9exZzqGMAw==
-  /@typescript-eslint/eslint-plugin/4.14.1_5aaa83948f53bc6d11a4ce27d9931983:
+  /@typescript-eslint/eslint-plugin/4.14.1_c92627de29ddf8f42a4f4f9eaac8feea:
     dependencies:
-      '@typescript-eslint/experimental-utils': 4.14.1_eslint@7.18.0+typescript@4.1.3
-      '@typescript-eslint/parser': 4.14.1_eslint@7.18.0+typescript@4.1.3
+      '@typescript-eslint/experimental-utils': 4.14.1_eslint@7.19.0+typescript@4.1.3
+      '@typescript-eslint/parser': 4.14.1_eslint@7.19.0+typescript@4.1.3
       '@typescript-eslint/scope-manager': 4.14.1
       debug: 4.3.1
-      eslint: 7.18.0
+      eslint: 7.19.0
       functional-red-black-tree: 1.0.1
       lodash: 4.17.20
       regexpp: 3.1.0
@@ -3233,13 +3233,13 @@ packages:
         optional: true
     resolution:
       integrity: sha512-5JriGbYhtqMS1kRcZTQxndz1lKMwwEXKbwZbkUZNnp6MJX0+OVXnG0kOlBZP4LUAxEyzu3cs+EXd/97MJXsGfw==
-  /@typescript-eslint/experimental-utils/4.14.1_eslint@7.18.0+typescript@4.1.3:
+  /@typescript-eslint/experimental-utils/4.14.1_eslint@7.19.0+typescript@4.1.3:
     dependencies:
       '@types/json-schema': 7.0.6
       '@typescript-eslint/scope-manager': 4.14.1
       '@typescript-eslint/types': 4.14.1
       '@typescript-eslint/typescript-estree': 4.14.1_typescript@4.1.3
-      eslint: 7.18.0
+      eslint: 7.19.0
       eslint-scope: 5.1.1
       eslint-utils: 2.1.0
     dev: true
@@ -3250,13 +3250,13 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-2CuHWOJwvpw0LofbyG5gvYjEyoJeSvVH2PnfUQSn0KQr4v8Dql2pr43ohmx4fdPQ/eVoTSFjTi/bsGEXl/zUUQ==
-  /@typescript-eslint/parser/4.14.1_eslint@7.18.0+typescript@4.1.3:
+  /@typescript-eslint/parser/4.14.1_eslint@7.19.0+typescript@4.1.3:
     dependencies:
       '@typescript-eslint/scope-manager': 4.14.1
       '@typescript-eslint/types': 4.14.1
       '@typescript-eslint/typescript-estree': 4.14.1_typescript@4.1.3
       debug: 4.3.1
-      eslint: 7.18.0
+      eslint: 7.19.0
       typescript: 4.1.3
     dev: true
     engines:
@@ -3660,13 +3660,13 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Y/1D99weO7fONZR9uP42mj9Yx0s=
-  /babel-eslint/10.1.0_eslint@7.18.0:
+  /babel-eslint/10.1.0_eslint@7.19.0:
     dependencies:
       '@babel/code-frame': 7.12.11
       '@babel/parser': 7.12.11
       '@babel/traverse': 7.12.12
       '@babel/types': 7.12.12
-      eslint: 7.18.0
+      eslint: 7.19.0
       eslint-visitor-keys: 1.3.0
       resolve: 1.19.0
     deprecated: babel-eslint is now @babel/eslint-parser. This package will no longer receive updates.
@@ -5332,11 +5332,11 @@ packages:
       source-map: 0.6.1
     resolution:
       integrity: sha512-qFcX0XJkdg+PB3xjZZG/wKSuT1PnQWx57+TVSjIMmILd2yC/6ByYElPwJnslDsuWuSAp4AwJGumarAAmJch5Kw==
-  /eslint-config-airbnb-base/14.2.1_d4477e7d44043beb7952cd76bd313965:
+  /eslint-config-airbnb-base/14.2.1_846d62cfa210dc3f225625c64ae883be:
     dependencies:
       confusing-browser-globals: 1.0.10
-      eslint: 7.18.0
-      eslint-plugin-import: 2.22.1_eslint@7.18.0
+      eslint: 7.19.0
+      eslint-plugin-import: 2.22.1_eslint@7.19.0
       object.assign: 4.1.2
       object.entries: 1.1.3
     dev: true
@@ -5347,13 +5347,13 @@ packages:
       eslint-plugin-import: ^2.22.1
     resolution:
       integrity: sha512-GOrQyDtVEc1Xy20U7vsB2yAoB4nBlfH5HZJeatRXHleO+OS5Ot+MWij4Dpltw4/DyIkqUfqz1epfhVR5XWWQPA==
-  /eslint-config-airbnb/18.2.1_ec097f56d230e219ca3e6f6777d72a54:
+  /eslint-config-airbnb/18.2.1_269fe49487e42607dd7c62d316648398:
     dependencies:
-      eslint: 7.18.0
-      eslint-config-airbnb-base: 14.2.1_d4477e7d44043beb7952cd76bd313965
-      eslint-plugin-import: 2.22.1_eslint@7.18.0
-      eslint-plugin-jsx-a11y: 6.4.1_eslint@7.18.0
-      eslint-plugin-react: 7.22.0_eslint@7.18.0
+      eslint: 7.19.0
+      eslint-config-airbnb-base: 14.2.1_846d62cfa210dc3f225625c64ae883be
+      eslint-plugin-import: 2.22.1_eslint@7.19.0
+      eslint-plugin-jsx-a11y: 6.4.1_eslint@7.19.0
+      eslint-plugin-react: 7.22.0_eslint@7.19.0
       object.assign: 4.1.2
       object.entries: 1.1.3
     dev: true
@@ -5367,19 +5367,19 @@ packages:
       eslint-plugin-react-hooks: ^4 || ^3 || ^2.3.0 || ^1.7.0
     resolution:
       integrity: sha512-glZNDEZ36VdlZWoxn/bUR1r/sdFKPd1mHPbqUtkctgNG4yT2DLLtJ3D+yCV+jzZCc2V1nBVkmdknOJBZ5Hc0fg==
-  /eslint-config-atomic/1.6.1_eslint@7.18.0:
+  /eslint-config-atomic/1.6.1_eslint@7.19.0:
     dependencies:
       '@babel/core': 7.12.10
-      '@typescript-eslint/eslint-plugin': 4.14.1_5aaa83948f53bc6d11a4ce27d9931983
-      '@typescript-eslint/parser': 4.14.1_eslint@7.18.0+typescript@4.1.3
-      babel-eslint: 10.1.0_eslint@7.18.0
+      '@typescript-eslint/eslint-plugin': 4.14.1_c92627de29ddf8f42a4f4f9eaac8feea
+      '@typescript-eslint/parser': 4.14.1_eslint@7.19.0+typescript@4.1.3
+      babel-eslint: 10.1.0_eslint@7.19.0
       coffeescript: 2.5.1
-      eslint: 7.18.0
-      eslint-config-prettier: 7.2.0_eslint@7.18.0
-      eslint-plugin-coffee: 0.1.13_eslint@7.18.0
+      eslint: 7.19.0
+      eslint-config-prettier: 7.2.0_eslint@7.19.0
+      eslint-plugin-coffee: 0.1.13_eslint@7.19.0
       eslint-plugin-json: 2.1.2
       eslint-plugin-only-warn: 1.0.2
-      eslint-plugin-react: 7.22.0_eslint@7.18.0
+      eslint-plugin-react: 7.22.0_eslint@7.19.0
       eslint-plugin-yaml: 0.3.0
       prettier: 2.2.1
       typescript: 4.1.3
@@ -5388,9 +5388,9 @@ packages:
       eslint: '>=7'
     resolution:
       integrity: sha512-YQdn8yDDsAu+iRQUWej8mnTnu7568gEP4h2/BJT0TTkJGtKN0YlNf6PRiAtBBw2Rz7n8NCv7W3rIBGInTHrJYA==
-  /eslint-config-prettier/7.2.0_eslint@7.18.0:
+  /eslint-config-prettier/7.2.0_eslint@7.19.0:
     dependencies:
-      eslint: 7.18.0
+      eslint: 7.19.0
     dev: true
     hasBin: true
     peerDependencies:
@@ -5413,20 +5413,20 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-6j9xxegbqe8/kZY8cYpcp0xhbK0EgJlg3g9mib3/miLaExuuwc3n5UEfSnU6hWMbT0FAYVvDbL9RrRgpUeQIvA==
-  /eslint-plugin-coffee/0.1.13_eslint@7.18.0:
+  /eslint-plugin-coffee/0.1.13_eslint@7.19.0:
     dependencies:
       axe-core: 3.5.5
       babel-eslint: 7.2.3
       babylon: 7.0.0-beta.47
       coffeescript: 2.5.1
       doctrine: 2.1.0
-      eslint: 7.18.0
-      eslint-config-airbnb: 18.2.1_ec097f56d230e219ca3e6f6777d72a54
-      eslint-config-airbnb-base: 14.2.1_d4477e7d44043beb7952cd76bd313965
-      eslint-plugin-import: 2.22.1_eslint@7.18.0
-      eslint-plugin-jsx-a11y: 6.4.1_eslint@7.18.0
-      eslint-plugin-react: 7.22.0_eslint@7.18.0
-      eslint-plugin-react-native: 3.10.0_eslint@7.18.0
+      eslint: 7.19.0
+      eslint-config-airbnb: 18.2.1_269fe49487e42607dd7c62d316648398
+      eslint-config-airbnb-base: 14.2.1_846d62cfa210dc3f225625c64ae883be
+      eslint-plugin-import: 2.22.1_eslint@7.19.0
+      eslint-plugin-jsx-a11y: 6.4.1_eslint@7.19.0
+      eslint-plugin-react: 7.22.0_eslint@7.19.0
+      eslint-plugin-react-native: 3.10.0_eslint@7.19.0
       eslint-scope: 3.7.3
       eslint-utils: 1.4.3
       eslint-visitor-keys: 1.3.0
@@ -5437,14 +5437,14 @@ packages:
       eslint: '>=6.0.0'
     resolution:
       integrity: sha512-6z2T0e5UR+A346TTIoFj3f7pFVsiqYnXNaRYYi/gI9nlcAH8F/0Ym/1k3CNwZj0axBlLDla/VxAgU2L2ZDeJ5Q==
-  /eslint-plugin-import/2.22.1_eslint@7.18.0:
+  /eslint-plugin-import/2.22.1_eslint@7.19.0:
     dependencies:
       array-includes: 3.1.2
       array.prototype.flat: 1.2.4
       contains-path: 0.1.0
       debug: 2.6.9
       doctrine: 1.5.0
-      eslint: 7.18.0
+      eslint: 7.19.0
       eslint-import-resolver-node: 0.3.4
       eslint-module-utils: 2.6.0
       has: 1.0.3
@@ -5469,7 +5469,7 @@ packages:
       node: '>=8.10.0'
     resolution:
       integrity: sha512-isM/fsUxS4wN1+nLsWoV5T4gLgBQnsql3nMTr8u+cEls1bL8rRQO5CP5GtxJxaOfbcKqnz401styw+H/P+e78Q==
-  /eslint-plugin-jsx-a11y/6.4.1_eslint@7.18.0:
+  /eslint-plugin-jsx-a11y/6.4.1_eslint@7.19.0:
     dependencies:
       '@babel/runtime': 7.12.5
       aria-query: 4.2.2
@@ -5479,7 +5479,7 @@ packages:
       axobject-query: 2.2.0
       damerau-levenshtein: 1.0.6
       emoji-regex: 9.2.0
-      eslint: 7.18.0
+      eslint: 7.19.0
       has: 1.0.3
       jsx-ast-utils: 3.2.0
       language-tags: 1.0.5
@@ -5500,22 +5500,22 @@ packages:
     dev: true
     resolution:
       integrity: sha512-9aEPf1JEpiTjcFAmmyw8eiIXmcNZOqaZyHO77wgm0/dWfT/oxC1SrIq8ET38pMxHYrcB6Uew+TzUVsBeczF88g==
-  /eslint-plugin-react-native/3.10.0_eslint@7.18.0:
+  /eslint-plugin-react-native/3.10.0_eslint@7.19.0:
     dependencies:
       '@babel/traverse': 7.12.12
-      eslint: 7.18.0
+      eslint: 7.19.0
       eslint-plugin-react-native-globals: 0.1.2
     dev: true
     peerDependencies:
       eslint: ^3.17.0 || ^4 || ^5 || ^6 || ^7
     resolution:
       integrity: sha512-4f5+hHYYq5wFhB5eptkPEAR7FfvqbS7AzScUOANfAMZtYw5qgnCxRq45bpfBaQF+iyPMim5Q8pubcpvLv75NAg==
-  /eslint-plugin-react/7.22.0_eslint@7.18.0:
+  /eslint-plugin-react/7.22.0_eslint@7.19.0:
     dependencies:
       array-includes: 3.1.2
       array.prototype.flatmap: 1.2.4
       doctrine: 2.1.0
-      eslint: 7.18.0
+      eslint: 7.19.0
       has: 1.0.3
       jsx-ast-utils: 3.2.0
       object.entries: 1.1.3
@@ -5584,7 +5584,7 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
-  /eslint/7.18.0:
+  /eslint/7.19.0:
     dependencies:
       '@babel/code-frame': 7.12.11
       '@eslint/eslintrc': 0.3.0
@@ -5628,7 +5628,7 @@ packages:
       node: ^10.12.0 || >=12.0.0
     hasBin: true
     resolution:
-      integrity: sha512-fbgTiE8BfUJZuBeq2Yi7J3RB3WGUQ9PNuNbmgi6jt9Iv8qrkxfy19Ds3OpL1Pm7zg3BtTVhvcUZbIRQ0wmSjAQ==
+      integrity: sha512-CGlMgJY56JZ9ZSYhJuhow61lMPPjUzWmChFya71Z/jilVos7mR/jPgaEfVGgMBY5DshbKdG8Ezb8FDCHcoMEMg==
   /espree/7.3.1:
     dependencies:
       acorn: 7.4.1
@@ -7681,7 +7681,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-0yHbxNowuovzAk4ED6XBRmH5GTo=
-  /less/4.1.0:
+  /less/4.1.1:
     dependencies:
       copy-anything: 2.0.1
       parse-node-version: 1.0.1
@@ -7699,7 +7699,7 @@ packages:
       needle: 2.6.0
       source-map: 0.6.1
     resolution:
-      integrity: sha512-w1Ag/f34g7LwtQ/sMVSGWIyZx+gG9ZOAEtyxeX1fG75is6BMyC2lD5kG+1RueX7PkAvlQBm2Lf2aN2j0JbVr2A==
+      integrity: sha512-w09o8tZFPThBscl5d0Ggp3RcrKIouBoQscnOMgFH3n5V3kN/CXGHNfCkRPtxJk6nKryDXaV9aHLK55RXuH4sAw==
   /leven/3.1.0:
     dev: true
     engines:
@@ -8469,13 +8469,13 @@ packages:
       integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
   /parcel/2.0.0-nightly.558:
     dependencies:
-      '@parcel/config-default': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/config-default': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/core': 2.0.0-nightly.558
       '@parcel/diagnostic': 2.0.0-nightly.560
       '@parcel/events': 2.0.0-nightly.560
-      '@parcel/fs': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/fs': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/logger': 2.0.0-nightly.560
-      '@parcel/package-manager': 2.0.0-nightly.560_@parcel+core@2.0.0-nightly.558
+      '@parcel/package-manager': 2.0.0-nightly.560_47b3b21282e94c03939debad92922698
       '@parcel/utils': 2.0.0-nightly.560
       chalk: 4.1.0
       commander: 2.20.3
@@ -11038,11 +11038,11 @@ specifiers:
   babel-preset-solid: ^0.23.8
   chance: ^1.1.7
   cross-env: ^7.0.3
-  eslint: ^7.18.0
+  eslint: ^7.19.0
   eslint-config-atomic: ^1.6.1
   identity-obj-proxy: ^3.0.0
   jest: ^26.6.3
-  less: ^4.1.0
+  less: ^4.1.1
   parcel: ^2.0.0-nightly.558
   shx: ^0.3.3
   solid-js: ^0.23.11
