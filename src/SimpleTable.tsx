@@ -1,4 +1,4 @@
-import { createSignal, For } from "solid-js"
+import { createSignal, createComputed, For } from "solid-js"
 import "./SimpleTable.less"
 import {
   Props,
@@ -25,6 +25,11 @@ export type {
 export function SimpleTable(props: Props<IndexType>) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
   const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
+
+  // update the local copy whenever the parent updates
+  createComputed(() => {
+    setRows(props.rows)
+  })
 
   function getSortDirection(): SortDirection {
     const sortDirection = getSortDirectionSignal()
@@ -71,7 +76,7 @@ export function SimpleTable(props: Props<IndexType>) {
     headerRenderer = defaultHeaderRenderer,
     bodyRenderer = defaultBodyRenderer,
     getRowID = defaultGetRowID,
-    accessors
+    accessors,
   } = props
 
   function maybeRowID(row: Row) {
