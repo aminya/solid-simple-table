@@ -229,7 +229,7 @@ function defaultSorter(
     rowsNew = rows.sort((r1, r2) => {
       const r1_val = (r1 as Record<IndexType, any>)[columnID]
       const r2_val = (r2 as Record<IndexType, any>)[columnID]
-      if (r1_val == r2_val) {
+      if (r1_val === r2_val) {
         // equal values
         return 0
       } else if (r1_val < r2_val) {
