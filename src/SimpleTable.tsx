@@ -1,5 +1,5 @@
 import { createSignal, createComputed, For } from "solid-js"
-import "./SimpleTable.less"
+import "./SimpleTable.less" // eslint-disable-line import/no-unassigned-import
 import {
   Props,
   IndexType,
