@@ -190,22 +190,24 @@ function renderHeaderIcon(sortDirection: SortDirection, columnID: IndexType) {
 }
 
 function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, append: boolean) {
-  const previousSortedColumn = sortDirection[0]
-  const previousSortedDirection = sortDirection[1]
+  let sortDirectionNew: SortDirection
 
   // if holding shiftKey while clicking: reset sorting
   if (append) {
-    sortDirection = [null, null]
+    sortDirectionNew = [null, null]
   }
   // if clicking on an already sorted column: invert direction on click
-  else if (previousSortedColumn === columnID) {
-    sortDirection[1] = previousSortedDirection === "asc" ? "desc" : "asc" // invert direction
+  else if (sortDirection[0] === columnID) {
+    sortDirectionNew = [
+      /* previousSortedColumn */ sortDirection[0],
+      /* previousSortedDirection */ sortDirection[1] === "asc" ? "desc" : "asc", // invert direction
+    ]
   }
   // if clicking on a new column
   else {
-    sortDirection = [columnID, "asc"]
+    sortDirectionNew = [columnID, "asc"]
   }
-  return sortDirection
+  return sortDirectionNew
 }
 
 /**
