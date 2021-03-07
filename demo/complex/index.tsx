@@ -30,7 +30,7 @@ type MyComplexTableColumn = typeof columns[0]
 type MyColumnKeys = keyof MyComplexTableRow
 
 function MyComplexTableSorter(
-  rows: Array<MyComplexTableRow>,
+  rows: Array<MyComplexTableRow>, // eslint-disable-line no-shadow
   sortDirection: NonNullSortDirection<MyColumnKeys>
 ): Array<MyComplexTableRow> {
   const columnID = sortDirection[0]

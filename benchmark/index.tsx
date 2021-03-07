@@ -4,7 +4,7 @@ import { SimpleTable } from "../src/SimpleTable"
 import { Chance } from "chance"
 const chance = new Chance()
 
-let rows = new Array(1000)
+const rows = new Array(1000)
 
 for (let iRow = 0; iRow < rows.length; iRow++) {
   rows[iRow] = {

@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+
 import { render } from "solid-js/web"
 
 import { MySimpleTable, rows as mySimpleTableRows } from "../demo/simple/index"
@@ -77,7 +79,7 @@ test("renders simple table", () => {
     const rows = tbody.children
     const mySimpleTableRowsRelatedRows = mySimpleTableRows.map((row) => row[mySimpleTableRowsHeaders[iColumn]])
 
-    let relatedRows: HTMLTableCellElement[] = new Array(columnNum)
+    const relatedRows: HTMLTableCellElement[] = new Array(columnNum)
     for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
       const row = rows[iRow]
       relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
@@ -187,7 +189,8 @@ test("renders variable rows table", async () => {
   for (let i = 0; i < 4; i++) {
     const addedRowIndex = 4 + i
     expect(rows.length).toBe(addedRowIndex)
-    await new Promise((res) => setTimeout(res, 1000))
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(1000)
 
     const row = rows[addedRowIndex]
     expect(row.tagName).toBe("tr".toUpperCase())
@@ -242,7 +245,7 @@ test("renders complex table", () => {
     if (label === "File") {
       expect(header.className).toBe("sortable")
       expect(header.textContent).toBe(`${label}↓`)
-    } else if (label == "Message") {
+    } else if (label === "Message") {
       expect(header.className).toBe("")
       expect(header.textContent).toBe(`${label}`)
     } else {
@@ -277,3 +280,7 @@ afterEach(() => {
   rootElm.textContent = ""
   dispose()
 })
+
+async function sleep(time: number) {
+  await new Promise((res) => setTimeout(res, time))
+}
