@@ -1,6 +1,6 @@
 {
   "name": "solid-simple-table",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "blazing fast reactive table component that gives you freedom",
   "main": "dist/SimpleTable.js",
   "module": "dist/SimpleTable.module.js",
