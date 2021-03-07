@@ -88,7 +88,7 @@ test("renders simple table", () => {
     // ascending sort
 
     //@ts-ignore
-    header.__click(new MouseEvent("click"))
+    header.$$click(new MouseEvent("click"))
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
 
     const rowsAsc = tbody.children
@@ -104,7 +104,7 @@ test("renders simple table", () => {
     // descending sort
 
     //@ts-ignore
-    header.__click(new MouseEvent("click"))
+    header.$$click(new MouseEvent("click"))
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
 
     const rowsDesc = tbody.children
@@ -118,11 +118,11 @@ test("renders simple table", () => {
     }
 
     //@ts-ignore
-    header.__click(new MouseEvent("click"))
+    header.$$click(new MouseEvent("click"))
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
 
     //@ts-ignore
-    header.__click(new MouseEvent("click"))
+    header.$$click(new MouseEvent("click"))
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
   }
 })
