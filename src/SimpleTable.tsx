@@ -222,9 +222,11 @@ function defaultSorter(
   if (!rows.length) {
     return rows
   }
+
+  let rowsNew: typeof rows
   const columnID = sortDirection[0]
   if (typeof rows[0] === "object") {
-    rows = rows.sort((r1, r2) => {
+    rowsNew = rows.sort((r1, r2) => {
       const r1_val = (r1 as Record<IndexType, any>)[columnID]
       const r2_val = (r2 as Record<IndexType, any>)[columnID]
       if (r1_val == r2_val) {
@@ -237,8 +239,8 @@ function defaultSorter(
       }
     })
   } else {
-    rows = rows.sort()
+    rowsNew = rows.sort()
   }
 
-  return sortDirection[1] === "desc" ? rows.reverse() : rows
+  return sortDirection[1] === "desc" ? rowsNew.reverse() : rowsNew
 }
