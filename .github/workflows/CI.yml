@@ -1,7 +1,9 @@
 name: CI
 on:
-  - pull_request
-  - push
+  pull_request:
+  push:
+    branches:
+     - 'master'
 
 jobs:
   Test:
@@ -11,7 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         os:
+          - ubuntu-latest
           - windows-latest
+          - macos-latest
         node:
           # - 10
           - 12
