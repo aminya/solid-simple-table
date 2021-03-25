@@ -135,6 +135,9 @@ export type NonNullSortDirection<K extends IndexType = IndexType> = [columnID: K
 export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirection<K> | [columnID: null, type: null]
 ```
 
+## Projects using Solid-Table
+- [Atom's Linter](https://github.com/steelbrain/linter-ui-default)
+
 ## License
 
 This package is licensed under the terms of MIT License. Originally, it was inspired by [sb-react-table](https://github.com/steelbrain/react-table/tree/2f8472960a77ca6cf2444c392697772716195bf4).
