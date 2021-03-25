@@ -1,6 +1,6 @@
 dependencies:
   babel-preset-solid: 0.24.13
-  solid-js: 0.24.13
+  solid-js: 0.24.15
 devDependencies:
   '@babel/cli': 7.13.10
   '@babel/preset-typescript': 7.13.0
@@ -1572,7 +1572,7 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-s2AnkKtDHn+NE8DQc29ZpgzfAkdIi1Ul/UccerkudEsVwDxYh1sK17kcxZydSmSd9KzERZXpJI8tUlKqr8bGkg==
-  /@parcel/cache/2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631:
+  /@parcel/cache/2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5:
     dependencies:
       '@parcel/core': 2.0.0-nightly.631
       '@parcel/logger': 2.0.0-nightly.633
@@ -1595,7 +1595,7 @@ packages:
       node: '>= 12.0.0'
     resolution:
       integrity: sha512-Vk/cpWqCo9BnBl972l1dduv9uiMK5cm0T3SpTa2lma+VrBaifXU4QO/X3YnoF/setm20lA1Up588iWBsJjXGxQ==
-  /@parcel/config-default/2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631:
+  /@parcel/config-default/2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5:
     dependencies:
       '@parcel/bundler-default': 2.0.0-nightly.633
       '@parcel/core': 2.0.0-nightly.631
@@ -1628,17 +1628,17 @@ packages:
       integrity: sha512-9o1OfeGYa4oIwUC5duYI4RRBjxRz6LIDlLCLe1gSN2zQdN+ZwbXLtCpT4tT9Jy59CPt6wfV3Z0dSHNULhWRimA==
   /@parcel/core/2.0.0-nightly.631:
     dependencies:
-      '@parcel/cache': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/cache': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/diagnostic': 2.0.0-nightly.633
       '@parcel/events': 2.0.0-nightly.633
-      '@parcel/fs': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/fs': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/logger': 2.0.0-nightly.633
-      '@parcel/package-manager': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/package-manager': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/plugin': 2.0.0-nightly.633
       '@parcel/source-map': 2.0.0-alpha.4.21
       '@parcel/types': 2.0.0-nightly.633
       '@parcel/utils': 2.0.0-nightly.633
-      '@parcel/workers': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/workers': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       abortcontroller-polyfill: 1.5.0
       base-x: 3.0.8
       browserslist: 4.16.3
@@ -1688,14 +1688,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-UKJpX1HUXe+tRQFZba4pvjcQudfKT5W5dTgfIbT/WxFfx9KWBMONMFvBLwWDbfa+PdfzmuNAIKoErxsVMv742A==
-  /@parcel/fs/2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631:
+  /@parcel/fs/2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5:
     dependencies:
       '@parcel/core': 2.0.0-nightly.631
       '@parcel/fs-search': 2.0.0-nightly.2255
       '@parcel/fs-write-stream-atomic': 2.0.0-nightly.2255
       '@parcel/utils': 2.0.0-nightly.633
       '@parcel/watcher': 2.0.0-alpha.10
-      '@parcel/workers': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/workers': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       graceful-fs: 4.2.6
       mkdirp: 0.5.5
       ncp: 2.0.0
@@ -1817,14 +1817,14 @@ packages:
       parcel: ^2.0.0-beta.1
     resolution:
       integrity: sha512-DBQ6T2wKtUlkw/SMwbj8QzSivz2l9NP8qLC229kf4W7pJOTPmlJDaoBgWETLGvhkPTATajxkvBGLCFvcXZYb4w==
-  /@parcel/package-manager/2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631:
+  /@parcel/package-manager/2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5:
     dependencies:
       '@parcel/core': 2.0.0-nightly.631
       '@parcel/diagnostic': 2.0.0-nightly.633
-      '@parcel/fs': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/fs': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/logger': 2.0.0-nightly.633
       '@parcel/utils': 2.0.0-nightly.633
-      '@parcel/workers': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/workers': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       command-exists: 1.2.9
       cross-spawn: 6.0.5
       nullthrows: 1.1.1
@@ -2251,7 +2251,7 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-8uA7Tmx/1XvmUdGzksg0+oN7uj24pXFFnKJqZr3L3mgYjdrL7CMs3PRIHv1k3LUz/hNRsb/p3qxztSkWz1IGZA==
-  /@parcel/workers/2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631:
+  /@parcel/workers/2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5:
     dependencies:
       '@parcel/core': 2.0.0-nightly.631
       '@parcel/diagnostic': 2.0.0-nightly.633
@@ -7681,13 +7681,13 @@ packages:
       integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
   /parcel/2.0.0-nightly.631:
     dependencies:
-      '@parcel/config-default': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/config-default': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/core': 2.0.0-nightly.631
       '@parcel/diagnostic': 2.0.0-nightly.633
       '@parcel/events': 2.0.0-nightly.633
-      '@parcel/fs': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/fs': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/logger': 2.0.0-nightly.633
-      '@parcel/package-manager': 2.0.0-nightly.633_@parcel+core@2.0.0-nightly.631
+      '@parcel/package-manager': 2.0.0-nightly.633_8b7e48af61c5006a25eb4395b6bb49c5
       '@parcel/reporter-cli': 2.0.0-nightly.633
       '@parcel/reporter-dev-server': 2.0.0-nightly.633
       '@parcel/utils': 2.0.0-nightly.633
@@ -9183,10 +9183,10 @@ packages:
       babel-preset-solid: '*'
     resolution:
       integrity: sha512-/B6iOCnopUwvG0sJ9r0ML3ESY/yujUJhrj/TX8N190WVpqhCxoIAvs3q5bnuzR4ZT0YASN9+Fx30nOxZXPK8Sw==
-  /solid-js/0.24.13:
+  /solid-js/0.24.15:
     dev: false
     resolution:
-      integrity: sha512-eFuKAAIzsuwPI4DuUj6Kuf5IFM4wzrQMffuwY/5bdnR4N+b+8CELmLox+9yyOaV4IhmoUVB+APt2ZQ1vOjSUhw==
+      integrity: sha512-p+Cv3AZBwpeQTRoCoJNXvmpl8nt9oOx2Xj6/zsrImul1lLGCgBqlyg+pKByOECG48Oe5oNAQOooe3Ba8zovVXA==
   /source-map-resolve/0.5.3:
     dependencies:
       atob: 2.1.2
@@ -10269,6 +10269,6 @@ specifiers:
   parcel: ^2.0.0-nightly.631
   shx: ^0.3.3
   solid-jest: ^0.0.2
-  solid-js: 0.24.13
+  solid-js: 0.24.15
   typescript: 4.2.3
   web-resource-inliner: ^5.0.0
