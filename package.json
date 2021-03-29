@@ -28,7 +28,7 @@
     "solid-js": "0.25.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
+    "@babel/cli": "^7.13.14",
     "@babel/preset-typescript": "^7.13.0",
     "@iwatakeshi/babel-plugin-remove-import-styles": "^1.0.5",
     "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.2255",
@@ -39,11 +39,11 @@
     "@parcel/validator-typescript": "^2.0.0-nightly.633",
     "@types/chance": "^1.1.1",
     "@types/jest": "26.0.22",
-    "@types/node": "14.14.36",
+    "@types/node": "14.14.37",
     "babel-jest": "^26.6.3",
     "chance": "^1.1.7",
     "cross-env": "^7.0.3",
-    "eslint": "^7.22.0",
+    "eslint": "^7.23.0",
     "eslint-config-atomic": "^1.12.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
