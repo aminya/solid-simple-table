@@ -24,8 +24,8 @@
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr"
   },
   "dependencies": {
-    "babel-preset-solid": "0.24.13",
-    "solid-js": "0.24.15"
+    "babel-preset-solid": "0.25.0",
+    "solid-js": "0.25.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
