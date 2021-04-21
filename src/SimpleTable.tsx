@@ -211,10 +211,11 @@ function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, app
 }
 
 /**
- Default alphabetical sort function
- @param rows: the rows of the table
- @param columnID: the last clicked columnID
-*/
+ * Default alphabetical sort function
+ *
+ * @param rows: The rows of the table
+ * @param columnID: The last clicked columnID
+ */
 function defaultSorter(
   rows: Array<number | string | Record<IndexType, any>>,
   sortDirection: NonNullSortDirection

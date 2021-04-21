@@ -126,16 +126,18 @@ export type Column<K extends IndexType = IndexType> = {
   onClick?(e: MouseEvent, row: Row): void
 }
 
-/** Sort direction.
-  It is a tuple:
-  @columnID is the key used for sorting
-  @type is the direction of the sort
-*/
+/**
+ * Sort direction. It is a tuple:
+ *
+ * @type is The direction of the sort
+ * @columnID is the key used for sorting
+ */
 export type NonNullSortDirection<K extends IndexType = IndexType> = [columnID: K, type: "asc" | "desc"]
 export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirection<K> | [columnID: null, type: null]
 ```
 
 ## Projects using Solid-Table
+
 - [Atom's Linter](https://github.com/steelbrain/linter-ui-default)
 
 ## License
