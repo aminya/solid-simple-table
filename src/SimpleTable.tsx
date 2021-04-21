@@ -15,7 +15,7 @@ export * from "./SimpleTable.types"
 
 export function SimpleTable(props: Props<IndexType>) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
-  const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
+  const [getRows, setRows] = createSignal<RowsSignal>(props.rows, false)
 
   // update the local copy whenever the parent updates
   createComputed(() => {
