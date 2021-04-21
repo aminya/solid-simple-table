@@ -17,12 +17,12 @@ specifiers:
   babel-preset-solid: 0.26.0
   chance: ^1.1.7
   cross-env: ^7.0.3
-  eslint: ^7.24.0
   eslint-config-atomic: ^1.14.2
   identity-obj-proxy: ^3.0.0
   jest: ^26.6.3
   less: ^4.1.1
   parcel: ^2.0.0-nightly.643
+  prettier-config-atomic: ^2.0.2
   shx: ^0.3.3
   solid-jest: ^0.0.2
   solid-js: 0.26.1
@@ -49,12 +49,12 @@ devDependencies:
   babel-jest: 26.6.3
   chance: 1.1.7
   cross-env: 7.0.3
-  eslint: 7.24.0
   eslint-config-atomic: 1.14.2
   identity-obj-proxy: 3.0.0
   jest: 26.6.3
   less: 4.1.1
   parcel: 2.0.0-nightly.643
+  prettier-config-atomic: 2.0.2
   shx: 0.3.3
   solid-jest: 0.0.2_babel-preset-solid@0.26.0
   typescript: 4.2.4
@@ -2387,6 +2387,12 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
+  /@types/mdast/3.0.3:
+    resolution: {integrity: sha512-SXPBMnFVQg1s00dlMCc/jCdvPqdE4mXaMMCeRlxLDmTAEoegHT53xKtkDnzDTOcmMHUfcjyf36/YYZ6SxRdnsw==}
+    dependencies:
+      '@types/unist': 2.0.3
+    dev: true
+
   /@types/node/14.14.16:
     resolution: {integrity: sha512-naXYePhweTi+BMv11TgioE2/FXU4fSl29HAH1ffxVciNsH3rYXjNP2yM8wqmSm7jS20gM8TIklKiTen+1iVncw==}
     dev: true
@@ -2417,6 +2423,10 @@ packages:
 
   /@types/stack-utils/2.0.0:
     resolution: {integrity: sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==}
+    dev: true
+
+  /@types/unist/2.0.3:
+    resolution: {integrity: sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==}
     dev: true
 
   /@types/yargs-parser/20.2.0:
@@ -3142,6 +3152,10 @@ packages:
     dev: true
     optional: true
 
+  /binary-search-bounds/2.0.5:
+    resolution: {integrity: sha512-H0ea4Fd3lS1+sTEB2TgcLoK21lLhwEJzlQv3IN47pJS976Gx4zoWe0ak3q+uYh60ppQxg9F16Ri4tS1sfD4+jA==}
+    dev: true
+
   /bl/4.0.3:
     resolution: {integrity: sha512-fs4G6/Hu4/EE+F75J8DuN/0IpQqNjAdC7aEQv7Qt8MHGUH7Ckv2MwTEEeN9QehD0pfIDkMI1bkHYkKy7xHyKIg==}
     dependencies:
@@ -3414,6 +3428,18 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /character-entities-legacy/1.1.4:
+    resolution: {integrity: sha512-3Xnr+7ZFS1uxeiUDvV02wQ+QDbc55o97tIV5zHScSPJpcLm/r0DFPcoY3tYRp+VZukxuMeKgXYmsXQHO05zQeA==}
+    dev: true
+
+  /character-entities/1.2.4:
+    resolution: {integrity: sha512-iBMyeEHxfVnIakwOuDXpVkc54HijNgCyQB2w0VfGQThle6NXn50zU6V/u+LDhxHcDUPojn6Kpga3PTAD8W1bQw==}
+    dev: true
+
+  /character-reference-invalid/1.1.4:
+    resolution: {integrity: sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==}
+    dev: true
+
   /chokidar/3.5.0:
     resolution: {integrity: sha512-JgQM9JS92ZbFR4P90EvmzNpSGhpPBGBSj10PILeDyYFwp4h2/D9OM03wsJ4zW1fEp4ka2DGrnUeD7FuvQ2aZ2Q==}
     engines: {node: '>= 8.10.0'}
@@ -3605,6 +3631,11 @@ packages:
   /commander/7.1.0:
     resolution: {integrity: sha512-pRxBna3MJe6HKnBGsDyMv8ETbptw3axEdYHoqNh7gu5oDcew8fs0xnivZGm06Ogk8zGAJ9VX+OPEr2GXEQK4dg==}
     engines: {node: '>= 10'}
+    dev: true
+
+  /comment-parser/1.1.4:
+    resolution: {integrity: sha512-MrWw1IrmmeCMLJKA8SvMw0tImTd4BHBFQ4WCNxzZoNeWaDL7OAXugF3BIKY042wNsNzGqD5liCgpQS99cuY1qA==}
+    engines: {node: '>= 10.0.0'}
     dev: true
 
   /component-emitter/1.3.0:
@@ -5699,6 +5730,17 @@ packages:
       kind-of: 6.0.3
     dev: true
 
+  /is-alphabetical/1.0.4:
+    resolution: {integrity: sha512-DwzsA04LQ10FHTZuL0/grVDk4rFoVH1pjAToYwBrHSxcrBIGQuXrQMtD5U1b0U2XVgKZCTLLP8u2Qxqhy3l2Vg==}
+    dev: true
+
+  /is-alphanumerical/1.0.4:
+    resolution: {integrity: sha512-UzoZUr+XfVz3t3v4KyGEniVL9BDRoQtY7tOyrRybkVNjDFWyo1yhXNGrrBTQxp3ib9BLAWs7k2YKBQsFRkZG9A==}
+    dependencies:
+      is-alphabetical: 1.0.4
+      is-decimal: 1.0.4
+    dev: true
+
   /is-arguments/1.1.0:
     resolution: {integrity: sha512-1Ij4lOMPl/xB5kBDn7I+b2ttPMKa8szhEIrXDuXQD/oe3HJLTLhqhgGspwgyGd6MOywBUqVvYicF72lkgDnIHg==}
     engines: {node: '>= 0.4'}
@@ -5782,6 +5824,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /is-decimal/1.0.4:
+    resolution: {integrity: sha512-RGdriMmQQvZ2aqaQq3awNA6dCGtKpiDFcOzrTWrDAT2MiWrKQVPmxLGHl7Y2nNu6led0kEyoX0enY0qXYsv9zw==}
+    dev: true
+
   /is-descriptor/0.1.6:
     resolution: {integrity: sha512-avDYr0SB3DwO9zsMov0gKCESFYqCnE4hq/4z3TdUlukEy5t9C0YRq7HLrsN52NAcqXKaepeCD0n+B0arnVG3Hg==}
     engines: {node: '>=0.10.0'}
@@ -5856,6 +5902,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extglob: 2.1.1
+    dev: true
+
+  /is-hexadecimal/1.0.4:
+    resolution: {integrity: sha512-gyPJuv83bHMpocVYoqof5VDiZveEoGoFL8m3BXNb2VW8Xs+rz9kqO8LOQ5DH6EsuvilT1ApazU0pyl+ytbPtlw==}
     dev: true
 
   /is-html/1.1.0:
@@ -6787,6 +6837,10 @@ packages:
     resolution: {integrity: sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=}
     dev: true
 
+  /linguist-languages/7.14.0:
+    resolution: {integrity: sha512-VqnUYHOSqRqAGnIl+7SCnFxK+sX0x7LXe5qn0TG6t9SViofQgN7272PLCFZ/lgkT7tAO5CA/2pCsZGlGvGhfWA==}
+    dev: true
+
   /load-json-file/2.0.0:
     resolution: {integrity: sha1-eUfkIUmvgNaWy/eXvKq8/h/inKg=}
     engines: {node: '>=4'}
@@ -6921,6 +6975,22 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
+  /mdast-util-from-markdown/0.8.5:
+    resolution: {integrity: sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ==}
+    dependencies:
+      '@types/mdast': 3.0.3
+      mdast-util-to-string: 2.0.0
+      micromark: 2.11.4
+      parse-entities: 2.0.0
+      unist-util-stringify-position: 2.0.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /mdast-util-to-string/2.0.0:
+    resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
+    dev: true
+
   /mdn-data/2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
     dev: true
@@ -6944,6 +7014,15 @@ packages:
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /micromark/2.11.4:
+    resolution: {integrity: sha512-+WoovN/ppKolQOFIAajxi7Lu9kInbPxFuTBVEavFcL8eAfVstoc5MocPmqBeAdBOJV00uaVjegzH4+MA0DN/uA==}
+    dependencies:
+      debug: 4.3.1
+      parse-entities: 2.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /micromatch/3.1.10:
@@ -7487,6 +7566,17 @@ packages:
       evp_bytestokey: 1.0.3
       pbkdf2: 3.1.1
       safe-buffer: 5.2.1
+    dev: true
+
+  /parse-entities/2.0.0:
+    resolution: {integrity: sha512-kkywGpCcRYhqQIchaWqZ875wzpS/bMKhz5HnN3p7wveJTkTtyAB/AlnS0f8DFSqYW1T82t6yEAkEcB+A1I3MbQ==}
+    dependencies:
+      character-entities: 1.2.4
+      character-entities-legacy: 1.1.4
+      character-reference-invalid: 1.1.4
+      is-alphanumerical: 1.0.4
+      is-decimal: 1.0.4
+      is-hexadecimal: 1.0.4
     dev: true
 
   /parse-json/2.2.0:
@@ -8089,6 +8179,30 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier-config-atomic/2.0.2:
+    resolution: {integrity: sha512-wnDfuHUKZrtsR4iOnDax2Ty6VgKueqIs9Xbl0s8ci1Aap0RI/UH/2hNWnUjn2EVeMsufpAO9ezq8LdZtgAnmEQ==}
+    dependencies:
+      prettier: 2.2.1
+      prettier-plugin-jsdoc: 0.3.19_prettier@2.2.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /prettier-plugin-jsdoc/0.3.19_prettier@2.2.1:
+    resolution: {integrity: sha512-pkzQSmQX9tXGScRGjXC1eV9YZ+Ze0nsZwRaFQ6T0pLzeopOJ+fkEapNiA5PK+3DLezZMzwPMAb2dB5fCqHItbQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      prettier: '>=2.1.2'
+    dependencies:
+      binary-search-bounds: 2.0.5
+      comment-parser: 1.1.4
+      linguist-languages: 7.14.0
+      mdast-util-from-markdown: 0.8.5
+      prettier: 2.2.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /prettier/2.2.1:
@@ -9454,6 +9568,12 @@ packages:
 
   /uniqs/2.0.0:
     resolution: {integrity: sha1-/+3ks2slKQaW5uFl1KWe25mOawI=}
+    dev: true
+
+  /unist-util-stringify-position/2.0.3:
+    resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
+    dependencies:
+      '@types/unist': 2.0.3
     dev: true
 
   /unpipe/1.0.0:
