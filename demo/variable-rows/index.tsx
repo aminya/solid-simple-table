@@ -14,7 +14,8 @@ type Props = {
 }
 
 export function MyVariableRowsTable(props: Props) {
-  const [getRows, setRows] = createSignal(props.initialRows)
+  // This example pushes and sets to props.rows, so createSignal's second argument needs to be false as this is not an immutable replacement.
+  const [getRows, setRows] = createSignal(props.initialRows, false)
 
   onMount(() => {
     setInterval(() => {
