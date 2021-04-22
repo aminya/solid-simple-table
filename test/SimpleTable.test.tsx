@@ -282,5 +282,7 @@ afterEach(() => {
 })
 
 async function sleep(time: number) {
-  await new Promise((res) => setTimeout(res, time))
+  await new Promise((res) => {
+    setTimeout(res, time)
+  })
 }

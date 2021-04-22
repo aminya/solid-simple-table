@@ -15,7 +15,7 @@ export * from "./SimpleTable.types"
 
 export function SimpleTable(props: Props<IndexType>) {
   const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
-  const [getRows, setRows] = createSignal<RowsSignal>(props.rows)
+  const [getRows, setRows] = createSignal<RowsSignal>(props.rows, false)
 
   // update the local copy whenever the parent updates
   createComputed(() => {
@@ -211,10 +211,11 @@ function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, app
 }
 
 /**
- Default alphabetical sort function
- @param rows: the rows of the table
- @param columnID: the last clicked columnID
-*/
+ * Default alphabetical sort function
+ *
+ * @param rows: The rows of the table
+ * @param columnID: The last clicked columnID
+ */
 function defaultSorter(
   rows: Array<number | string | Record<IndexType, any>>,
   sortDirection: NonNullSortDirection

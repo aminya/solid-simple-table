@@ -15,11 +15,12 @@ export type Column<K extends IndexType = IndexType> = {
   onClick?(e: MouseEvent, row: Row): void
 }
 
-/** Sort direction.
-  It is a tuple:
-  @columnID is the key used for sorting
-  @type is the direction of the sort
-*/
+/**
+ * Sort direction. It is a tuple:
+ *
+ * @type is The direction of the sort
+ * @columnID is the key used for sorting
+ */
 export type NonNullSortDirection<K extends IndexType = IndexType> = [columnID: K, type: "asc" | "desc"]
 export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirection<K> | [columnID: null, type: null]
 
@@ -36,10 +37,10 @@ export type Props<K extends IndexType> = {
   columns?: Array<Column<K>>
 
   /**
-    if columns is not provided and Row is an object, construct columns based on this row
-    Takes this Row's keys as Column IDs
-    @default 0 (first row)
-  */
+   * If columns is not provided and Row is an object, construct columns based on this row Takes this Row's keys as Column IDs
+   *
+   * @default 0 (first row)
+   */
   representitiveRowNumber?: number
 
   // renderers
@@ -57,14 +58,17 @@ export type Props<K extends IndexType> = {
   // accessors
 
   /**
-    set to true if you want column, row, and cell accessors
-    @default false
-  */
+   * Set to true if you want column, row, and cell accessors
+   *
+   * @default false
+   */
   accessors?: boolean
 
-  /** a function that takes row and returns string unique key for that row
-    @default {defaultGetRowID}
-  */
+  /**
+   * A function that takes row and returns string unique key for that row
+   *
+   * @default {defaultGetRowID}
+   */
   getRowID?(row: Row): string
 }
 
