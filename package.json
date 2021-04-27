@@ -25,8 +25,8 @@
   },
   "prettier": "prettier-config-atomic",
   "dependencies": {
-    "babel-preset-solid": "0.26.0",
-    "solid-js": "0.26.1"
+    "babel-preset-solid": "~0.26.0",
+    "solid-js": "~0.26.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -39,8 +39,8 @@
     "@parcel/transformer-typescript-types": "^2.0.0-nightly.645",
     "@parcel/validator-typescript": "^2.0.0-nightly.645",
     "@types/chance": "^1.1.1",
-    "@types/jest": "26.0.22",
-    "@types/node": "14.14.41",
+    "@types/jest": "26.0.23",
+    "@types/node": "15.0.0",
     "babel-jest": "^26.6.3",
     "chance": "^1.1.7",
     "cross-env": "^7.0.3",
@@ -51,7 +51,7 @@
     "parcel": "^2.0.0-nightly.643",
     "prettier-config-atomic": "^2.0.2",
     "shx": "^0.3.3",
-    "solid-jest": "^0.0.2",
+    "solid-jest": "^0.0.3",
     "typescript": "4.2.4",
     "web-resource-inliner": "^5.0.0"
   },

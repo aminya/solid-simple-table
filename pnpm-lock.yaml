@@ -11,8 +11,8 @@ specifiers:
   '@parcel/transformer-typescript-types': ^2.0.0-nightly.645
   '@parcel/validator-typescript': ^2.0.0-nightly.645
   '@types/chance': ^1.1.1
-  '@types/jest': 26.0.22
-  '@types/node': 14.14.41
+  '@types/jest': 26.0.23
+  '@types/node': 15.0.0
   babel-jest: ^26.6.3
   babel-preset-solid: 0.26.0
   chance: ^1.1.7
@@ -24,14 +24,14 @@ specifiers:
   parcel: ^2.0.0-nightly.643
   prettier-config-atomic: ^2.0.2
   shx: ^0.3.3
-  solid-jest: ^0.0.2
-  solid-js: 0.26.1
+  solid-jest: ^0.0.3
+  solid-js: 0.26.3
   typescript: 4.2.4
   web-resource-inliner: ^5.0.0
 
 dependencies:
   babel-preset-solid: 0.26.0
-  solid-js: 0.26.1
+  solid-js: 0.26.3
 
 devDependencies:
   '@babel/cli': 7.13.16
@@ -44,8 +44,8 @@ devDependencies:
   '@parcel/transformer-typescript-types': 2.0.0-nightly.645_typescript@4.2.4
   '@parcel/validator-typescript': 2.0.0-nightly.645_typescript@4.2.4
   '@types/chance': 1.1.1
-  '@types/jest': 26.0.22
-  '@types/node': 14.14.41
+  '@types/jest': 26.0.23
+  '@types/node': 15.0.0
   babel-jest: 26.6.3
   chance: 1.1.7
   cross-env: 7.0.3
@@ -56,7 +56,7 @@ devDependencies:
   parcel: 2.0.0-nightly.643
   prettier-config-atomic: 2.0.2
   shx: 0.3.3
-  solid-jest: 0.0.2_babel-preset-solid@0.26.0
+  solid-jest: 0.0.3_babel-preset-solid@0.26.0
   typescript: 4.2.4
   web-resource-inliner: 5.0.0
 
@@ -2372,8 +2372,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/26.0.22:
-    resolution: {integrity: sha512-eeWwWjlqxvBxc4oQdkueW5OF/gtfSceKk4OnOAGlUSwS/liBRtZppbJuz1YkgbrbfGOoeBHun9fOvXnjNwrSOw==}
+  /@types/jest/26.0.23:
+    resolution: {integrity: sha512-ZHLmWMJ9jJ9PTiT58juykZpL7KjwJywFN3Rr2pTSkyQfydf/rk22yS7W8p5DaVUMQ2BQC7oYiU3FjbTM/mYrOA==}
     dependencies:
       jest-diff: 26.6.2
       pretty-format: 26.6.2
@@ -2405,8 +2405,8 @@ packages:
     resolution: {integrity: sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==}
     dev: true
 
-  /@types/node/14.14.41:
-    resolution: {integrity: sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==}
+  /@types/node/15.0.0:
+    resolution: {integrity: sha512-YN1d+ae2MCb4U0mMa+Zlb5lWTdpFShbAj5nmte6lel27waMMBfivrm0prC16p/Di3DyTrmerrYUT8/145HXxVw==}
     dev: true
 
   /@types/normalize-package-data/2.4.0:
@@ -8940,8 +8940,8 @@ packages:
       use: 3.1.1
     dev: true
 
-  /solid-jest/0.0.2_babel-preset-solid@0.26.0:
-    resolution: {integrity: sha512-/B6iOCnopUwvG0sJ9r0ML3ESY/yujUJhrj/TX8N190WVpqhCxoIAvs3q5bnuzR4ZT0YASN9+Fx30nOxZXPK8Sw==}
+  /solid-jest/0.0.3_babel-preset-solid@0.26.0:
+    resolution: {integrity: sha512-GNGyiwo9jmZjnTLRYBokLOsyYWwaK3UxN2Riy8qOPHx1u5KbyLnFhiaOfab+5GGhsaqPJJN3eCtg5INIbfQ7RA==}
     peerDependencies:
       babel-preset-solid: '*'
     dependencies:
@@ -8954,8 +8954,8 @@ packages:
       - supports-color
     dev: true
 
-  /solid-js/0.26.1:
-    resolution: {integrity: sha512-y3eiVBY+dF4r048rwrLJXUQuDtsimAVxtI57E5gtt0NbYbB3hzH7h7xXiCsaoBUoiZFxh9XI++Tm4VHIC+XwBw==}
+  /solid-js/0.26.3:
+    resolution: {integrity: sha512-ixl/SWvkZjQrNBS5DrD/IqdgphTOnC0/JtEPisx8c9/L5O0xQjlR0WljD4DLwzXFN9wfmLakpfreWO0cy+ckfw==}
     dev: false
 
   /source-map-resolve/0.5.3:
