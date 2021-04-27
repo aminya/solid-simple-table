@@ -7,7 +7,7 @@ Solid SimpleTable is a blazing fast reactive table component that gives you free
 ### Features
 
 - Very fast as it is compiled down to VanilaJS using Solid
-- Zero dependency and very small (~6KB gzipped including solid-js!)
+- Very small (~2.7KB)
 - Automatic sorting
 - Support for custom header and row renderers (so the cells can be components themselves)
 - Support for custom sort functions
