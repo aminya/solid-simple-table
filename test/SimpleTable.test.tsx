@@ -16,6 +16,26 @@ beforeEach(() => {
   rootElm.id = "app"
 })
 
+function testTBodyRows(rows: HTMLCollection, rowsData: Record<string, string>[]) {
+  // test rows
+  for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
+    const row = rows[iRow]
+
+    expect(getTagName(row)).toBe("tr")
+
+    // test cells
+    const cells = row.children
+    expect(cells.length).toBe(Object.keys(rowsData[iRow]).length)
+
+    const tableValues = Object.values(rowsData[iRow])
+    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
+      const cell = cells[iCell]
+      expect(getTagName(cell)).toBe("td")
+      expect(cell.textContent).toBe(tableValues[iCell])
+    }
+  }
+}
+
 test("renders simple table", () => {
   dispose = render(() => <MySimpleTable />, rootElm)
   const children = rootElm.children
@@ -56,22 +76,7 @@ test("renders simple table", () => {
   const rows = tbody.children
 
   // test rows
-  for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
-    const row = rows[iRow]
-
-    expect(getTagName(row)).toBe("tr")
-
-    // test cells
-    const cells = row.children
-    expect(cells.length).toBe(Object.keys(mySimpleTableRows[iRow]).length)
-
-    const mySimpleTableRowsValues = Object.values(mySimpleTableRows[iRow])
-    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
-      const cell = cells[iCell]
-      expect(getTagName(cell)).toBe("td")
-      expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
-    }
-  }
+  testTBodyRows(rows, mySimpleTableRows)
 
   // test sorting
   for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
@@ -166,22 +171,7 @@ test("renders variable rows table", async () => {
   const rows = tbody.children
 
   // test rows
-  for (let iRow = 0, rowNum = myVariableRowsTableInitialRows.length; iRow < rowNum; iRow++) {
-    const row = rows[iRow]
-
-    expect(getTagName(row)).toBe("tr")
-
-    // test cells
-    const cells = row.children
-    expect(cells.length).toBe(Object.keys(myVariableRowsTableInitialRows[iRow]).length)
-
-    const mySimpleTableRowsValues = Object.values(myVariableRowsTableInitialRows[iRow])
-    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
-      const cell = cells[iCell]
-      expect(getTagName(cell)).toBe("td")
-      expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
-    }
-  }
+  testTBodyRows(rows, myVariableRowsTableInitialRows)
 
   // test added rows
   for (let i = 0; i < 4; i++) {
@@ -256,22 +246,7 @@ test("renders complex table", () => {
   const rows = tbody.children
 
   // test rows
-  for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
-    const row = rows[iRow]
-
-    expect(getTagName(row)).toBe("tr")
-
-    // test cells
-    const cells = row.children
-    expect(cells.length).toBe(Object.keys(myComplexTableRows[iRow]).length)
-
-    const myComplexTableRowsValues = Object.values(myComplexTableRows[iRow])
-    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
-      const cell = cells[iCell]
-      expect(getTagName(cell)).toBe("td")
-      expect(cell.textContent).toBe(myComplexTableRowsValues[iCell])
-    }
-  }
+  testTBodyRows(rows, myComplexTableRows)
 })
 
 afterEach(() => {
