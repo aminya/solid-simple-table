@@ -89,8 +89,7 @@ test("renders simple table", () => {
 
     // ascending sort
 
-    //@ts-ignore
-    header.$$click(new MouseEvent("click"))
+    click(header)
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
 
     const rowsAsc = tbody.children
@@ -105,8 +104,7 @@ test("renders simple table", () => {
 
     // descending sort
 
-    //@ts-ignore
-    header.$$click(new MouseEvent("click"))
+    click(header)
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
 
     const rowsDesc = tbody.children
@@ -119,12 +117,10 @@ test("renders simple table", () => {
       expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRowsDesc[iRow])
     }
 
-    //@ts-ignore
-    header.$$click(new MouseEvent("click"))
+    click(header)
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
 
-    //@ts-ignore
-    header.$$click(new MouseEvent("click"))
+    click(header)
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
   }
 })
@@ -289,4 +285,13 @@ async function sleep(time: number) {
 
 function getTagName(elm: Element | undefined): string | undefined {
   return elm?.tagName?.toLowerCase()
+}
+
+function click(elm: HTMLElement) {
+  try {
+    // @ts-ignore internal solid API
+    elm?.$$click(new MouseEvent("click"))
+  } catch {
+    elm.click()
+  }
 }
