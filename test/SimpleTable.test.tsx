@@ -174,52 +174,54 @@ function testSorting(
   }
 }
 
-let rootElm: HTMLDivElement
-let dispose: () => void
+describe("SolidSimpleTable", () => {
+  let rootElm: HTMLDivElement
+  let dispose: () => void
 
-beforeEach(() => {
-  rootElm = document.createElement("div")
-  rootElm.id = "app"
-})
+  beforeEach(() => {
+    rootElm = document.createElement("div")
+    rootElm.id = "app"
+  })
 
-test("renders simple table", () => {
-  dispose = render(() => <MySimpleTable />, rootElm)
-  testTable(mySimpleTableRows, rootElm)
-})
+  test("renders simple table", () => {
+    dispose = render(() => <MySimpleTable />, rootElm)
+    testTable(mySimpleTableRows, rootElm)
+  })
 
-test("renders variable rows table", async () => {
-  dispose = render(() => <MyVariableRowsTable initialRows={myVariableRowsTableInitialRows} />, rootElm)
-  const { rows } = testTable(myVariableRowsTableInitialRows, rootElm)
+  test("renders variable rows table", async () => {
+    dispose = render(() => <MyVariableRowsTable initialRows={myVariableRowsTableInitialRows} />, rootElm)
+    const { rows } = testTable(myVariableRowsTableInitialRows, rootElm)
 
-  // test added rows
-  for (let i = 0; i < 4; i++) {
-    const addedRowIndex = 4 + i
-    expect(rows.length).toBe(addedRowIndex)
-    // eslint-disable-next-line no-await-in-loop
-    await sleep(1000)
+    // test added rows
+    for (let i = 0; i < 4; i++) {
+      const addedRowIndex = 4 + i
+      expect(rows.length).toBe(addedRowIndex)
+      // eslint-disable-next-line no-await-in-loop
+      await sleep(1000)
 
-    const row = rows[addedRowIndex]
-    expect(getTagName(row)).toBe("tr")
+      const row = rows[addedRowIndex]
+      expect(getTagName(row)).toBe("tr")
 
-    // test cells
-    const cells = row.children
-    expect(cells.length).toBe(Object.keys({ file: "New file", message: "New message", severity: "info" }).length)
+      // test cells
+      const cells = row.children
+      expect(cells.length).toBe(Object.keys({ file: "New file", message: "New message", severity: "info" }).length)
 
-    const mySimpleTableRowsValues = Object.values({ file: "New file", message: "New message", severity: "info" })
-    for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
-      const cell = cells[iCell]
-      expect(getTagName(cell)).toBe("td")
-      expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
+      const mySimpleTableRowsValues = Object.values({ file: "New file", message: "New message", severity: "info" })
+      for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
+        const cell = cells[iCell]
+        expect(getTagName(cell)).toBe("td")
+        expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
+      }
     }
-  }
-})
+  })
 
-test("renders complex table", () => {
-  dispose = render(() => <MyComplexTable />, rootElm)
-  testTable(myComplexTableRows, rootElm, false, MyComplexTableColumns, ["file", "asc"])
-})
+  test("renders complex table", () => {
+    dispose = render(() => <MyComplexTable />, rootElm)
+    testTable(myComplexTableRows, rootElm, false, MyComplexTableColumns, ["file", "asc"])
+  })
 
-afterEach(() => {
-  rootElm.textContent = ""
-  dispose()
+  afterEach(() => {
+    rootElm.textContent = ""
+    dispose()
+  })
 })
