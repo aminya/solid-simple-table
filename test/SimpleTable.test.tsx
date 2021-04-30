@@ -20,7 +20,7 @@ test("renders simple table", () => {
   expect(children.length).toBe(1)
 
   const table = children[0]
-  expect(table.tagName).toBe("table".toUpperCase())
+  expect(getTagName(table)).toBe("table")
   expect(table.classList[0]).toBe("solid-simple-table")
 
   const tableChildren = table.children
@@ -29,13 +29,13 @@ test("renders simple table", () => {
   const thead = tableChildren[0]
   const tbody = tableChildren[1]
 
-  expect(thead.tagName).toBe("thead".toUpperCase())
-  expect(tbody.tagName).toBe("tbody".toUpperCase())
+  expect(getTagName(thead)).toBe("thead")
+  expect(getTagName(tbody)).toBe("tbody")
 
   expect(thead.children.length).toBe(1)
 
   const tr = thead.firstElementChild
-  expect(tr?.tagName).toBe("tr".toUpperCase())
+  expect(getTagName(tr)).toBe("tr")
 
   // test headers
   const headers = tr!.children
@@ -45,7 +45,7 @@ test("renders simple table", () => {
   const mySimpleTableRowsHeaders = Object.keys(mySimpleTableRows[0])
   for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
     const header = headers[iColumn]
-    expect(header.tagName).toBe("th".toUpperCase())
+    expect(getTagName(header)).toBe("th")
     expect(header.className).toBe("sortable")
     expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}⇅`)
   }
@@ -57,7 +57,7 @@ test("renders simple table", () => {
   for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
     const row = rows[iRow]
 
-    expect(row.tagName).toBe("tr".toUpperCase())
+    expect(getTagName(row)).toBe("tr")
 
     // test cells
     const cells = row.children
@@ -66,7 +66,7 @@ test("renders simple table", () => {
     const mySimpleTableRowsValues = Object.values(mySimpleTableRows[iRow])
     for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
       const cell = cells[iCell]
-      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(getTagName(cell)).toBe("td")
       expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
     }
   }
@@ -135,7 +135,7 @@ test("renders variable rows table", async () => {
   expect(children.length).toBe(1)
 
   const table = children[0]
-  expect(table.tagName).toBe("table".toUpperCase())
+  expect(getTagName(table)).toBe("table")
   expect(table.classList[0]).toBe("solid-simple-table")
 
   const tableChildren = table.children
@@ -144,13 +144,13 @@ test("renders variable rows table", async () => {
   const thead = tableChildren[0]
   const tbody = tableChildren[1]
 
-  expect(thead.tagName).toBe("thead".toUpperCase())
-  expect(tbody.tagName).toBe("tbody".toUpperCase())
+  expect(getTagName(thead)).toBe("thead")
+  expect(getTagName(tbody)).toBe("tbody")
 
   expect(thead.children.length).toBe(1)
 
   const tr = thead.firstElementChild
-  expect(tr?.tagName).toBe("tr".toUpperCase())
+  expect(getTagName(tr)).toBe("tr")
 
   // test headers
   const headers = tr!.children
@@ -160,7 +160,7 @@ test("renders variable rows table", async () => {
   const myVariableRowsTableRowsHeaders = Object.keys(myVariableRowsTableInitialRows[0])
   for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
     const header = headers[iColumn]
-    expect(header.tagName).toBe("th".toUpperCase())
+    expect(getTagName(header)).toBe("th")
     expect(header.className).toBe("sortable")
     expect(header.textContent).toBe(`${myVariableRowsTableRowsHeaders[iColumn]}⇅`)
   }
@@ -171,7 +171,7 @@ test("renders variable rows table", async () => {
   for (let iRow = 0, rowNum = myVariableRowsTableInitialRows.length; iRow < rowNum; iRow++) {
     const row = rows[iRow]
 
-    expect(row.tagName).toBe("tr".toUpperCase())
+    expect(getTagName(row)).toBe("tr")
 
     // test cells
     const cells = row.children
@@ -180,7 +180,7 @@ test("renders variable rows table", async () => {
     const mySimpleTableRowsValues = Object.values(myVariableRowsTableInitialRows[iRow])
     for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
       const cell = cells[iCell]
-      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(getTagName(cell)).toBe("td")
       expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
     }
   }
@@ -193,7 +193,7 @@ test("renders variable rows table", async () => {
     await sleep(1000)
 
     const row = rows[addedRowIndex]
-    expect(row.tagName).toBe("tr".toUpperCase())
+    expect(getTagName(row)).toBe("tr")
 
     // test cells
     const cells = row.children
@@ -202,7 +202,7 @@ test("renders variable rows table", async () => {
     const mySimpleTableRowsValues = Object.values({ file: "New file", message: "New message", severity: "info" })
     for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
       const cell = cells[iCell]
-      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(getTagName(cell)).toBe("td")
       expect(cell.textContent).toBe(mySimpleTableRowsValues[iCell])
     }
   }
@@ -215,7 +215,7 @@ test("renders complex table", () => {
   expect(children.length).toBe(1)
 
   const table = children[0]
-  expect(table.tagName).toBe("table".toUpperCase())
+  expect(getTagName(table)).toBe("table")
   expect(table.classList[0]).toBe("solid-simple-table")
 
   const tableChildren = table.children
@@ -224,13 +224,13 @@ test("renders complex table", () => {
   const thead = tableChildren[0]
   const tbody = tableChildren[1]
 
-  expect(thead.tagName).toBe("thead".toUpperCase())
-  expect(tbody.tagName).toBe("tbody".toUpperCase())
+  expect(getTagName(thead)).toBe("thead")
+  expect(getTagName(tbody)).toBe("tbody")
 
   expect(thead.children.length).toBe(1)
 
   const tr = thead.firstElementChild
-  expect(tr?.tagName).toBe("tr".toUpperCase())
+  expect(getTagName(tr)).toBe("tr")
 
   // test headers
   const headers = tr!.children
@@ -241,7 +241,7 @@ test("renders complex table", () => {
     const header = headers[iColumn]
     const label = MyComplexTableColumns[iColumn].label
 
-    expect(header.tagName).toBe("th".toUpperCase())
+    expect(getTagName(header)).toBe("th")
     if (label === "File") {
       expect(header.className).toBe("sortable")
       expect(header.textContent).toBe(`${label}↓`)
@@ -261,7 +261,7 @@ test("renders complex table", () => {
   for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
     const row = rows[iRow]
 
-    expect(row.tagName).toBe("tr".toUpperCase())
+    expect(getTagName(row)).toBe("tr")
 
     // test cells
     const cells = row.children
@@ -270,7 +270,7 @@ test("renders complex table", () => {
     const myComplexTableRowsValues = Object.values(myComplexTableRows[iRow])
     for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
       const cell = cells[iCell]
-      expect(cell.tagName).toBe("td".toUpperCase())
+      expect(getTagName(cell)).toBe("td")
       expect(cell.textContent).toBe(myComplexTableRowsValues[iCell])
     }
   }
@@ -285,4 +285,8 @@ async function sleep(time: number) {
   await new Promise((res) => {
     setTimeout(res, time)
   })
+}
+
+function getTagName(elm: Element | undefined): string | undefined {
+  return elm?.tagName?.toLowerCase()
 }
