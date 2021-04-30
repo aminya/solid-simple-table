@@ -16,6 +16,19 @@ beforeEach(() => {
   rootElm.id = "app"
 })
 
+function testTrHeaders(headers: HTMLCollectionOf<HTMLTableHeaderCellElement>, rowsData: Record<string, string>[]) {
+  expect(headers.length).toBe(Object.keys(rowsData[0]).length)
+
+  const headersData = Object.keys(rowsData[0])
+  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
+    const header = headers[iColumn]
+    expect(getTagName(header)).toBe("th")
+    expect(header.className).toBe("sortable")
+    expect(header.textContent).toBe(`${headersData[iColumn]}⇅`)
+  }
+  return headersData
+}
+
 function testTBodyRows(rows: HTMLCollection, rowsData: Record<string, string>[]) {
   // test rows
   for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
@@ -27,11 +40,11 @@ function testTBodyRows(rows: HTMLCollection, rowsData: Record<string, string>[])
     const cells = row.children
     expect(cells.length).toBe(Object.keys(rowsData[iRow]).length)
 
-    const tableValues = Object.values(rowsData[iRow])
+    const rowsValues = Object.values(rowsData[iRow])
     for (let iCell = 0, cellNum = cells.length; iCell < cellNum; iCell++) {
       const cell = cells[iCell]
       expect(getTagName(cell)).toBe("td")
-      expect(cell.textContent).toBe(tableValues[iCell])
+      expect(cell.textContent).toBe(rowsValues[iCell])
     }
   }
 }
@@ -56,21 +69,12 @@ test("renders simple table", () => {
 
   expect(thead.children.length).toBe(1)
 
-  const tr = thead.firstElementChild
+  const tr = thead.firstElementChild as HTMLTableRowElement
   expect(getTagName(tr)).toBe("tr")
 
   // test headers
-  const headers = tr!.children
-
-  expect(headers.length).toBe(Object.keys(mySimpleTableRows[0]).length)
-
-  const mySimpleTableRowsHeaders = Object.keys(mySimpleTableRows[0])
-  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
-    const header = headers[iColumn]
-    expect(getTagName(header)).toBe("th")
-    expect(header.className).toBe("sortable")
-    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}⇅`)
-  }
+  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
+  const mySimpleTableRowsHeaders = testTrHeaders(headers, mySimpleTableRows)
 
   expect(tbody.children.length).toBe(mySimpleTableRows.length)
   const rows = tbody.children
@@ -156,17 +160,8 @@ test("renders variable rows table", async () => {
   expect(getTagName(tr)).toBe("tr")
 
   // test headers
-  const headers = tr!.children
-
-  expect(headers.length).toBe(Object.keys(myVariableRowsTableInitialRows[0]).length)
-
-  const myVariableRowsTableRowsHeaders = Object.keys(myVariableRowsTableInitialRows[0])
-  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
-    const header = headers[iColumn]
-    expect(getTagName(header)).toBe("th")
-    expect(header.className).toBe("sortable")
-    expect(header.textContent).toBe(`${myVariableRowsTableRowsHeaders[iColumn]}⇅`)
-  }
+  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
+  testTrHeaders(headers, myVariableRowsTableInitialRows)
 
   const rows = tbody.children
 
@@ -221,7 +216,7 @@ test("renders complex table", () => {
   expect(getTagName(tr)).toBe("tr")
 
   // test headers
-  const headers = tr!.children
+  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
 
   expect(headers.length).toBe(MyComplexTableColumns.length)
 
