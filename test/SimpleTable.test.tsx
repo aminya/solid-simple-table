@@ -95,27 +95,18 @@ function testTBodyRows(rows: HTMLCollectionOf<HTMLTableRowElement>, rowsData: Re
   }
 }
 
-test("renders simple table", () => {
-  dispose = render(() => <MySimpleTable />, rootElm)
-  const { tbody, tr } = testTableSections(rootElm)
-
-  // test headers
-  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  const mySimpleTableRowsHeaders = testTrHeaders(headers, mySimpleTableRows)
-
-  expect(tbody.children.length).toBe(mySimpleTableRows.length)
-  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-
-  // test rows
-  testTBodyRows(rows, mySimpleTableRows)
-
+function testSorting(
+  headers: HTMLCollectionOf<HTMLTableHeaderCellElement>,
+  tbody: ReturnType<HTMLTableElement["createTBody"]>,
+  headersData: string[]
+) {
   // test sorting
   for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
     const header = headers[iColumn] as HTMLTableHeaderCellElement
 
     // initial sort
     const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-    const mySimpleTableRowsRelatedRows = mySimpleTableRows.map((row) => row[mySimpleTableRowsHeaders[iColumn]])
+    const mySimpleTableRowsRelatedRows = mySimpleTableRows.map((row) => row[headersData[iColumn]])
 
     const relatedRows: HTMLTableCellElement[] = new Array(columnNum)
     for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
@@ -128,7 +119,7 @@ test("renders simple table", () => {
     // ascending sort
 
     click(header)
-    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
+    expect(header.textContent).toBe(`${headersData[iColumn]}↓`)
 
     const rowsAsc = tbody.children
     const mySimpleTableRowsRelatedRowsAsc = mySimpleTableRowsRelatedRows.sort()
@@ -143,7 +134,7 @@ test("renders simple table", () => {
     // descending sort
 
     click(header)
-    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
+    expect(header.textContent).toBe(`${headersData[iColumn]}↑`)
 
     const rowsDesc = tbody.children
     const mySimpleTableRowsRelatedRowsDesc = mySimpleTableRowsRelatedRows.sort().reverse()
@@ -156,11 +147,29 @@ test("renders simple table", () => {
     }
 
     click(header)
-    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↓`)
+    expect(header.textContent).toBe(`${headersData[iColumn]}↓`)
 
     click(header)
-    expect(header.textContent).toBe(`${mySimpleTableRowsHeaders[iColumn]}↑`)
+    expect(header.textContent).toBe(`${headersData[iColumn]}↑`)
   }
+}
+
+test("renders simple table", () => {
+  dispose = render(() => <MySimpleTable />, rootElm)
+  const { tbody, tr } = testTableSections(rootElm)
+
+  // test headers
+  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
+  const headersData = testTrHeaders(headers, mySimpleTableRows)
+
+  expect(tbody.children.length).toBe(mySimpleTableRows.length)
+  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
+
+  // test rows
+  testTBodyRows(rows, mySimpleTableRows)
+
+  // test sorting
+  testSorting(headers, tbody, headersData)
 })
 
 test("renders variable rows table", async () => {
