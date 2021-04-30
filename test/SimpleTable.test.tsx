@@ -17,6 +17,31 @@ beforeEach(() => {
   rootElm.id = "app"
 })
 
+function testTableSections(rootElm: HTMLDivElement) {
+  const children = rootElm.children
+  expect(children.length).toBe(1)
+
+  const table = children[0] as HTMLTableElement
+  expect(getTagName(table)).toBe("table")
+  expect(table.classList[0]).toBe("solid-simple-table")
+
+  const tableChildren = table.children
+  expect(tableChildren.length).toBe(2)
+
+  const thead = tableChildren[0] as HTMLTableElement["tHead"]
+  const tbody = tableChildren[1] as ReturnType<HTMLTableElement["createTBody"]>
+
+  expect(getTagName(thead)).toBe("thead")
+  expect(getTagName(tbody)).toBe("tbody")
+
+  expect(thead.children.length).toBe(1)
+
+  const tr = thead.firstElementChild as HTMLTableRowElement
+  expect(getTagName(tr)).toBe("tr")
+
+  return { table, thead, tbody, tr }
+}
+
 function testTrHeaders(
   headers: HTMLCollectionOf<HTMLTableHeaderCellElement>,
   rowsData: Record<string, string>[],
@@ -72,26 +97,7 @@ function testTBodyRows(rows: HTMLCollectionOf<HTMLTableRowElement>, rowsData: Re
 
 test("renders simple table", () => {
   dispose = render(() => <MySimpleTable />, rootElm)
-  const children = rootElm.children
-  expect(children.length).toBe(1)
-
-  const table = children[0]
-  expect(getTagName(table)).toBe("table")
-  expect(table.classList[0]).toBe("solid-simple-table")
-
-  const tableChildren = table.children
-  expect(tableChildren.length).toBe(2)
-
-  const thead = tableChildren[0]
-  const tbody = tableChildren[1]
-
-  expect(getTagName(thead)).toBe("thead")
-  expect(getTagName(tbody)).toBe("tbody")
-
-  expect(thead.children.length).toBe(1)
-
-  const tr = thead.firstElementChild as HTMLTableRowElement
-  expect(getTagName(tr)).toBe("tr")
+  const { tbody, tr } = testTableSections(rootElm)
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
@@ -159,26 +165,7 @@ test("renders simple table", () => {
 
 test("renders variable rows table", async () => {
   dispose = render(() => <MyVariableRowsTable initialRows={myVariableRowsTableInitialRows} />, rootElm)
-  const children = rootElm.children
-  expect(children.length).toBe(1)
-
-  const table = children[0]
-  expect(getTagName(table)).toBe("table")
-  expect(table.classList[0]).toBe("solid-simple-table")
-
-  const tableChildren = table.children
-  expect(tableChildren.length).toBe(2)
-
-  const thead = tableChildren[0]
-  const tbody = tableChildren[1]
-
-  expect(getTagName(thead)).toBe("thead")
-  expect(getTagName(tbody)).toBe("tbody")
-
-  expect(thead.children.length).toBe(1)
-
-  const tr = thead.firstElementChild
-  expect(getTagName(tr)).toBe("tr")
+  const { tbody, tr } = testTableSections(rootElm)
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
@@ -215,26 +202,7 @@ test("renders variable rows table", async () => {
 test("renders complex table", () => {
   dispose = render(() => <MyComplexTable />, rootElm)
 
-  const children = rootElm.children
-  expect(children.length).toBe(1)
-
-  const table = children[0]
-  expect(getTagName(table)).toBe("table")
-  expect(table.classList[0]).toBe("solid-simple-table")
-
-  const tableChildren = table.children
-  expect(tableChildren.length).toBe(2)
-
-  const thead = tableChildren[0]
-  const tbody = tableChildren[1]
-
-  expect(getTagName(thead)).toBe("thead")
-  expect(getTagName(tbody)).toBe("tbody")
-
-  expect(thead.children.length).toBe(1)
-
-  const tr = thead.firstElementChild
-  expect(getTagName(tr)).toBe("tr")
+  const { tbody, tr } = testTableSections(rootElm)
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
