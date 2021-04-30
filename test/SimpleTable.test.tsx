@@ -96,6 +96,7 @@ function testTBodyRows(rows: HTMLCollectionOf<HTMLTableRowElement>, rowsData: Re
 }
 
 function testSorting(
+  rowsData: Record<string, string>[],
   headers: HTMLCollectionOf<HTMLTableHeaderCellElement>,
   tbody: ReturnType<HTMLTableElement["createTBody"]>,
   headersData: string[]
@@ -106,14 +107,14 @@ function testSorting(
 
     // initial sort
     const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-    const mySimpleTableRowsRelatedRows = mySimpleTableRows.map((row) => row[headersData[iColumn]])
+    const relatedRowsData = rowsData.map((row) => row[headersData[iColumn]])
 
     const relatedRows: HTMLTableCellElement[] = new Array(columnNum)
     for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
       const row = rows[iRow]
       relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
 
-      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRows[iRow])
+      expect(relatedRows[iRow].textContent).toBe(relatedRowsData[iRow])
     }
 
     // ascending sort
@@ -122,13 +123,13 @@ function testSorting(
     expect(header.textContent).toBe(`${headersData[iColumn]}↓`)
 
     const rowsAsc = tbody.children
-    const mySimpleTableRowsRelatedRowsAsc = mySimpleTableRowsRelatedRows.sort()
+    const relatedRowsDataAsc = relatedRowsData.sort()
 
     for (let iRow = 0, rowNum = rowsAsc.length; iRow < rowNum; iRow++) {
       const row = rowsAsc[iRow]
       relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
 
-      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRowsAsc[iRow])
+      expect(relatedRows[iRow].textContent).toBe(relatedRowsDataAsc[iRow])
     }
 
     // descending sort
@@ -137,13 +138,13 @@ function testSorting(
     expect(header.textContent).toBe(`${headersData[iColumn]}↑`)
 
     const rowsDesc = tbody.children
-    const mySimpleTableRowsRelatedRowsDesc = mySimpleTableRowsRelatedRows.sort().reverse()
+    const relatedRowsDataDesc = relatedRowsData.sort().reverse()
 
     for (let iRow = 0, rowNum = rowsDesc.length; iRow < rowNum; iRow++) {
       const row = rowsDesc[iRow]
       relatedRows[iRow] = row.children[iColumn] as HTMLTableCellElement
 
-      expect(relatedRows[iRow].textContent).toBe(mySimpleTableRowsRelatedRowsDesc[iRow])
+      expect(relatedRows[iRow].textContent).toBe(relatedRowsDataDesc[iRow])
     }
 
     click(header)
@@ -169,7 +170,7 @@ test("renders simple table", () => {
   testTBodyRows(rows, mySimpleTableRows)
 
   // test sorting
-  testSorting(headers, tbody, headersData)
+  testSorting(mySimpleTableRows, headers, tbody, headersData)
 })
 
 test("renders variable rows table", async () => {
@@ -178,12 +179,15 @@ test("renders variable rows table", async () => {
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  testTrHeaders(headers, myVariableRowsTableInitialRows)
+  const headersData = testTrHeaders(headers, myVariableRowsTableInitialRows)
 
   const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
 
   // test rows
   testTBodyRows(rows, myVariableRowsTableInitialRows)
+
+  // test sorting
+  testSorting(myVariableRowsTableInitialRows, headers, tbody, headersData)
 
   // test added rows
   for (let i = 0; i < 4; i++) {
@@ -215,13 +219,17 @@ test("renders complex table", () => {
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  testTrHeaders(headers, myComplexTableRows, MyComplexTableColumns, ["file", "asc"])
+  const headersData = testTrHeaders(headers, myComplexTableRows, MyComplexTableColumns, ["file", "asc"])
 
   expect(tbody.children.length).toBe(myComplexTableRows.length)
   const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
 
   // test rows
   testTBodyRows(rows, myComplexTableRows)
+
+  // test sorting
+  // TODO (the default sorting changes the sort buttons)
+  // testSorting(myComplexTableRows, headers, tbody, headersData)
 })
 
 afterEach(() => {
