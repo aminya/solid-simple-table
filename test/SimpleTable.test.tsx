@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-
 import { render } from "solid-js/web"
 
 import { Column, SortDirection } from "../src/SimpleTable.types"
