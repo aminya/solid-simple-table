@@ -6,6 +6,8 @@ import { MySimpleTable, rows as mySimpleTableRows } from "../demo/simple/index"
 import { MyVariableRowsTable, initialRows as myVariableRowsTableInitialRows } from "../demo/variable-rows/index"
 import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../demo/complex/index"
 
+import { sleep, click, getTagName } from "./util"
+
 let rootElm: HTMLDivElement
 let dispose: () => void
 
@@ -276,22 +278,3 @@ afterEach(() => {
   rootElm.textContent = ""
   dispose()
 })
-
-async function sleep(time: number) {
-  await new Promise((res) => {
-    setTimeout(res, time)
-  })
-}
-
-function getTagName(elm: Element | undefined): string | undefined {
-  return elm?.tagName?.toLowerCase()
-}
-
-function click(elm: HTMLElement) {
-  try {
-    // @ts-ignore internal solid API
-    elm?.$$click(new MouseEvent("click"))
-  } catch {
-    elm.click()
-  }
-}
