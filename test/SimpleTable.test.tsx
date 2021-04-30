@@ -29,7 +29,7 @@ function testTrHeaders(headers: HTMLCollectionOf<HTMLTableHeaderCellElement>, ro
   return headersData
 }
 
-function testTBodyRows(rows: HTMLCollection, rowsData: Record<string, string>[]) {
+function testTBodyRows(rows: HTMLCollectionOf<HTMLTableRowElement>, rowsData: Record<string, string>[]) {
   // test rows
   for (let iRow = 0, rowNum = rows.length; iRow < rowNum; iRow++) {
     const row = rows[iRow]
@@ -77,7 +77,7 @@ test("renders simple table", () => {
   const mySimpleTableRowsHeaders = testTrHeaders(headers, mySimpleTableRows)
 
   expect(tbody.children.length).toBe(mySimpleTableRows.length)
-  const rows = tbody.children
+  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
 
   // test rows
   testTBodyRows(rows, mySimpleTableRows)
@@ -87,7 +87,7 @@ test("renders simple table", () => {
     const header = headers[iColumn] as HTMLTableHeaderCellElement
 
     // initial sort
-    const rows = tbody.children
+    const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
     const mySimpleTableRowsRelatedRows = mySimpleTableRows.map((row) => row[mySimpleTableRowsHeaders[iColumn]])
 
     const relatedRows: HTMLTableCellElement[] = new Array(columnNum)
@@ -163,7 +163,7 @@ test("renders variable rows table", async () => {
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
   testTrHeaders(headers, myVariableRowsTableInitialRows)
 
-  const rows = tbody.children
+  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
 
   // test rows
   testTBodyRows(rows, myVariableRowsTableInitialRows)
@@ -238,7 +238,7 @@ test("renders complex table", () => {
   }
 
   expect(tbody.children.length).toBe(myComplexTableRows.length)
-  const rows = tbody.children
+  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
 
   // test rows
   testTBodyRows(rows, myComplexTableRows)
