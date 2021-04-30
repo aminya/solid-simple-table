@@ -25,8 +25,8 @@
   },
   "prettier": "prettier-config-atomic",
   "dependencies": {
-    "babel-preset-solid": "~0.26.0",
-    "solid-js": "~0.26.3"
+    "babel-preset-solid": "~0.26.5",
+    "solid-js": "~0.26.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -40,7 +40,7 @@
     "@parcel/validator-typescript": "^2.0.0-nightly.651",
     "@types/chance": "^1.1.1",
     "@types/jest": "26.0.23",
-    "@types/node": "15.0.0",
+    "@types/node": "15.0.1",
     "babel-jest": "^26.6.3",
     "chance": "^1.1.7",
     "cross-env": "^7.0.3",

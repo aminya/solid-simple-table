@@ -12,9 +12,9 @@ specifiers:
   '@parcel/validator-typescript': ^2.0.0-nightly.651
   '@types/chance': ^1.1.1
   '@types/jest': 26.0.23
-  '@types/node': 15.0.0
+  '@types/node': 15.0.1
   babel-jest: ^26.6.3
-  babel-preset-solid: ~0.26.0
+  babel-preset-solid: ~0.26.5
   chance: ^1.1.7
   cross-env: ^7.0.3
   eslint-config-atomic: ^1.14.2
@@ -25,13 +25,13 @@ specifiers:
   prettier-config-atomic: ^2.0.2
   shx: ^0.3.3
   solid-jest: ^0.0.3
-  solid-js: ~0.26.3
+  solid-js: ~0.26.5
   typescript: 4.2.4
   web-resource-inliner: ^5.0.0
 
 dependencies:
-  babel-preset-solid: 0.26.0
-  solid-js: 0.26.3
+  babel-preset-solid: 0.26.5
+  solid-js: 0.26.5
 
 devDependencies:
   '@babel/cli': 7.13.16
@@ -45,7 +45,7 @@ devDependencies:
   '@parcel/validator-typescript': 2.0.0-nightly.651_typescript@4.2.4
   '@types/chance': 1.1.1
   '@types/jest': 26.0.23
-  '@types/node': 15.0.0
+  '@types/node': 15.0.1
   babel-jest: 26.6.3
   chance: 1.1.7
   cross-env: 7.0.3
@@ -56,7 +56,7 @@ devDependencies:
   parcel: 2.0.0-nightly.649
   prettier-config-atomic: 2.0.2
   shx: 0.3.3
-  solid-jest: 0.0.3_babel-preset-solid@0.26.0
+  solid-jest: 0.0.3_babel-preset-solid@0.26.5
   typescript: 4.2.4
   web-resource-inliner: 5.0.0
 
@@ -1663,7 +1663,7 @@ packages:
       nullthrows: 1.1.1
     dev: true
 
-  /@parcel/cache/2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649:
+  /@parcel/cache/2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8:
     resolution: {integrity: sha512-bIhDInA2jfOVN8SMTl2PihWyokNp89Pnxkl+Qccc0iz53r468Z/8vl6lHQ5dbXUl9MlkKNzB93r5d2uwbjLePA==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -1684,7 +1684,7 @@ packages:
       string-width: 4.2.0
     dev: true
 
-  /@parcel/config-default/2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649:
+  /@parcel/config-default/2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8:
     resolution: {integrity: sha512-T1b+mEtHeEdM95nK7FVgKE8cVNG/QGys3GLrsDGkF9mPcObc0oTjkjJjHH2PNp3wGtIsbyN5KeAZEUZEjSfKWg==}
     peerDependencies:
       '@parcel/core': ^2.0.0-alpha.3.1
@@ -1727,17 +1727,17 @@ packages:
     resolution: {integrity: sha512-F91dRmBfatLSTA3Z/wzbPfTDglNojiYCSeHbbBb0UxOvl6kzFnmbqKvSLx+cF5X34cWSudvksTbp6ICO5jBUyA==}
     engines: {node: '>= 12.0.0'}
     dependencies:
-      '@parcel/cache': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/cache': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/diagnostic': 2.0.0-nightly.651
       '@parcel/events': 2.0.0-nightly.651
-      '@parcel/fs': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/fs': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/logger': 2.0.0-nightly.651
-      '@parcel/package-manager': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/package-manager': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/plugin': 2.0.0-nightly.651
       '@parcel/source-map': 2.0.0-alpha.4.21
       '@parcel/types': 2.0.0-nightly.651
       '@parcel/utils': 2.0.0-nightly.651
-      '@parcel/workers': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/workers': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       abortcontroller-polyfill: 1.5.0
       base-x: 3.0.8
       browserslist: 4.16.3
@@ -1781,7 +1781,7 @@ packages:
       readable-stream: 2.3.7
     dev: true
 
-  /@parcel/fs/2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649:
+  /@parcel/fs/2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8:
     resolution: {integrity: sha512-UJNhvFPfkktkzSTNnXB9sQ1yuRS4HoHD/OkUntkl6ZsF0RXtYnMAy/OmJywTaUvPWWsaN2HwenlCbyQDILQ3oA==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -1792,7 +1792,7 @@ packages:
       '@parcel/fs-write-stream-atomic': 2.0.0-nightly.2273
       '@parcel/utils': 2.0.0-nightly.651
       '@parcel/watcher': 2.0.0-alpha.10
-      '@parcel/workers': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/workers': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       graceful-fs: 4.2.6
       mkdirp: 0.5.5
       ncp: 2.0.0
@@ -1897,7 +1897,7 @@ packages:
       terser: 5.5.1
     dev: true
 
-  /@parcel/package-manager/2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649:
+  /@parcel/package-manager/2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8:
     resolution: {integrity: sha512-YHx/hglKgSJT6C0lenySoZNWfCVpI4BEo/5nq4oo3wfNeCqPOSMzp+G3Io9ggGbh40YOdHp1Gp+BUhiuYT3GCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -1905,10 +1905,10 @@ packages:
     dependencies:
       '@parcel/core': 2.0.0-nightly.649
       '@parcel/diagnostic': 2.0.0-nightly.651
-      '@parcel/fs': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/fs': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/logger': 2.0.0-nightly.651
       '@parcel/utils': 2.0.0-nightly.651
-      '@parcel/workers': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/workers': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       command-exists: 1.2.9
       cross-spawn: 6.0.5
       nullthrows: 1.1.1
@@ -2289,7 +2289,7 @@ packages:
       node-gyp-build: 4.2.3
     dev: true
 
-  /@parcel/workers/2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649:
+  /@parcel/workers/2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8:
     resolution: {integrity: sha512-Srs7zlmjgdMQgIOMU4UkeK9PnX31VFV5dCtCwbLKICnQRoBtOb3NhiyE5U6D6m6Luh+pSwVs0QscV70rBNev0Q==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -2407,6 +2407,10 @@ packages:
 
   /@types/node/15.0.0:
     resolution: {integrity: sha512-YN1d+ae2MCb4U0mMa+Zlb5lWTdpFShbAj5nmte6lel27waMMBfivrm0prC16p/Di3DyTrmerrYUT8/145HXxVw==}
+    dev: true
+
+  /@types/node/15.0.1:
+    resolution: {integrity: sha512-TMkXt0Ck1y0KKsGr9gJtWGjttxlZnnvDtphxUOSd0bfaR6Q1jle+sPvrzNR1urqYTWMinoKvjKfXUGsumaO1PA==}
     dev: true
 
   /@types/normalize-package-data/2.4.0:
@@ -3054,8 +3058,8 @@ packages:
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.12.10
     dev: true
 
-  /babel-preset-solid/0.26.0:
-    resolution: {integrity: sha512-gfTRKmItnKBp7udMXp1Mmsg5YZZZlo53yN6ePVRKQi/GSH17WR6vaa1TcpNIqwSL21pt8eteHbPDoLrByA4i+Q==}
+  /babel-preset-solid/0.26.5:
+    resolution: {integrity: sha512-SXMSmp3iL3FTbcy2QB4poHSbsPMrNSHOk8vIgQSMI/8UwxbxjjAG1iDDcqjsgWw6DqndxM6Z6nID9+94aT8NCQ==}
     dependencies:
       babel-plugin-jsx-dom-expressions: 0.26.3
     transitivePeerDependencies:
@@ -7528,13 +7532,13 @@ packages:
     engines: {node: '>= 12.0.0'}
     hasBin: true
     dependencies:
-      '@parcel/config-default': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/config-default': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/core': 2.0.0-nightly.649
       '@parcel/diagnostic': 2.0.0-nightly.651
       '@parcel/events': 2.0.0-nightly.651
-      '@parcel/fs': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/fs': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/logger': 2.0.0-nightly.651
-      '@parcel/package-manager': 2.0.0-nightly.651_@parcel+core@2.0.0-nightly.649
+      '@parcel/package-manager': 2.0.0-nightly.651_40d331ea5f613d33d358d8adb6c6c6d8
       '@parcel/reporter-cli': 2.0.0-nightly.651
       '@parcel/reporter-dev-server': 2.0.0-nightly.651
       '@parcel/utils': 2.0.0-nightly.651
@@ -8940,22 +8944,22 @@ packages:
       use: 3.1.1
     dev: true
 
-  /solid-jest/0.0.3_babel-preset-solid@0.26.0:
+  /solid-jest/0.0.3_babel-preset-solid@0.26.5:
     resolution: {integrity: sha512-GNGyiwo9jmZjnTLRYBokLOsyYWwaK3UxN2Riy8qOPHx1u5KbyLnFhiaOfab+5GGhsaqPJJN3eCtg5INIbfQ7RA==}
     peerDependencies:
       babel-preset-solid: '*'
     dependencies:
       '@babel/preset-env': 7.13.9
       babel-jest: 26.6.3
-      babel-preset-solid: 0.26.0
+      babel-preset-solid: 0.26.5
       enhanced-resolve-jest: 1.1.0
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
     dev: true
 
-  /solid-js/0.26.3:
-    resolution: {integrity: sha512-ixl/SWvkZjQrNBS5DrD/IqdgphTOnC0/JtEPisx8c9/L5O0xQjlR0WljD4DLwzXFN9wfmLakpfreWO0cy+ckfw==}
+  /solid-js/0.26.5:
+    resolution: {integrity: sha512-cMjxcVoyRBgnfSpwYxXPM5WF800guR+x/01RDBFQjAAkqU7X28GbRkTNKcyQ1KHcFOnzEsG18J+JJ9/PvqyNmw==}
     dev: false
 
   /source-map-resolve/0.5.3:
