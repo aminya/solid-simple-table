@@ -9,13 +9,32 @@ import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableCo
 
 import { sleep, click, getTagName } from "./util"
 
-let rootElm: HTMLDivElement
-let dispose: () => void
+function testTable(
+  rowsData: Record<string, string>[],
+  rootElm: HTMLDivElement,
+  shouldTestSort: boolean = true,
+  columnsData: Column[] = undefined,
+  defaultSortDirection: SortDirection = undefined
+) {
+  const { table, thead, tbody, tr } = testTableSections(rootElm)
 
-beforeEach(() => {
-  rootElm = document.createElement("div")
-  rootElm.id = "app"
-})
+  // test headers
+  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
+  const headersData = testTrHeaders(headers, rowsData, columnsData, defaultSortDirection)
+
+  expect(tbody.children.length).toBe(rowsData.length)
+  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
+
+  // test rows
+  testTBodyRows(rows, rowsData)
+
+  // test sorting
+  if (shouldTestSort) {
+    testSorting(rowsData, headers, tbody, headersData)
+  }
+
+  return { table, thead, tbody, tr, rows }
+}
 
 function testTableSections(rootElm: HTMLDivElement) {
   const children = rootElm.children
@@ -155,39 +174,22 @@ function testSorting(
   }
 }
 
+let rootElm: HTMLDivElement
+let dispose: () => void
+
+beforeEach(() => {
+  rootElm = document.createElement("div")
+  rootElm.id = "app"
+})
+
 test("renders simple table", () => {
   dispose = render(() => <MySimpleTable />, rootElm)
-  const { tbody, tr } = testTableSections(rootElm)
-
-  // test headers
-  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  const headersData = testTrHeaders(headers, mySimpleTableRows)
-
-  expect(tbody.children.length).toBe(mySimpleTableRows.length)
-  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-
-  // test rows
-  testTBodyRows(rows, mySimpleTableRows)
-
-  // test sorting
-  testSorting(mySimpleTableRows, headers, tbody, headersData)
+  testTable(mySimpleTableRows, rootElm)
 })
 
 test("renders variable rows table", async () => {
   dispose = render(() => <MyVariableRowsTable initialRows={myVariableRowsTableInitialRows} />, rootElm)
-  const { tbody, tr } = testTableSections(rootElm)
-
-  // test headers
-  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  const headersData = testTrHeaders(headers, myVariableRowsTableInitialRows)
-
-  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-
-  // test rows
-  testTBodyRows(rows, myVariableRowsTableInitialRows)
-
-  // test sorting
-  testSorting(myVariableRowsTableInitialRows, headers, tbody, headersData)
+  const { rows } = testTable(myVariableRowsTableInitialRows, rootElm)
 
   // test added rows
   for (let i = 0; i < 4; i++) {
@@ -214,22 +216,7 @@ test("renders variable rows table", async () => {
 
 test("renders complex table", () => {
   dispose = render(() => <MyComplexTable />, rootElm)
-
-  const { tbody, tr } = testTableSections(rootElm)
-
-  // test headers
-  const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-  const headersData = testTrHeaders(headers, myComplexTableRows, MyComplexTableColumns, ["file", "asc"])
-
-  expect(tbody.children.length).toBe(myComplexTableRows.length)
-  const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
-
-  // test rows
-  testTBodyRows(rows, myComplexTableRows)
-
-  // test sorting
-  // TODO (the default sorting changes the sort buttons)
-  // testSorting(myComplexTableRows, headers, tbody, headersData)
+  testTable(myComplexTableRows, rootElm, false, MyComplexTableColumns, ["file", "asc"])
 })
 
 afterEach(() => {
