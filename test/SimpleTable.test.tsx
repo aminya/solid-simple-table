@@ -2,6 +2,7 @@
 
 import { render } from "solid-js/web"
 
+import { Column, SortDirection } from "../src/SimpleTable.types"
 import { MySimpleTable, rows as mySimpleTableRows } from "../demo/simple/index"
 import { MyVariableRowsTable, initialRows as myVariableRowsTableInitialRows } from "../demo/variable-rows/index"
 import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../demo/complex/index"
@@ -16,15 +17,35 @@ beforeEach(() => {
   rootElm.id = "app"
 })
 
-function testTrHeaders(headers: HTMLCollectionOf<HTMLTableHeaderCellElement>, rowsData: Record<string, string>[]) {
+function testTrHeaders(
+  headers: HTMLCollectionOf<HTMLTableHeaderCellElement>,
+  rowsData: Record<string, string>[],
+  columnsData?: Column[],
+  defaultSortDirection?: SortDirection
+) {
   expect(headers.length).toBe(Object.keys(rowsData[0]).length)
 
   const headersData = Object.keys(rowsData[0])
   for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
     const header = headers[iColumn]
+
     expect(getTagName(header)).toBe("th")
-    expect(header.className).toBe("sortable")
-    expect(header.textContent).toBe(`${headersData[iColumn]}⇅`)
+
+    const sortable = columnsData?.[iColumn].sortable ?? true
+    const label = columnsData?.[iColumn].label ?? headersData[iColumn]
+
+    if (sortable) {
+      expect(header.className).toBe("sortable")
+      if (defaultSortDirection !== undefined && label.toLowerCase() === defaultSortDirection[0]) {
+        const direction = defaultSortDirection[1] ? "↓" : "↑"
+        expect(header.textContent).toBe(`${label}${direction}`)
+      } else {
+        expect(header.textContent).toBe(`${label}⇅`)
+      }
+    } else {
+      expect(header.className).toBe("")
+      expect(header.textContent).toBe(`${label}`)
+    }
   }
   return headersData
 }
@@ -217,25 +238,7 @@ test("renders complex table", () => {
 
   // test headers
   const headers = tr!.children as HTMLCollectionOf<HTMLTableHeaderCellElement>
-
-  expect(headers.length).toBe(MyComplexTableColumns.length)
-
-  for (let iColumn = 0, columnNum = headers.length; iColumn < columnNum; iColumn++) {
-    const header = headers[iColumn]
-    const label = MyComplexTableColumns[iColumn].label
-
-    expect(getTagName(header)).toBe("th")
-    if (label === "File") {
-      expect(header.className).toBe("sortable")
-      expect(header.textContent).toBe(`${label}↓`)
-    } else if (label === "Message") {
-      expect(header.className).toBe("")
-      expect(header.textContent).toBe(`${label}`)
-    } else {
-      expect(header.className).toBe("sortable")
-      expect(header.textContent).toBe(`${label}⇅`)
-    }
-  }
+  testTrHeaders(headers, myComplexTableRows, MyComplexTableColumns, ["file", "asc"])
 
   expect(tbody.children.length).toBe(myComplexTableRows.length)
   const rows = tbody.children as HTMLCollectionOf<HTMLTableRowElement>
