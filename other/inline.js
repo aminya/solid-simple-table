@@ -1,16 +1,18 @@
 const fs = require("fs")
 const inline = require("web-resource-inliner")
 
+const folder = process.argv[2]
+
 inline.html(
   {
-    fileContent: readFileSync("./demo/simple/dist/index.html"),
-    relativeTo: "./demo/simple/dist",
+    fileContent: readFileSync(`${folder}/index.html`),
+    relativeTo: folder,
   },
   (err, result) => {
     if (err) {
       throw err
     }
-    fs.writeFileSync("./demo/simple/dist/index.html", result)
+    fs.writeFileSync(`${folder}/index.html`, result)
   }
 )
 

@@ -7,6 +7,7 @@
   "types": "dist/SimpleTable.d.ts",
   "source": "src/SimpleTable.tsx",
   "demo": "./demo/simple/dist/index.html",
+  "demo-variable-rows": "./demo/variable-rows/dist/index.html",
   "benchmark": "./benchmark/dist/index.html",
   "scripts": {
     "format": "prettier --write .",
@@ -20,7 +21,8 @@
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
     "demo.variable-rows": "cross-env NODE_ENV=production parcel serve ./demo/variable-rows/index.html --dist-dir ./demo/variable-rows/dist --open",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
-    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./other/inline.js && shx cp ./demo/simple/dist/index.html .",
+    "demo.simple.build": "cross-env NODE_ENV=production parcel build --target demo ./demo/simple/index.html && node ./other/inline.js ./demo/simple/dist && shx cp ./demo/simple/dist/index.html .",
+    "demo.variable-rows.build": "cross-env NODE_ENV=production parcel build --target demo-variable-rows ./demo/variable-rows/index.html --no-optimize && node ./other/inline.js ./demo/variable-rows/dist && shx cp ./demo/variable-rows/dist/index.html .",
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr"
   },
   "prettier": "prettier-config-atomic",
@@ -72,6 +74,13 @@
       "isLibrary": true
     },
     "demo": {
+      "context": "browser",
+      "engines": {
+        "browsers": "Chrome 76"
+      },
+      "includeNodeModules": true
+    },
+    "demo-variable-rows": {
       "context": "browser",
       "engines": {
         "browsers": "Chrome 76"
