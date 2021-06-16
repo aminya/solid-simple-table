@@ -58,7 +58,7 @@
   },
   "pnpm": {
     "overrides": {
-      "lmdb-store": "v1.5.3-pre"
+      "lmdb-store": "v1.5.4"
     }
   },
   "targets": {

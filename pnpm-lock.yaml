@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 overrides:
-  lmdb-store: v1.5.3-pre
+  lmdb-store: v1.5.4
 
 specifiers:
   '@babel/cli': ^7.14.5
@@ -2611,7 +2611,7 @@ packages:
       '@parcel/core': 2.0.0-nightly.720
       '@parcel/logger': 2.0.0-nightly.722
       '@parcel/utils': 2.0.0-nightly.722
-      lmdb-store: 1.5.3-pre
+      lmdb-store: 1.5.4
     dev: true
 
   /@parcel/codeframe/2.0.0-nightly.722:
@@ -7890,8 +7890,8 @@ packages:
     resolution: {integrity: sha512-VqnUYHOSqRqAGnIl+7SCnFxK+sX0x7LXe5qn0TG6t9SViofQgN7272PLCFZ/lgkT7tAO5CA/2pCsZGlGvGhfWA==}
     dev: true
 
-  /lmdb-store/1.5.3-pre:
-    resolution: {integrity: sha512-wZV+DWnDwtXLCjp9uz5xYec9DT769KDXE2lXebsbzr5dphxr1+4vUgSp31DYYrGPFF+ugw2411CPyaYRR/HMww==}
+  /lmdb-store/1.5.4:
+    resolution: {integrity: sha512-/jZpoGy+8ge1CV0VnJfjtgpbxWvZVynQaNQBzL1dcsootnfo3k5wIUrBN5Kc/FZUofeO8AAWRxrtLV3JYFQLPw==}
     requiresBuild: true
     dependencies:
       mkdirp: 1.0.4
