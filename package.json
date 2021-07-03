@@ -57,42 +57,34 @@
     "typescript": "4.3.5",
     "web-resource-inliner": "^5.0.0"
   },
+  "engines": {
+    "browsers": "Chrome 76"
+  },
   "targets": {
     "main": {
       "context": "browser",
-      "engines": {
-        "browsers": "> 0.25%"
-      },
       "includeNodeModules": true,
       "isLibrary": true
     },
     "module": {
       "context": "browser",
-      "engines": {
-        "browsers": "Chrome 76"
-      },
       "includeNodeModules": false,
-      "isLibrary": true
+      "engines": {
+        "browsers": "Chrome 90"
+      },
+      "isLibrary": true,
+      "outputFormat": "esmodule"
     },
     "demo": {
       "context": "browser",
-      "engines": {
-        "browsers": "Chrome 76"
-      },
       "includeNodeModules": true
     },
     "demo-variable-rows": {
       "context": "browser",
-      "engines": {
-        "browsers": "Chrome 76"
-      },
       "includeNodeModules": true
     },
     "benchmark": {
       "context": "browser",
-      "engines": {
-        "browsers": "Chrome 76"
-      },
       "includeNodeModules": true
     }
   },
