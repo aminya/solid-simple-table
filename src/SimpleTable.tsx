@@ -63,7 +63,7 @@ export function SimpleTable(props: Props<IndexType>) {
 
   function maybeRowID(row: Row) {
     // if accessors are needed
-    if (accessors) {
+    if (accessors === true) {
       return getRowID(row)
     } else {
       return undefined
@@ -86,7 +86,7 @@ export function SimpleTable(props: Props<IndexType>) {
               const isSortable = column.sortable !== false
               return (
                 <th
-                  id={accessors ? String(column.id) : undefined}
+                  id={accessors === true ? String(column.id) : undefined}
                   className={isSortable ? "sortable" : undefined}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
@@ -109,7 +109,7 @@ export function SimpleTable(props: Props<IndexType>) {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        id={rowID ? `${rowID}.${column.id}` : undefined}
+                        id={rowID !== undefined ? `${rowID}.${column.id}` : undefined}
                       >
                         {bodyRenderer(row, column.id)}
                       </td>
