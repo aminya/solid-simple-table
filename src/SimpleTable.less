@@ -22,77 +22,75 @@
   text-align: left;
   font-size: @text-size;
   border-collapse: collapse;
-}
 
-.solid-simple-table th,
-.solid-simple-table td {
-  padding: @text-size * 0.7;
-}
-.solid-simple-table th {
-  border-right: @border;
-  border-bottom: @border;
-}
+  th,
+  td {
+    padding: @text-size * 0.7;
+  }
 
-.solid-simple-table th:last-child {
-  border-right: none;
-}
+  th {
+    border-right: @border;
+    border-bottom: @border;
 
-.solid-simple-table th.sortable {
-  cursor: pointer;
-}
+    &:last-child {
+      border-right: none;
+    }
 
-.solid-simple-table th .header {
-  display: inline-flex;
-  align-self: flex-start;
-}
+    &.sortable {
+      cursor: pointer;
+    }
 
-.solid-simple-table th .sort-icon {
-  width: @text-size;
-  display: inline-flex;
-  align-self: flex-end;
-  visibility: hidden;
-  margin-left: @text-size; // TODO
-}
-.solid-simple-table th:hover .sort-icon {
-  visibility: visible;
-}
+    .header {
+      display: inline-flex;
+      align-self: flex-start;
+    }
 
-/* Light Theme (default) */
+    .sort-icon {
+      width: @text-size;
+      display: inline-flex;
+      align-self: flex-end;
+      visibility: hidden;
+      margin-left: @text-size; // TODO
+    }
 
-.solid-simple-table {
+    &:hover .sort-icon {
+      visibility: visible;
+    }
+  }
+
+  /* Light Theme (default) */
   color: @text-color;
   border-color: @border-color;
-}
 
-.solid-simple-table thead {
-  background-color: darken(@backgroud-color, 10%);
-}
+  thead {
+    background-color: darken(@backgroud-color, 10%);
+  }
 
-.solid-simple-table th {
-  border-right-color: @border-color;
-  border-bottom-color: @border-color;
-}
+  th {
+    border-right-color: @border-color;
+    border-bottom-color: @border-color;
+  }
 
-.solid-simple-table tbody {
-  background-color: @backgroud-color;
-}
+  tbody {
+    background-color: @backgroud-color;
+  }
 
-/* Dark Theme */
+  /* Dark Theme */
+  .dark {
+    color: @text-color-dark;
+    border-color: @border-color;
 
-.solid-simple-table.dark {
-  color: @text-color-dark;
-  border-color: @border-color;
-}
+    thead {
+      background-color: darken(@backgroud-color-dark, 2%);
+    }
 
-.solid-simple-table.dark thead {
-  background-color: darken(@backgroud-color-dark, 2%);
-}
+    th {
+      border-right-color: @border-color;
+      border-bottom-color: @border-color;
+    }
 
-.solid-simple-table.dark th {
-  border-right-color: @border-color;
-  border-bottom-color: @border-color;
-}
-
-.solid-simple-table.dark tbody {
-  background-color: @backgroud-color-dark;
+    tbody {
+      background-color: @backgroud-color-dark;
+    }
+  }
 }
