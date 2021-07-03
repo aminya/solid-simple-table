@@ -53,6 +53,7 @@
     "prettier-config-atomic": "^2.0.5",
     "shx": "^0.3.3",
     "solid-jest": "^0.1.1",
+    "terser-config-atomic": "^0.1.1",
     "typescript": "4.3.5",
     "web-resource-inliner": "^5.0.0"
   },
