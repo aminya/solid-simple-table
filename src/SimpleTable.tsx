@@ -157,7 +157,7 @@ function stringer(value: any) {
 }
 
 function defaultHeaderRenderer<Ind extends IndexType>(column: Column<Ind>) {
-  return column.label ?? column.id
+  return <div className="header">{column.label ?? column.id}</div>
 }
 
 function defaultBodyRenderer<Ind extends IndexType>(row: Row<Ind>, columnID: Ind) {

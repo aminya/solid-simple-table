@@ -41,11 +41,17 @@
   cursor: pointer;
 }
 
+.solid-simple-table th .header {
+  display: inline-flex;
+  align-self: flex-start;
+}
+
 .solid-simple-table th .sort-icon {
   width: @text-size;
-  display: inline-block;
+  display: inline-flex;
+  align-self: flex-end;
   visibility: hidden;
-  margin-left: @text-size; // TODO 
+  margin-left: @text-size; // TODO
 }
 .solid-simple-table th:hover .sort-icon {
   visibility: visible;
