@@ -1,28 +1,19 @@
-import { createSignal, createComputed, For } from "solid-js"
+import { createSignal, createComputed, For, Show } from "solid-js"
 import "./SimpleTable.less" // eslint-disable-line import/no-unassigned-import
-import {
-  Props,
-  IndexType,
-  SortDirectionSignal,
-  RowsSignal,
-  SortDirection,
-  NonNullSortDirection,
-  Row,
-  Column,
-} from "./SimpleTable.types"
+import { Props, IndexType, RowsSignal, SortDirection, NonNullSortDirection, Row, Column } from "./SimpleTable.types"
 
 export * from "./SimpleTable.types"
 
-export function SimpleTable(props: Props<IndexType>) {
-  const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
-  const [getRows, setRows] = createSignal<RowsSignal>(props.rows, false)
+export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>) {
+  const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirection<Ind> | undefined>(undefined)
+  const [getRows, setRows] = createSignal<RowsSignal<Ind>>(props.rows, { equals: false })
 
   // update the local copy whenever the parent updates
   createComputed(() => {
     setRows(props.rows)
   })
 
-  function getSortDirection(): SortDirection {
+  function getSortDirection(): SortDirection<Ind> {
     const sortDirection = getSortDirectionSignal()
     if (sortDirection !== undefined) {
       return sortDirection
@@ -35,14 +26,14 @@ export function SimpleTable(props: Props<IndexType>) {
     }
   }
 
-  function generateSortCallback(columnID: IndexType) {
+  function generateSortCallback(columnID: Ind) {
     return (e: MouseEvent) => {
-      setSortDirection(sortClickHandler(getSortDirection(), columnID, /* append */ e.shiftKey))
+      setSortDirection(sortClickHandler<Ind>(getSortDirection(), columnID, /* append */ e.shiftKey))
       sortRows()
     }
   }
 
-  const rowSorter: NonNullable<Props<IndexType>["rowSorter"]> = props.rowSorter ?? defaultSorter
+  const rowSorter: NonNullable<Props<Ind>["rowSorter"]> = props.rowSorter ?? defaultSorter
 
   // Row sorting logic:
   function sortRows() {
@@ -57,7 +48,7 @@ export function SimpleTable(props: Props<IndexType>) {
     }
     // if should sort normally
     else if (currentSortDirection[0] !== null) {
-      setRows(rowSorter(getRows(), currentSortDirection))
+      setRows(rowSorter(getRows(), currentSortDirection as NonNullSortDirection<Ind>))
     } // else ignore sort
   }
 
@@ -70,9 +61,9 @@ export function SimpleTable(props: Props<IndexType>) {
     accessors,
   } = props
 
-  function maybeRowID(row: Row) {
+  function maybeRowID(row: Row<Ind>) {
     // if accessors are needed
-    if (accessors) {
+    if (accessors === true) {
       return getRowID(row)
     } else {
       return undefined
@@ -80,27 +71,29 @@ export function SimpleTable(props: Props<IndexType>) {
   }
 
   if (props.columns === undefined) {
-    props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber)
+    // if columns are not provided manually provide it
+    // TODO `Ind` here is a `string`. Remove the cast
+    props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber) as Column<Ind>[]
   }
 
   // initial sort
   sortRows()
 
   return (
-    <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
+    <table className={props.className ?? "solid-simple-table light typography"} style={props.style}>
       <thead>
         <tr>
-          <For each={props.columns}>
+          <For each={props.columns!}>
             {(column) => {
               const isSortable = column.sortable !== false
               return (
                 <th
-                  id={accessors ? String(column.id) : undefined}
+                  id={accessors === true ? String(column.id) : undefined}
                   className={isSortable ? "sortable" : undefined}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
-                  {isSortable ? renderHeaderIcon(getSortDirection(), column.id) : undefined}
+                  <Show when={isSortable}>{renderHeaderIcon(getSortDirection(), column.id)}</Show>
                 </th>
               )
             }}
@@ -118,7 +111,7 @@ export function SimpleTable(props: Props<IndexType>) {
                     return (
                       <td
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
-                        id={rowID ? `${rowID}.${column.id}` : undefined}
+                        id={rowID !== undefined ? `${rowID}.${column.id}` : undefined}
                       >
                         {bodyRenderer(row, column.id)}
                       </td>
@@ -140,14 +133,14 @@ const ARROW = {
   BOTH: "⇅",
 }
 
-function defaultColumnMaker(rows: Array<Row>, representitiveRowNumber: number = 0) {
+function defaultColumnMaker(rows: Array<Row<string>>, representitiveRowNumber: number = 0) {
   // construct the column information based on the representitive row
   const representitiveRow = rows[representitiveRowNumber]
   const columnIDs = Object.keys(representitiveRow)
 
   // make Array<{key: columnID}>
   const columnNumber = columnIDs.length
-  const columns: Array<Column> = new Array(columnNumber)
+  const columns: Array<Column<string>> = new Array(columnNumber)
   for (let iCol = 0; iCol < columnNumber; iCol++) {
     columns[iCol] = { id: columnIDs[iCol] }
   }
@@ -163,11 +156,11 @@ function stringer(value: any) {
   }
 }
 
-function defaultHeaderRenderer(column: Column) {
-  return column.label ?? column.id
+function defaultHeaderRenderer<Ind extends IndexType>(column: Column<Ind>) {
+  return <div className="header">{column.label ?? column.id}</div>
 }
 
-function defaultBodyRenderer(row: Row, columnID: IndexType) {
+function defaultBodyRenderer<Ind extends IndexType>(row: Row<Ind>, columnID: Ind) {
   if (typeof row === "object") {
     return stringer(row[columnID])
   } else {
@@ -175,11 +168,11 @@ function defaultBodyRenderer(row: Row, columnID: IndexType) {
   }
 }
 
-function defaultGetRowID(row: Row) {
+function defaultGetRowID<Ind extends IndexType>(row: Row<Ind>) {
   return stringer(row)
 }
 
-function renderHeaderIcon(sortDirection: SortDirection, columnID: IndexType) {
+function renderHeaderIcon<Ind extends IndexType>(sortDirection: SortDirection<Ind>, columnID: Ind) {
   let icon
   if (sortDirection[0] === null || sortDirection[0] !== columnID) {
     icon = ARROW.BOTH
@@ -189,8 +182,8 @@ function renderHeaderIcon(sortDirection: SortDirection, columnID: IndexType) {
   return <span className="sort-icon">{icon}</span>
 }
 
-function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, append: boolean) {
-  let sortDirectionNew: SortDirection
+function sortClickHandler<Ind extends IndexType>(sortDirection: SortDirection<Ind>, columnID: Ind, append: boolean) {
+  let sortDirectionNew: SortDirection<Ind>
 
   // if holding shiftKey while clicking: reset sorting
   if (append) {
@@ -219,7 +212,7 @@ function sortClickHandler(sortDirection: SortDirection, columnID: IndexType, app
 function defaultSorter(
   rows: Array<number | string | Record<IndexType, any>>,
   sortDirection: NonNullSortDirection
-): Array<Row> {
+): Array<Row<IndexType>> {
   if (!rows.length) {
     return rows
   }

@@ -17,6 +17,10 @@ Solid SimpleTable is a blazing fast reactive table component that gives you free
 
 ![Simple table demo](other/simple-table-demo.gif)
 
+This library is production ready. It is currently used as the linter panel of Atom editor!
+
+![Atom Linter Panel](other/atom-linter-panel.png)
+
 ## Installation
 
       npm install --save solid-simple-table
@@ -85,9 +89,10 @@ For other examples, see [the demo folder](https://github.com/aminya/solid-simple
   headerRenderer?(column: Column): string | Renderable
   bodyRenderer?(row: Row, columnID: K): string | Renderable
 
-  // styles
-  style?: JSX.CSSProperties | string
+  // the class name to be used instead of the provided default. The default value is `solid-simple-table light typography`
   className?: string
+  // extra styles
+  style?: JSX.CSSProperties | string
 
   // sort options
   defaultSortDirection?: NonNullSortDirection<K>

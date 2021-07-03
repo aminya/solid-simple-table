@@ -6,13 +6,13 @@ export type Renderable = any
 export type IndexType = string | number
 
 // row and column types
-export type Row = number | string | Record<IndexType, any>
+export type Row<K extends IndexType = IndexType> = number | string | Record<K, any>
 
 export type Column<K extends IndexType = IndexType> = {
   id: K
   label?: string
   sortable?: boolean
-  onClick?(e: MouseEvent, row: Row): void
+  onClick?(e: MouseEvent, row: Row<K>): void
 }
 
 /**
@@ -27,7 +27,7 @@ export type SortDirection<K extends IndexType = IndexType> = NonNullSortDirectio
 // Props
 export type Props<K extends IndexType> = {
   // rows
-  rows: Array<Row>
+  rows: Array<Row<K>>
 
   // Optional props:
 
@@ -45,7 +45,7 @@ export type Props<K extends IndexType> = {
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
-  bodyRenderer?(row: Row, columnID: K): string | Renderable
+  bodyRenderer?(row: Row<K>, columnID: K): string | Renderable
 
   // styles
   style?: JSX.CSSProperties | string
@@ -53,7 +53,7 @@ export type Props<K extends IndexType> = {
 
   // sort options
   defaultSortDirection?: NonNullSortDirection<K>
-  rowSorter?(rows: Array<Row>, sortDirection: NonNullSortDirection<K>): Array<Row>
+  rowSorter?(rows: Array<Row<K>>, sortDirection: NonNullSortDirection<K>): Array<Row<K>>
 
   // accessors
 
@@ -69,9 +69,8 @@ export type Props<K extends IndexType> = {
    *
    * @default {defaultGetRowID}
    */
-  getRowID?(row: Row): string
+  getRowID?(row: Row<K>): string
 }
 
 // Component signals (states)
-export type SortDirectionSignal<K extends IndexType = IndexType> = SortDirection<K> | undefined
-export type RowsSignal = Array<Row>
+export type RowsSignal<K extends IndexType> = Array<Row<K>>

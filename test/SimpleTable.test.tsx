@@ -79,7 +79,7 @@ function testTrHeaders(
     if (sortable) {
       expect(header.className).toBe("sortable")
       if (defaultSortDirection !== undefined && label.toLowerCase() === defaultSortDirection[0]) {
-        const direction = defaultSortDirection[1] ? "↓" : "↑"
+        const direction = defaultSortDirection[1] === "asc" ? "↓" : "↑"
         expect(header.textContent).toBe(`${label}${direction}`)
       } else {
         expect(header.textContent).toBe(`${label}⇅`)
