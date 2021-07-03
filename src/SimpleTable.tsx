@@ -1,4 +1,4 @@
-import { createSignal, createComputed, For } from "solid-js"
+import { createSignal, createComputed, For, Show } from "solid-js"
 import "./SimpleTable.less" // eslint-disable-line import/no-unassigned-import
 import { Props, IndexType, RowsSignal, SortDirection, NonNullSortDirection, Row, Column } from "./SimpleTable.types"
 
@@ -93,7 +93,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
-                  {isSortable ? renderHeaderIcon(getSortDirection(), column.id) : undefined}
+                  <Show when={isSortable}>{renderHeaderIcon(getSortDirection(), column.id)}</Show>
                 </th>
               )
             }}
