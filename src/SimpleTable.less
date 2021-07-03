@@ -43,14 +43,17 @@
     .header {
       display: inline-flex;
       align-self: flex-start;
+      float: left;
     }
 
     .sort-icon {
       width: @text-size;
+
+      float: right;
+      margin-left: @text-size;
       display: inline-flex;
       align-self: flex-end;
       visibility: hidden;
-      margin-left: @text-size; // TODO
     }
 
     &:hover .sort-icon {
