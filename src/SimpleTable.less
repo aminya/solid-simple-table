@@ -18,9 +18,7 @@
 
 .solid-simple-table {
   border: @border;
-  font-family: @text-font;
   text-align: left;
-  font-size: @text-size;
   border-collapse: collapse;
 
   th,
@@ -63,25 +61,33 @@
     }
   }
 
-  /* Light Theme (default) */
-  color: @text-color;
-  border-color: @border-color;
-
-  thead {
-    background-color: darken(@backgroud-color, 10%);
+  /* Fonts */
+  &.typography {
+    font-family: @text-font;
+    font-size: @text-size;
   }
 
-  th {
-    border-right-color: @border-color;
-    border-bottom-color: @border-color;
-  }
+  /* Light Theme */
+  &.light {
+    color: @text-color;
+    border-color: @border-color;
 
-  tbody {
-    background-color: @backgroud-color;
+    thead {
+      background-color: darken(@backgroud-color, 10%);
+    }
+
+    th {
+      border-right-color: @border-color;
+      border-bottom-color: @border-color;
+    }
+
+    tbody {
+      background-color: @backgroud-color;
+    }
   }
 
   /* Dark Theme */
-  .dark {
+  &.dark {
     color: @text-color-dark;
     border-color: @border-color;
 

@@ -89,9 +89,10 @@ For other examples, see [the demo folder](https://github.com/aminya/solid-simple
   headerRenderer?(column: Column): string | Renderable
   bodyRenderer?(row: Row, columnID: K): string | Renderable
 
-  // styles
-  style?: JSX.CSSProperties | string
+  // the class name to be used instead of the provided default. The default value is `solid-simple-table light typography`
   className?: string
+  // extra styles
+  style?: JSX.CSSProperties | string
 
   // sort options
   defaultSortDirection?: NonNullSortDirection<K>

@@ -80,7 +80,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
   sortRows()
 
   return (
-    <table className={`solid-simple-table ${props.className ?? ""}`} style={props.style}>
+    <table className={props.className ?? "solid-simple-table light typography"} style={props.style}>
       <thead>
         <tr>
           <For each={props.columns!}>
