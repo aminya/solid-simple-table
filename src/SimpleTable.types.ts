@@ -73,5 +73,4 @@ export type Props<K extends IndexType> = {
 }
 
 // Component signals (states)
-export type SortDirectionSignal<K extends IndexType = IndexType> = SortDirection<K> | undefined
 export type RowsSignal = Array<Row>

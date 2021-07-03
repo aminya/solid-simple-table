@@ -1,21 +1,12 @@
 import { createSignal, createComputed, For } from "solid-js"
 import "./SimpleTable.less" // eslint-disable-line import/no-unassigned-import
-import {
-  Props,
-  IndexType,
-  SortDirectionSignal,
-  RowsSignal,
-  SortDirection,
-  NonNullSortDirection,
-  Row,
-  Column,
-} from "./SimpleTable.types"
+import { Props, IndexType, RowsSignal, SortDirection, NonNullSortDirection, Row, Column } from "./SimpleTable.types"
 
 export * from "./SimpleTable.types"
 
 export function SimpleTable(props: Props<IndexType>) {
-  const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirectionSignal>()
-  const [getRows, setRows] = createSignal<RowsSignal>(props.rows, false)
+  const [getSortDirectionSignal, setSortDirection] = createSignal<SortDirection | undefined>(undefined)
+  const [getRows, setRows] = createSignal<RowsSignal>(props.rows, { equals: false })
 
   // update the local copy whenever the parent updates
   createComputed(() => {
