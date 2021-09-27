@@ -27,8 +27,8 @@
   },
   "prettier": "prettier-config-atomic",
   "dependencies": {
-    "babel-preset-solid": "~1.0.0",
-    "solid-js": "~1.0.0"
+    "babel-preset-solid": "~1.1.5",
+    "solid-js": "~1.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
