@@ -89,6 +89,10 @@ For other examples, see [the demo folder](https://github.com/aminya/solid-simple
   headerRenderer?(column: Column): string | Renderable
   bodyRenderer?(row: Row, columnID: K): string | Renderable
 
+  // dynamic CSS classes for table cells
+  headerCellClass?(column: Column): string
+  bodyCellClass?(row: Row, columnID: K): string
+
   // the class name to be used instead of the provided default. The default value is `solid-simple-table light typography`
   className?: string
   // extra styles

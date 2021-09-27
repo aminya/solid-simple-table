@@ -47,6 +47,10 @@ export type Props<K extends IndexType> = {
   headerRenderer?(column: Column): string | Renderable
   bodyRenderer?(row: Row<K>, columnID: K): string | Renderable
 
+  // dynamic CSS classes
+  headerCellClass?(column: Column): string
+  bodyCellClass?(row: Row<K>, columnID: K): string
+
   // styles
   style?: JSX.CSSProperties | string
   className?: string
