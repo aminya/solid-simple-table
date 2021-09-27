@@ -48,7 +48,19 @@ export type Props<K extends IndexType> = {
   bodyRenderer?(row: Row<K>, columnID: K): string | Renderable
 
   // dynamic CSS classes
+  /**
+   * Optional function to get dynamic CSS class names for each column header cell.
+   *
+   * @param `Column` Object (same as for `headerRenderer`)
+   * @returns `string` of CSS class names to be set for the `th` element of that column
+   */
   headerCellClass?(column: Column): string
+  /**
+   * Optional function to get dynamic CSS class names for each body cell.
+   *
+   * @param Row Object, column ID (same as for bodyRenderer)
+   * @returns String of CSS class names to be set for that cell's td element
+   */
   bodyCellClass?(row: Row<K>, columnID: K): string
 
   // styles
