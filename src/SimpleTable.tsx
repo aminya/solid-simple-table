@@ -88,11 +88,16 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
           <For each={props.columns!}>
             {(column) => {
               const isSortable = column.sortable !== false
+
+              let className: string = isSortable ? "sortable" : ""
+              if (headerCellClass !== undefined) {
+                className += ` ${headerCellClass(column)}`
+              }
+
               return (
                 <th
-                  class={headerCellClass?.(column)}
                   id={accessors === true ? String(column.id) : undefined}
-                  className={isSortable ? "sortable" : undefined}
+                  className={className}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
@@ -113,7 +118,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
                   {(column) => {
                     return (
                       <td
-                        class={bodyCellClass?.(row, column.id)}
+                        className={bodyCellClass?.(row, column.id)}
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
                         id={rowID !== undefined ? `${rowID}.${column.id}` : undefined}
                       >
