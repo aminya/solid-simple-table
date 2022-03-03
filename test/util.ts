@@ -5,13 +5,13 @@ export async function sleep(time: number) {
 }
 
 export function getTagName(elm: Element | undefined): string | undefined {
-  return elm?.tagName?.toLowerCase()
+  return elm?.tagName.toLowerCase()
 }
 
 export function click(elm: HTMLElement) {
   try {
     // @ts-ignore internal solid API
-    elm?.$$click(new MouseEvent("click"))
+    elm.$$click(new MouseEvent("click"))
   } catch {
     elm.click()
   }

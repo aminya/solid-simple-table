@@ -30,12 +30,12 @@ type MyComplexTableColumn = typeof columns[0]
 type MyColumnKeys = keyof MyComplexTableRow
 
 function MyComplexTableSorter(
-  rows: Array<MyComplexTableRow>, // eslint-disable-line no-shadow
+  rows_in: Array<MyComplexTableRow>, // eslint-disable-line no-shadow
   sortDirection: NonNullSortDirection<MyColumnKeys>
 ): Array<MyComplexTableRow> {
   const columnID = sortDirection[0]
   const currentSortDirection = sortDirection[1]
-  return rows.sort(function (a, b) {
+  return rows_in.sort(function (a, b) {
     if (columnID in a && columnID in b) {
       const multiplyWith = currentSortDirection === "asc" ? 1 : -1
       const sortValue = a.severity.localeCompare(b.severity)
