@@ -83,7 +83,7 @@ export type Props<K extends IndexType> = {
   /**
    * A function that takes row and returns string unique key for that row
    *
-   * @default {defaultGetRowID}
+   * @default { defaultGetRowID }
    */
   getRowID?(row: Row<K>): string
 }
