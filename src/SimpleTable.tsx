@@ -75,7 +75,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
   if (props.columns === undefined) {
     // if columns are not provided manually provide it
     // TODO `Ind` here is a `string`. Remove the cast
-    props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber) as Column<Ind>[]
+    props.columns = defaultColumnMaker(props.rows, props.representativeRowNumber) as Column<Ind>[]
   }
 
   // initial sort
@@ -83,7 +83,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
 
   return (
     <table 
-      className={props.className ?? "solid-simple-table light typography"} 
+      class={props.className ?? "solid-simple-table light typography"} 
       style={props.style} 
       {...(props?.id ? {id: props.id} : {})}
     >
@@ -101,7 +101,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
               return (
                 <th
                   id={accessors === true ? String(column.id) : undefined}
-                  className={className}
+                  class={className}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
@@ -122,7 +122,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
                   {(column) => {
                     return (
                       <td
-                        className={bodyCellClass?.(row, column.id)}
+                        class={bodyCellClass?.(row, column.id)}
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
                         id={rowID !== undefined ? `${rowID}.${column.id}` : undefined}
                       >
@@ -146,10 +146,10 @@ const ARROW = {
   BOTH: "⇅",
 }
 
-function defaultColumnMaker(rows: Array<Row<string>>, representitiveRowNumber: number = 0) {
-  // construct the column information based on the representitive row
-  const representitiveRow = rows[representitiveRowNumber]
-  const columnIDs = Object.keys(representitiveRow)
+function defaultColumnMaker(rows: Array<Row<string>>, representativeRowNumber: number = 0) {
+  // construct the column information based on the representative row
+  const representativeRow = rows[representativeRowNumber]
+  const columnIDs = Object.keys(representativeRow)
 
   // make Array<{key: columnID}>
   const columnNumber = columnIDs.length
@@ -170,7 +170,7 @@ function stringer(value: any) {
 }
 
 function defaultHeaderRenderer<Ind extends IndexType>(column: Column<Ind>) {
-  return <div className="header">{column.label ?? column.id}</div>
+  return <div class="header">{column.label ?? column.id}</div>
 }
 
 function defaultBodyRenderer<Ind extends IndexType>(row: Row<Ind>, columnID: Ind) {
@@ -192,7 +192,7 @@ function renderHeaderIcon<Ind extends IndexType>(sortDirection: SortDirection<In
   } else {
     icon = sortDirection[1] === "asc" ? ARROW.DOWN : ARROW.UP
   }
-  return <span className="sort-icon">{icon}</span>
+  return <span class="sort-icon">{icon}</span>
 }
 
 function sortClickHandler<Ind extends IndexType>(sortDirection: SortDirection<Ind>, columnID: Ind, append: boolean) {
