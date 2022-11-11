@@ -22,7 +22,10 @@
   ],
   "scripts": {
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr",
-    "build": "cross-env NODE_ENV=production parcel build --target main --target types --target module src/SimpleTable.tsx && npm run style",
+    "build": "run-p build.parcel build.types",
+    "build.parcel": "cross-env NODE_ENV=production parcel build --target main --target module && run-s build.style",
+    "build.style": "babel dist --out-dir dist --config-file ./babel.style.config.json --retain-lines",
+    "build.types": "tsc -p ./tsconfig.json",
     "clean": "shx rm -rf dist .parcel-cache",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
     "demo.simple": "cross-env NODE_ENV=production parcel serve ./demo/simple/index.html --dist-dir ./demo/simple/dist --open",
@@ -32,8 +35,7 @@
     "dev": "cross-env NODE_ENV=development parcel watch --target main src/SimpleTable.tsx",
     "format": "prettier --write .",
     "lint": "eslint . --fix",
-    "prepare": "npm run build",
-    "style": "babel dist --out-dir dist --config-file ./babel.style.config.json --retain-lines",
+    "prepare": "pnpm run build",
     "test": "cross-env jest --coverage"
   },
   "prettier": "prettier-config-atomic",
