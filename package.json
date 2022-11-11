@@ -12,8 +12,7 @@
   },
   "license": "MIT",
   "author": "Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
-  "main": "dist/SimpleTable.js",
-  "module": "dist/SimpleTable.module.js",
+  "main": "dist/SimpleTable.mjs",
   "source": "src/SimpleTable.tsx",
   "types": "dist/SimpleTable.d.ts",
   "files": [
@@ -22,8 +21,8 @@
   ],
   "scripts": {
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr",
-    "build": "run-p build.parcel build.types",
-    "build.parcel": "cross-env NODE_ENV=production parcel build --target main --target module && run-s build.style",
+    "build": "run-s clean && run-p build.parcel build.types",
+    "build.parcel": "cross-env NODE_ENV=production parcel build --target main && run-s build.style",
     "build.style": "babel dist --out-dir dist --config-file ./babel.style.config.json --retain-lines",
     "build.types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
     "clean": "shx rm -rf ./dist/",
@@ -102,15 +101,9 @@
   "targets": {
     "main": {
       "context": "browser",
-      "includeNodeModules": true,
-      "isLibrary": true,
-      "optimize": false
-    },
-    "module": {
-      "context": "browser",
       "includeNodeModules": false,
       "engines": {
-        "browsers": "Chrome 90"
+        "browsers": "last 2 versions"
       },
       "isLibrary": true,
       "optimize": false,
