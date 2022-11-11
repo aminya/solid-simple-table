@@ -1,0 +1,27 @@
+version: "0.2"
+files:
+  - "**/*"
+useGitignore: true
+enableGlobDot: true
+ignorePaths:
+  - pnpm-lock.yaml
+  - .git/
+  - dist/
+  - "**/node_modules/"
+words:
+  - aminya
+  - esbuild
+  - esmodule
+  - esmodules
+  - iwatakeshi
+  - npmrc
+  - pnpm
+  - terserrc
+  - tsbuildinfo
+  - Yahyaabadi
+ignoreWords: []
+import: []
+dictionaryDefinitions: []
+dictionaries: []
+language: en, en-GB
+allowCompoundWords: true
