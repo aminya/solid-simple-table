@@ -10,6 +10,7 @@ ignorePaths:
   - "**/node_modules/"
 words:
   - aminya
+  - esbuild
   - esmodule
   - esmodules
   - iwatakeshi
