@@ -82,7 +82,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
   sortRows()
 
   return (
-    <table className={props.className ?? "solid-simple-table light typography"} style={props.style}>
+    <table class={props.className ?? "solid-simple-table light typography"} style={props.style}>
       <thead>
         <tr>
           <For each={props.columns!}>
@@ -97,7 +97,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
               return (
                 <th
                   id={accessors === true ? String(column.id) : undefined}
-                  className={className}
+                  class={className}
                   onClick={isSortable ? generateSortCallback(column.id) : undefined}
                 >
                   {headerRenderer(column)}
@@ -118,7 +118,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
                   {(column) => {
                     return (
                       <td
-                        className={bodyCellClass?.(row, column.id)}
+                        class={bodyCellClass?.(row, column.id)}
                         onClick={column.onClick !== undefined ? (e: MouseEvent) => column.onClick!(e, row) : undefined}
                         id={rowID !== undefined ? `${rowID}.${column.id}` : undefined}
                       >
@@ -166,7 +166,7 @@ function stringer(value: any) {
 }
 
 function defaultHeaderRenderer<Ind extends IndexType>(column: Column<Ind>) {
-  return <div className="header">{column.label ?? column.id}</div>
+  return <div class="header">{column.label ?? column.id}</div>
 }
 
 function defaultBodyRenderer<Ind extends IndexType>(row: Row<Ind>, columnID: Ind) {
@@ -188,7 +188,7 @@ function renderHeaderIcon<Ind extends IndexType>(sortDirection: SortDirection<In
   } else {
     icon = sortDirection[1] === "asc" ? ARROW.DOWN : ARROW.UP
   }
-  return <span className="sort-icon">{icon}</span>
+  return <span class="sort-icon">{icon}</span>
 }
 
 function sortClickHandler<Ind extends IndexType>(sortDirection: SortDirection<Ind>, columnID: Ind, append: boolean) {
