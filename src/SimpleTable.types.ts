@@ -41,7 +41,7 @@ export type Props<K extends IndexType> = {
    *
    * @default 0 (first row)
    */
-  representitiveRowNumber?: number
+  representativeRowNumber?: number
 
   // renderers
   headerRenderer?(column: Column): string | Renderable

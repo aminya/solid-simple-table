@@ -75,7 +75,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
   if (props.columns === undefined) {
     // if columns are not provided manually provide it
     // TODO `Ind` here is a `string`. Remove the cast
-    props.columns = defaultColumnMaker(props.rows, props.representitiveRowNumber) as Column<Ind>[]
+    props.columns = defaultColumnMaker(props.rows, props.representativeRowNumber) as Column<Ind>[]
   }
 
   // initial sort
@@ -142,10 +142,10 @@ const ARROW = {
   BOTH: "⇅",
 }
 
-function defaultColumnMaker(rows: Array<Row<string>>, representitiveRowNumber: number = 0) {
-  // construct the column information based on the representitive row
-  const representitiveRow = rows[representitiveRowNumber]
-  const columnIDs = Object.keys(representitiveRow)
+function defaultColumnMaker(rows: Array<Row<string>>, representativeRowNumber: number = 0) {
+  // construct the column information based on the representative row
+  const representativeRow = rows[representativeRowNumber]
+  const columnIDs = Object.keys(representativeRow)
 
   // make Array<{key: columnID}>
   const columnNumber = columnIDs.length

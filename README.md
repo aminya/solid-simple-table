@@ -83,7 +83,7 @@ For other examples, see [the demo folder](https://github.com/aminya/solid-simple
     Takes this Row's keys as Column IDs
     @default 0 (first row)
   */
-  representitiveRowNumber?: number
+  representativeRowNumber?: number
 
   // renderers
   headerRenderer?(column: Column): string | Renderable
