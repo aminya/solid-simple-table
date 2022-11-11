@@ -23,7 +23,7 @@
     "benchmark": "cross-env NODE_ENV=production parcel serve --target benchmark ./benchmark/index.html --open --no-hmr",
     "build": "run-s clean && run-p build.parcel build.types",
     "build.parcel": "cross-env NODE_ENV=production parcel build --target main && run-s build.style",
-    "build.style": "babel dist --out-dir dist --config-file ./babel.style.config.json --retain-lines",
+    "build.style": "babel ./dist/SimpleTable.mjs --keep-file-extension --out-dir dist --config-file ./babel.style.config.json --retain-lines",
     "build.types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
     "clean": "shx rm -rf ./dist/",
     "demo.complex": "cross-env NODE_ENV=production parcel serve ./demo/complex/index.html --dist-dir ./demo/complex/dist --open",
