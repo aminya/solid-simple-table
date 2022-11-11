@@ -1,6 +1,7 @@
 module.exports = {
   // includes resolving, transformation, etc
-  preset: "solid-jest/preset/browser",
+  preset: "solid-jest/preset/browser/",
+  testEnvironment: "jsdom",
 
   // coverage
   collectCoverageFrom: ["src/**/*.{ts,tsx}"],
