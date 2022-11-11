@@ -65,6 +65,7 @@
     "chance": "^1.1.9",
     "cross-env": "^7.0.3",
     "cspell": "^6.14.1",
+    "eslint": "^8.10.0",
     "eslint-config-atomic": "^1.18.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.3.1",
@@ -91,6 +92,7 @@
   "demo-variable-rows": "./demo/variable-rows/dist/index.html",
   "pnpm": {
     "overrides": {
+      "eslint": "^8.10.0",
       "core-js": "3.26.0",
       "core-js-pure": "3.26.0",
       "babel-eslint": "npm:@babel/eslint-parser"
