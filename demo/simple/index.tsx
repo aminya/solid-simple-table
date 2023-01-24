@@ -1,5 +1,6 @@
 import { render } from "solid-js/web"
 import { SimpleTable } from "../../src/SimpleTable"
+import type { IndexType, Props } from "../../src/SimpleTable"
 
 export const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
@@ -8,8 +9,8 @@ export const rows = [
   { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
 ]
 
-export function MySimpleTable() {
-  return <SimpleTable rows={rows} />
+export function MySimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>) {
+  return <SimpleTable rows={rows} id={props.id}/>
 }
 
 // skip rendering if in test mode

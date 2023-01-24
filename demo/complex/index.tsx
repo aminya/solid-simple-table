@@ -1,6 +1,7 @@
 import { render } from "solid-js/web"
 import { SimpleTable } from "../../src/SimpleTable"
 import type { NonNullSortDirection } from "../../src/SimpleTable"
+import type { IndexType, Props } from "../../src/SimpleTable"
 
 export const rows = [
   { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
@@ -47,7 +48,7 @@ function MyComplexTableSorter(
   })
 }
 
-export function MyComplexTable() {
+export function MyComplexTable<Ind extends IndexType = IndexType>(props: Props<Ind>) {
   return (
     <SimpleTable
       rows={rows}
@@ -57,6 +58,7 @@ export function MyComplexTable() {
       defaultSortDirection={["file", "asc"]}
       rowSorter={MyComplexTableSorter}
       getRowID={(row) => JSON.stringify(row)}
+      id={props.id}
     />
   )
 }
