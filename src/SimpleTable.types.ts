@@ -37,11 +37,12 @@ export type Props<K extends IndexType> = {
   columns?: Array<Column<K>>
 
   /**
-   * If columns is not provided and Row is an object, construct columns based on this row Takes this Row's keys as Column IDs
+   * If columns is not provided and Row is an object, construct columns based on this row Takes this Row's keys as
+   * Column IDs
    *
    * @default 0 (first row)
    */
-  representitiveRowNumber?: number
+  representativeRowNumber?: number
 
   // renderers
   headerRenderer?(column: Column): string | Renderable

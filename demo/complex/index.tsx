@@ -4,10 +4,10 @@ import type { NonNullSortDirection } from "../../src/SimpleTable"
 import type { IndexType, Props } from "../../src/SimpleTable"
 
 export const rows = [
-  { file: "C:/a", message: "Lorem ipsum dolor sit amet, consectetur", severity: "error" },
-  { file: "C:/b", message: "Vivamus tincidunt ligula ut ligula laoreet faucibus", severity: "warning" },
-  { file: "C:/c", message: "Proin tincidunt justo nulla, sit amet accumsan lectus pretium vel", severity: "info" },
-  { file: "C:/d", message: "Cras faucibus eget ante ut consectetur", severity: "error" },
+  { file: "C:/a", message: "Folder a", severity: "error" },
+  { file: "C:/b", message: "Folder b", severity: "warning" },
+  { file: "C:/c", message: "Folder c", severity: "info" },
+  { file: "C:/d", message: "Folder d", severity: "error" },
 ]
 
 export const columns = [

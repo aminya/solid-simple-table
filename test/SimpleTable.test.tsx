@@ -6,13 +6,14 @@ import { MyVariableRowsTable, initialRows as myVariableRowsTableInitialRows } fr
 import { MyComplexTable, rows as myComplexTableRows, columns as MyComplexTableColumns } from "../demo/complex/index"
 
 import { sleep, click, getTagName } from "./util"
+import assert from "assert"
 
 function testTable(
   rowsData: Record<string, string>[],
   rootElm: HTMLDivElement,
   shouldTestSort: boolean = true,
-  columnsData: Column[] = undefined,
-  defaultSortDirection: SortDirection = undefined
+  columnsData?: Column[],
+  defaultSortDirection?: SortDirection
 ) {
   const { table, thead, tbody, tr } = testTableSections(rootElm)
 
@@ -48,6 +49,7 @@ function testTableSections(rootElm: HTMLDivElement) {
   const thead = tableChildren[0] as HTMLTableElement["tHead"]
   const tbody = tableChildren[1] as ReturnType<HTMLTableElement["createTBody"]>
 
+  assert(thead !== null)
   expect(getTagName(thead)).toBe("thead")
   expect(getTagName(tbody)).toBe("tbody")
 

@@ -1,6 +1,7 @@
 # OS metadata
 .DS_Store
 Thumbs.db
+.cache
 
 # Node
 node_modules
