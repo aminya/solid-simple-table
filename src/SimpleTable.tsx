@@ -84,7 +84,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
 
   return (
     <table
-      className={props.className ?? "solid-simple-table light typography"}
+      class={props.className ?? "solid-simple-table light typography"}
       style={props.style}
       id={id ?? undefined}
     >
