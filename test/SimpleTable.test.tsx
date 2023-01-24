@@ -220,6 +220,26 @@ describe("SolidSimpleTable", () => {
     testTable(myComplexTableRows, rootElm, false, MyComplexTableColumns, ["file", "asc"])
   })
 
+  const testIdPropPassing = (expectedId: string) => {
+    const tableElement = rootElm.querySelector("table");
+    expect(tableElement).not.toBeNull();
+    expect(tableElement?.id).toBe(expectedId);
+  };
+
+  test("passes id prop to simple table element", () => {
+    const testId = 'simpletablewithid';
+    dispose = render(() => <MySimpleTable id={testId}/>, rootElm);
+    testIdPropPassing(testId);
+    testTable(mySimpleTableRows, rootElm);
+  });
+
+  test("passes id prop to complex table element", () => {
+    const testId = 'complextablewithid';
+    dispose = render(() => <MyComplexTable id={testId}/>, rootElm);
+    testTable(myComplexTableRows, rootElm, false, MyComplexTableColumns, ["file", "asc"])
+    testIdPropPassing(testId);
+  })
+
   afterEach(() => {
     rootElm.textContent = ""
     dispose()

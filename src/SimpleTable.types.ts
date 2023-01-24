@@ -66,6 +66,7 @@ export type Props<K extends IndexType> = {
 
   // styles
   style?: JSX.CSSProperties | string
+  id?: string
   className?: string
 
   // sort options
