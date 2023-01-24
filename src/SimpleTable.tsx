@@ -61,6 +61,7 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
     headerCellClass,
     bodyCellClass,
     accessors,
+    id
   } = props
 
   function maybeRowID(row: Row<Ind>) {
@@ -82,10 +83,10 @@ export function SimpleTable<Ind extends IndexType = IndexType>(props: Props<Ind>
   sortRows()
 
   return (
-    <table 
-      className={props.className ?? "solid-simple-table light typography"} 
-      style={props.style} 
-      {...(props?.id ? {id: props.id} : {})}
+    <table
+      className={props.className ?? "solid-simple-table light typography"}
+      style={props.style}
+      id={id ?? undefined}
     >
       <thead>
         <tr>
