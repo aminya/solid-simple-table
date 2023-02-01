@@ -58,7 +58,7 @@ The css is available under `dist/SimpleTable.css` which you can import into HTML
 or in JavaScript:
 
 ```js
-impost 'simple-solid-table/dist/SimpleTable.css'
+import "solid-simple-table/dist/SimpleTable.css";
 ```
 
 For other examples, see [the demo folder](https://github.com/aminya/solid-simple-table/tree/master/demo).
