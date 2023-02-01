@@ -52,7 +52,7 @@ render(() => <MyTable />, document.getElementById("app"))
 The css is available under `dist/SimpleTable.css` which you can import into HTML:
 
 ```html
-<link rel="stylesheet" href="simple-solid-table/dist/SimpleTable.css" />
+<link rel="stylesheet" href="solid-simple-table/dist/SimpleTable.css" />
 ```
 
 or in JavaScript:
